@@ -1,0 +1,26 @@
+use sample_analytics
+
+db
+
+db.createCollection('accounts')
+
+db.accounts.insertMany(EJSON.deserialize([{"_id":{"$oid":"5ca4bbc7a2dd94ee5816238c"},"account_id":{"$numberInt":"371138"},"limit":{"$numberInt":"9000"},
+"products":["Derivatives","InvestmentStock"]},
+{"_id":{"$oid":"5ca4bbc7a2dd94ee5816238d"},"account_id":{"$numberInt":"557378"},"limit":{"$numberInt":"10000"},
+"products":["InvestmentStock","Commodity","Brokerage","CurrencyService"]},
+{"_id":{"$oid":"5ca4bbc7a2dd94ee5816238e"},"account_id":{"$numberInt":"198100"},"limit":{"$numberInt":"10000"},
+"products":["Derivatives","CurrencyService","InvestmentStock"]},
+{"_id":{"$oid":"5ca4bbc7a2dd94ee5816238f"},"account_id":{"$numberInt":"674364"},"limit":{"$numberInt":"10000"},
+"products":["InvestmentStock"]},
+{"_id":{"$oid":"5ca4bbc7a2dd94ee58162390"},"account_id":{"$numberInt":"278603"},"limit":{"$numberInt":"10000"},
+"products":["Commodity","InvestmentStock"]},
+{"_id":{"$oid":"5ca4bbc7a2dd94ee58162391"},"account_id":{"$numberInt":"383777"},"limit":{"$numberInt":"10000"},
+"products":["CurrencyService","Derivatives","InvestmentFund","Commodity","InvestmentStock"]},
+{"_id":{"$oid":"5ca4bbc7a2dd94ee58162392"},"account_id":{"$numberInt":"794875"},"limit":{"$numberInt":"9000"},
+"products":["InvestmentFund","InvestmentStock"]},
+{"_id":{"$oid":"5ca4bbc7a2dd94ee58162393"},"account_id":{"$numberInt":"328304"},"limit":{"$numberInt":"10000"},
+"products":["Derivatives","InvestmentStock","CurrencyService"]},
+{"_id":{"$oid":"5ca4bbc7a2dd94ee58162394"},"account_id":{"$numberInt":"487188"},"limit":{"$numberInt":"10000"},
+"products":["Brokerage","CurrencyService","InvestmentStock"]},
+{"_id":{"$oid":"5ca4bbc7a2dd94ee58162395"},"account_id":{"$numberInt":"910579"},"limit":{"$numberInt":"10000"},
+"products":["Brokerage","InvestmentStock"]}]))

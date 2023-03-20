@@ -1,0 +1,6 @@
+Run the commands there in setup_mongo.txt file
+
+Set up your django and run the server
+
+You can see that entries are being displayed on the screen and clicking on submit after entering values, you will see
+that new data is inserted in the MongoDB table on page refresh
