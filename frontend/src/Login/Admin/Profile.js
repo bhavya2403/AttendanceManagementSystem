@@ -1,6 +1,6 @@
 import React from 'react'
 import ProfileCard from './ProfileCard'
-
+// Updating profile for admin
 function Profile(){
     return(
       <div style={{display: 'flex'}}>
