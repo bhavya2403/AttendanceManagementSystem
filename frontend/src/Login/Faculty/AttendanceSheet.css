@@ -1,0 +1,41 @@
+.attendance-table {
+    margin-top: 1px;
+  }
+  
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-bottom: 2rem;
+  }
+  
+  thead th {
+    background-color: #f0f0f0;
+    font-weight: bold;
+    padding: 0.5rem 1rem;
+    text-align: left;
+    vertical-align: middle;
+  }
+  
+  thead th:first-child {
+    border-top-left-radius: 5px;
+  }
+  
+  thead th:last-child {
+    border-top-right-radius: 5px;
+  }
+  
+  tbody td {
+    border-bottom: 1px solid #ddd;
+    padding: 0.5rem 1rem;
+    vertical-align: middle;
+  }
+  
+  tbody td:first-child {
+    font-weight: bold;
+  }
+  
+  tbody td input[type="checkbox"] {
+    margin: 0;
+    vertical-align: middle;
+  }
+  
