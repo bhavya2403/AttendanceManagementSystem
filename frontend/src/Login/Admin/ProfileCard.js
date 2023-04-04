@@ -1,6 +1,7 @@
 import React from 'react'
 import './ProfileCard.css'
 
+// Displays the profile page of the user in the admin department
 function ProfileCard(){
     return (
         <div className="card-container">
