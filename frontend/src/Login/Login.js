@@ -28,33 +28,28 @@ function Login(){
             navigate('/Student');
         }
 
+        if(email==='kotharisahil4@gmail.com' && password==='123456789'){
+            navigate('/Faculty');
+        }
+
         setEmail("");
         setPassword("");
     };
 
     return (
         <div>
-            <div>
-                <img style={{marginTop: '15px', marginRight: "10px"}} src="/daiict.png" alt="daiict-image" align="right" />
-            </div>
-
-            <div>
-                <p style={{marginLeft: "20px"}} >Dhirubhai Ambani Institute of Information and Communication Technology</p>
-                
-            </div>
-
             <div className="login-container">
-                <h1 style={{color:'black'}}>Welcome to Attendance Management System</h1><br/><br/>
-                <div className="card">
+                <h1 style={{color:'black'}}>Welcome</h1><br/><br/>
+                <div className="login-card">
                 <form onSubmit={onSubmitHandler}>
                     <h3 style={{textAlign: "center"}}>Sign in</h3><br/>
                     <div className="mb-3">
                         <label>Enter Email Address</label>
-                        <input type="email" className="form-control" id="email" value={email} onChange={emailHandler}/>
+                        <input type="email" className="form-control" id="email" required value={email} onChange={emailHandler}/>
                     </div>
                     <div className="mb-3">
                         <label>Enter Password</label>
-                        <input type="password" className="form-control" id="password" value={password} onChange={passwordHandler}/>
+                        <input type="password" className="form-control" id="password" required value={password} onChange={passwordHandler}/>
                     </div><br/>
                     <div className="d-grid">
                     <button type="submit" className="btn btn-primary" >Submit</button> 

@@ -3,7 +3,7 @@ import './ProgressBar.css'
 function ProgessBar(){
     return (
         
-            <div className="card" style={{backgroundColor: 'white',width: '1160px',height: '720px', marginTop: '20px', borderRadius: '14px', boxShadow:'0px 10px 30px hsl(185, 75%, 35%)'}}>
+            <div className="card" style={{backgroundColor: 'white',width: '990px',height: '650px', marginTop: '20px', borderRadius: '14px', boxShadow:'0px 10px 30px hsl(185, 75%, 35%)'}}>
                  <div className="card-body" > {/*used for padding content inside the card element */}
                     <h1 className="d-flex align-items-center mb-3" style={{paddingBottom: '10px'}}>Attendance</h1>
                     <h2>Human Computer Interaction</h2>

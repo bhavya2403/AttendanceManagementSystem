@@ -8,11 +8,11 @@ function App() {
     <>
     <BrowserRouter>
       <Routes>
-        <Route path="/Login" element={<Login/>}/>
+        <Route path="/" element={<Login/>}/>
         <Route path="/Student/*" element={<Student/>}/>
+        <Route path="/Faculty/*" element={<Faculty/>}/> 
       </Routes>
     </BrowserRouter>
-    {/* <Faculty/> */}
 
     </>
   );
