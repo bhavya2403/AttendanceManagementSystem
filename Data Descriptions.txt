@@ -1,0 +1,30 @@
+Login Page:
+
+User will type username and password and it will be send to database for checking.
+
+Student Profile page:
+
+Required data: 
+1) Student Name
+2) Student ID
+3) Student Year
+4) Student courses
+5) Attendance in each course
+
+Student Medical form
+
+User will enter data and it will be stored in a table in database
+
+Faculty Profile page:
+
+Required data:
+1) Faculty Name
+2) Faculty ID
+3) Faculty Description
+
+Faculty Attendance Page
+
+Required data:
+1) Courses taught by the professor that logged in
+2) Number of students in each course
+3) List of students and their attendance each day
