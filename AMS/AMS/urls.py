@@ -19,6 +19,10 @@ from testapp import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.index),
-    path('add_entry/', views.adddata, name='add_entry')
+    path('register/', views.register, name='register'),
+    path('login/', views.login, name='login'),
+    path('student/', views.student_profile, name='student profile'),
+    path('student/medicalform/', views.apply_leave, name='apply leave'),
+    path('faculty/', views.faculty_profile, name='faculty profile'),
+    path('faculty/mark_attendance', views.mark_attendance, name='mark attendance')
 ]
