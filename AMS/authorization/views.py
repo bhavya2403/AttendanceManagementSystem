@@ -1,12 +1,16 @@
 from pymongo import MongoClient
 from django.http import JsonResponse
 from django.contrib.auth.hashers import make_password, check_password
+from django.shortcuts import render
 
 CLIENT = MongoClient("mongodb+srv://202001067:notBhavya2003@cluster0.6u0jcmx.mongodb.net")
 DB = CLIENT.get_database('ams')
 COLL_CRS = DB.get_collection('courses')
 COLL_USR = DB.get_collection('user')
 COLL_ATT = DB.get_collection('Attendance')
+
+def index(request):
+    return render(request, "index.html")
 
 def is_authenticated(request):
     user = COLL_USR.find_one({'email': request.POST.get('email'), 'role': request.POST.get('role')})
@@ -37,5 +41,4 @@ def register(request):
     COLL_USR.insert_one({'email': request.POST.get('create_mail'),
                     'password': make_password(request.POST.get('create_password')),
                      'role': request.POST.get('create_role')})
-
     return JsonResponse({}, status=200)
