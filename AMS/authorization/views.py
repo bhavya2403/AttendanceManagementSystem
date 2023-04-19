@@ -12,24 +12,39 @@ COLL_ATT = DB.get_collection('Attendance')
 def index(request):
     return render(request, "index.html")
 
+"""
+    The method either returns a user object or none in case of authentication failure
+"""
 def is_authenticated(request):
-    user = COLL_USR.find_one({'email': request.POST.get('email'), 'role': request.POST.get('role')})
-    if user is None:
-        return False
-    return check_password(request.POST.get('password'), user['password'])
+    # the user is sending the token
+    user = COLL_USR.find_one({'password': request.headers.get('token')})
+    if user is not None:
+        return user
 
+    # the user is sending email address, password and role
+    user = COLL_USR.find_one({'email': request.POST.get('email'), 'role': request.POST.get('role')})
+    if user and check_password(request.POST.get('password'), user.get('password')):
+        return user
+    return None
+
+"""
+    This is a decorator function that checks for errors in authentication details
+    If authentication is successful then user parameter in request is set
+    Otherwise returns the error accordingly
+"""
 def authenticate_dec(func):
     def inner1(request):
         if request.method != 'POST':
             return JsonResponse({}, status=400)
-        if not is_authenticated(request):
+        request.user = is_authenticated(request)
+        if not request.user:
             return JsonResponse({}, status=401)
         return func(request)
     return inner1
 
 @authenticate_dec
 def login(request):
-    return JsonResponse({}, status=200)
+    return JsonResponse({'token': request.user.get('password')}, status=200)
 
 @authenticate_dec
 def register(request):

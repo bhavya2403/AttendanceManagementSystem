@@ -15,9 +15,9 @@ response format:
 """
 @authenticate_dec
 def student_profile(request):
-    if request.POST.get('role')!='student':
+    user = request.user
+    if user['role']!='student':
         return JsonResponse({}, status=401)
-    user = COLL_USR.find_one({'email': request.POST.get('email'), 'role': request.POST.get('role')})
     response = {'name': user['name'], 'batch': user['batch'], 'id': user['email'][:user['email'].find('@')]}
     lst = list(COLL_CRS.find({'students': {'$in': [user['_id']]}}))
     for course in lst:
