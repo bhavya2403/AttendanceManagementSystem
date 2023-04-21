@@ -2,6 +2,7 @@ from pymongo import MongoClient
 from django.http import JsonResponse
 from django.contrib.auth.hashers import make_password, check_password
 from django.shortcuts import render
+from django.views.decorators.csrf import csrf_exempt
 
 CLIENT = MongoClient("mongodb+srv://202001067:notBhavya2003@cluster0.6u0jcmx.mongodb.net")
 DB = CLIENT.get_database('ams')
@@ -22,8 +23,8 @@ def is_authenticated(request):
         return user
 
     # the user is sending email address, password and role
-    user = COLL_USR.find_one({'email': request.POST.get('email'), 'role': request.POST.get('role')})
-    if user and check_password(request.POST.get('password'), user.get('password')):
+    user = COLL_USR.find_one({'email': request.headers.get('Email'), 'role': request.headers.get('Role')})
+    if user and check_password(request.headers.get('Password'), user.get('password')):
         return user
     return None
 
@@ -42,7 +43,9 @@ def authenticate_dec(func):
         return func(request)
     return inner1
 
+@csrf_exempt
 @authenticate_dec
+@csrf_exempt
 def login(request):
     return JsonResponse({'token': request.user.get('password')}, status=200)
 

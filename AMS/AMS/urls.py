@@ -15,8 +15,10 @@ Including another URLconf
 """
 from django.urls import include, path
 from authorization.views import index
+from django.views.generic.base import TemplateView
 
 urlpatterns = [
+    path('manifest.json', TemplateView.as_view(template_name='manifest.json', content_type='application/json'), name='manifest.json'),
     path('', include("authorization.urls")),
     path('auth/', include("authorization.urls")),
     path('student/', include("student.urls")),

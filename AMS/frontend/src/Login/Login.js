@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import "./Login.css";
 import Student from './Student/Student';
-import { useNavigate } from "react-router-dom";
+import { json, useNavigate } from "react-router-dom";
 
 function Login(){
     
@@ -19,21 +19,28 @@ function Login(){
         setPassword(event.target.value); //function to save password as we write it
     };
 
-    function onSubmitHandler(event){
+    let onSubmitHandler = async (event) => {
         event.preventDefault();
-        console.log("Email", email);
-        console.log("Password", password); //on submitting the form printing the email and password in console
-        
-        if(email==='202001112@daiict.ac.in' && password==='Sahil14#$'){
-            navigate('/Student');
+        try {
+            const requestOptions = {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json','email': '202001067@daiict.ac.in',
+                'password': 'bhavya',
+                'role': 'student'},
+                }
+            // send request to backend and wait for the response
+            const response = await fetch("http://127.0.0.1:8000/auth/login/", requestOptions);
+            const data = await response.json();
+            if(response.ok){
+                navigate('/Student');
+            }
+            console.log(response);
+        } catch (error) {
+            // an error occured
         }
-
-        if(email==='kotharisahil4@gmail.com' && password==='123456789'){
-            navigate('/Faculty');
-        }
-
-        setEmail("");
-        setPassword("");
+    
+        setEmail('');
+        setPassword('');
     };
 
     return (
