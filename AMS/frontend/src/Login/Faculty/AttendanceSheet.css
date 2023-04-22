@@ -1,41 +1,68 @@
-.attendance-table {
-    margin-top: 1px;
-  }
-  
-  table {
-    border-collapse: collapse;
-    width: 100%;
-    margin-bottom: 2rem;
-  }
-  
-  thead th {
-    background-color: #f0f0f0;
-    font-weight: bold;
-    padding: 0.5rem 1rem;
-    text-align: left;
-    vertical-align: middle;
-  }
-  
-  thead th:first-child {
-    border-top-left-radius: 5px;
-  }
-  
-  thead th:last-child {
-    border-top-right-radius: 5px;
-  }
-  
-  tbody td {
-    border-bottom: 1px solid #ddd;
-    padding: 0.5rem 1rem;
-    vertical-align: middle;
-  }
-  
-  tbody td:first-child {
-    font-weight: bold;
-  }
-  
-  tbody td input[type="checkbox"] {
-    margin: 0;
-    vertical-align: middle;
-  }
-  
+.attendance-container {
+  max-width: 600px;
+  margin: 0 auto;
+  margin-top: 20px;
+  padding: 20px;
+  background-color: #f2f2f2;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.attendance-header {
+  text-align: center;
+  color: #333;
+}
+
+.attendance-label {
+  font-weight: bold;
+  margin-right: 10px;
+  display: flex;
+}
+
+.attendance-button {
+  display: block;
+  margin: 20px auto;
+  padding: 10px 20px;
+  background-color: #333;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.attendance-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.attendance-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid #ccc;
+}
+
+.attendance-checkbox {
+  margin-left: 10px;
+
+}
+.attendance-date-picker {
+  font-size: 16px;
+  padding: 10px;
+  margin-left: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+.attendance-date-picker:focus {
+  outline: none;
+  border: 1px solid #4CAF50;
+}
+
+.card {
+  background-color: #ffffff;
+  border: 1px solid #cccccc;
+  border-radius: 5px;
+  padding: 10px;
+}

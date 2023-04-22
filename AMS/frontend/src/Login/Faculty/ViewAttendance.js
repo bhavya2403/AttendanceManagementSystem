@@ -3,7 +3,7 @@ import './AttendanceSheet.css';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
-function Attendance() {
+function ViewAttendance() {
   const [program, setProgram] = useState('bachelor');
   const [students, setStudents] = useState([]);
   const [selectedDate, setSelectedDate] = useState('');
@@ -29,7 +29,9 @@ function Attendance() {
   };
   
   const daysInMonth = [];
-
+  const getNameColor = (name) => {
+    return name[0] === 'A' ? 'green' : 'red';
+  }
   const currentDate = new Date();
   const currentMonth = currentDate.getMonth();
   const currentYear = currentDate.getFullYear();
@@ -41,7 +43,7 @@ function Attendance() {
   
   return (
     <div className="attendance-container">
-      <h1 className="attendance-header">Take Attendance</h1>
+      <h1 className="attendance-header">View Attendance</h1>
       <label className="attendance-label">
         Program:{' '}
         <select value={program} onChange={handleProgramChange}>
@@ -75,9 +77,7 @@ function Attendance() {
               <ul className="attendance-list">
                 {students.map(s => (
                   <li key={s.name} className="attendance-item">
-                    <label className="attendance-label">
-                     
-                      <input type="checkbox" checked={s.present} onChange={e => handleAttendanceChange(e, s.name)} style={{marginRight: '10px'}}/>
+                    <label className="attendance-label" style={{ color: getNameColor(s.name) }}> 
                       {s.name}
                     </label>
                   </li>
@@ -91,4 +91,4 @@ function Attendance() {
   );
 }
 
-export default Attendance;
+export default ViewAttendance;
