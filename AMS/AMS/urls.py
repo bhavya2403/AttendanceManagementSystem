@@ -14,12 +14,10 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.urls import include, path
-from authorization.views import index
 from django.views.generic.base import TemplateView
 
 urlpatterns = [
-    path('manifest.json', TemplateView.as_view(template_name='manifest.json', content_type='application/json'), name='manifest.json'),
-    path('', include("authorization.urls")),
+    path('', TemplateView.as_view(template_name='index.html')),
     path('auth/', include("authorization.urls")),
     path('student/', include("student.urls")),
     path('faculty/', include("faculty.urls")),

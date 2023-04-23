@@ -2,6 +2,9 @@ import React, {useState} from 'react';
 import "./Login.css";
 import Student from './Student/Student';
 import { json, useNavigate } from "react-router-dom";
+import Cookies from 'js-cookie';
+
+const csrftoken = Cookies.get('csrftoken');
 
 function Login(){
     
@@ -24,12 +27,18 @@ function Login(){
         try {
             const requestOptions = {
                 method: 'POST',
-                headers: {'Content-Type': 'application/json','email': '202001067@daiict.ac.in',
-                'password': 'bhavya',
-                'role': 'student'},
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': csrftoken
+                },
+                body: JSON.stringify({
+                    'email': '202001067@daiict.ac.in',
+                    'password': 'bhavya',
+                    'role': 'student'
+                })
                 }
             // send request to backend and wait for the response
-            const response = await fetch("http://127.0.0.1:8000/auth/login/", requestOptions);
+            const response = await fetch("/auth/login/", requestOptions);
             const data = await response.json();
             if(response.ok){
                 navigate('/Student');
