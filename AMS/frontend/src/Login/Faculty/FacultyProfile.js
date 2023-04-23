@@ -1,17 +1,27 @@
 import React from 'react'
-import './FacultyProfile.css'
+import FacultyAttendancePie from './FacultyAttendancePie'
+import Fprofile from './Fprofile'
+import TotalCourses from './TotalCourses'
+import Achievements from './Achievements';
+
 function FacultyProfile() {
     return (
-        <div className="Fcard-container">
-            <header>
-                <img src="https://e7.pngegg.com/pngimages/109/994/png-clipart-teacher-student-college-school-education-avatars-child-face.png"/>
-            </header>
-            <br/><br/>
-            <h1 className="bold-text">Faculty Name</h1>
-            <h2 className="bold-text">Faculty ID</h2>
-            <br/>
-            <p style={{width: '400px', fontSize: '1.2em', textAlign: 'center', marginLeft: '50px'}}> Lorem ipsum dolor sit, amet consectetur adipisicing elit. Architecto, illo ipsum magni voluptatem incidunt velit et iure quam natus, accusantium placeat sed commodi quasi ea facere possimus fugiat soluta perferendis?</p>
-      </div>
+        <div style={{display: 'flex', flexDirection: 'row'}}>
+        <Fprofile/>
+            <div style={{display: 'flex', flexDirection: 'column'}}>
+                <div style={{display: 'flex', flexDirection: 'row'}}>
+                    <div style={{marginLeft: '20px', marginTop: '20px'}}>
+                        <TotalCourses/>
+                    </div>
+                    <div style={{marginLeft: '20px', marginTop: '20px'}}>
+                        <FacultyAttendancePie/>
+                    </div>
+                </div>
+                <div>
+                    <Achievements/>
+                </div>
+            </div>
+        </div>
     )
 }
 
