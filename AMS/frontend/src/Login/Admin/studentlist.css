@@ -1,0 +1,14 @@
+.student-list-container {
+    border: 1px solid black;
+    padding: 10px;
+  }
+  
+  .student-list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .student-list li {
+    margin-bottom: 5px;
+  }
