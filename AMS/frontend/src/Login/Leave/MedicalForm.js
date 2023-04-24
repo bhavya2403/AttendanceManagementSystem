@@ -1,6 +1,9 @@
 import React, {useState} from 'react';
 import { format } from 'date-fns'
 import './MedicalForm.css';  // import the CSS file
+import Card from '@mui/material/Card';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 format(new Date(), 'dd.MM.yyyy')
 
@@ -10,8 +13,7 @@ function MedicalForm() {
   const [startLeaveDate, setStartLeaveDate] = useState('');
   const [endLeaveDate, setEndLeaveDate] = useState('');
   const [reason, setReason] = useState('');
-  const [phoneNo, setPhoneNo] = useState('');
-  const [email, setEmail] = useState('');
+  const [file, setFile] = useState();
   
   const studentNameHandler = (event) => {
     setStudentName(event.target.value);
@@ -33,16 +35,51 @@ function MedicalForm() {
     setReason(event.target.value);
   }
 
-  const phoneNoHandler = (event) => {
-    setPhoneNo(event.target.value);
+  const fileHandler = (event) => {
+    setFile(event.target.files[0]);
   }
+  
 
-  const emailHandler = (event) => {
-    setEmail(event.target.value);
-  }
 
-  const onSubmitHandler = (event) => {
+  let onSubmitHandler = async (event) => {
     event.preventDefault();
+
+    const formData = new FormData();
+    formData.append('studentName', studentName);
+    formData.append('studentID', studentID);
+    formData.append('startLeaveDate', startLeaveDate);
+    formData.append('endLeaveDate', endLeaveDate);
+    formData.append('reason', reason);
+    formData.append('file', file);
+
+    try{
+      const requestOptions = {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            // 'X-CSRFToken': csrftoken
+          },
+          
+          body: JSON.stringify({
+            'studentName': studentName,
+            'studentID': studentID,
+            'startLeaveDate': startLeaveDate,
+            'endLeaveDate': endLeaveDate,
+            'reason': reason,
+            'file': file,
+          }),
+      }
+
+      const response = await fetch("URL", requestOptions);
+      const data = await response.json();
+      if(response.ok){
+        toast.success("Leave application submitted successfully!");
+      }
+      console.log(response);
+    }catch(error){
+
+    }
+
     console.log(studentName);
     setStudentName('');
     console.log(studentID);
@@ -53,45 +90,42 @@ function MedicalForm() {
     setEndLeaveDate('');
     console.log(reason);
     setReason('');
-    console.log(phoneNo);
-    setPhoneNo('');
-    console.log(email);
-    setEmail('');
+    console.log(file);
+    setFile(null);
+    document.getElementById("file").value = "";
   }
 
   return(
+    <div>
+    <Card style={{ marginLeft: "250px", borderRadius:'10px', backgroundColor: '#EDF1D6', boxShadow: '0px 10px 30px black', marginTop: '80px',marginBottom: '10px',height: 'auto', width: '1000px'}}>
     <form className="form" onSubmit={onSubmitHandler} style={{marginTop:'50px'}}>
-      <h1 style={{textAlign: 'center'}}>FILL THIS FORM FOR MEDICAL LEAVE</h1><br/><br/><br/>
+      <h1>FILL THIS FORM FOR LEAVE</h1><br/><br/><br/>
       <div className="form-group" style={{display: 'flex'}}>
-        <label className="label">Student Name:</label>
-        <input className="input" id="student-name" type="text" value={studentName} onChange={studentNameHandler} required  />
+        <label className="form-label" >Student Name:</label>
+        <input className="form-input" id="student-name" type="text" value={studentName} onChange={studentNameHandler} required  />
       </div>
       <div className="form-group"  style={{display: 'flex'}}>
-        <label className="label">Student ID:</label>
-        <input className="input" id="student-id" type="text" value={studentID} onChange={studentIDHandler} required />
+        <label className="form-label">Student ID:</label>
+        <input className="form-input" id="student-id" type="text" value={studentID} onChange={studentIDHandler} required />
       </div>
       <div className="form-group"  style={{display: 'flex'}}>
-        <label className="label">Leave Date:</label>
-        <input className="input" id="date1" type="date" value={startLeaveDate} onChange={startLeaveDateHandler} style={{width: '177px'}} required/>
+        <label className="form-label">Leave Date:</label>
+        <input className="form-input" id="date1" type="date" value={startLeaveDate} onChange={startLeaveDateHandler} style={{width: '177px'}} required/>
         <div style={{marginTop: '10px', marginLeft: '15px'}}>to</div>
-        <input className="input" id="date2" type="date" value={endLeaveDate} onChange={endLeaveDateHandler} style={{width: '177px'}} required/>
+        <input className="form-input" id="date2" type="date" value={endLeaveDate} onChange={endLeaveDateHandler} style={{width: '177px'}} required/>
       </div>
       <div className="form-group"  style={{display: 'flex'}}>
-        <label className="label">Reason:</label>
-        <textarea className="textarea" id="reason" value={reason} onChange={reasonHandler} required/>
+        <label className="form-label">Reason:</label>
+        <textarea className="form-textarea" id="reason" value={reason} onChange={reasonHandler} required/>
       </div>
-      <div className="form-group"  style={{display: 'flex'}}>
-        <label className="label">Email ID: </label>
-        <input className="input" id="email" type="email" value={email} onChange={emailHandler} required />
+      <div style={{display: 'flex'}}>
+        <label className="form-label" style={{marginRight: '110px'}}>Upload Documents</label>
+        <input style={{ border: 'none', outline: 'none', }} id="file" type="file" accepts=".pdf,.doc.,.docx" onChange={fileHandler} required />
       </div>
-      <div className="form-group"  style={{display: 'flex'}}>
-        <label className="label">Phone:</label>
-        <input className="input" id="phone" type="tel" value={phoneNo} onChange={phoneNoHandler} required />
-      </div>
-
-      <button  className="button" type="submit">Submit</button>
+      <button  className="form-button" style={{backgroundColor: '#40513B', marginRight: '50px', marginTop: '30px'}}type="submit">Submit</button>
     </form>
-
+    </Card>
+    </div>
   )
 }
 
