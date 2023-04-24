@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "react-toastify": "^9.1.2",
+    "recharts": "^2.5.0"
+  }
+}
