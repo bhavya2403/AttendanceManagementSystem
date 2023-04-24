@@ -10,7 +10,7 @@ label {
   text-align: center;
   display: block;
   margin-bottom: 5px;
-  color: black;
+  color: white;
   font-size: 1.4em;
 }
 
@@ -20,6 +20,7 @@ input {
   padding: 10px;
   border-radius: 5px;
   border: 1px solid #ccc;
+  background-color: #EDF1D6;
 }
 
 button {
@@ -28,33 +29,34 @@ button {
   padding: 10px;
   border-radius: 5px;
   border: none;
-  background-color: #007bff;
+  background-color: #40513B;
   color: #fff;
   cursor: pointer;
 }
 
 button:hover {
-  background-color: #0069d9;
+  background-color: #40513B;
 }
 
 
-p{
+p {
   padding: 10px;
-  color:black;
+  color: black;
   font-size: 3em;
   font-weight: bold;
   width: 1000px;
-  
+
 }
 
-.login-card{
-  background-color: #D8D8D8	;
+.login-card {
+  color: white;
+  background-color: #9DC08B;
   padding: 19px;
   width: 400px;
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   border-radius: 10px;
 }
 
 .card:hover {
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
