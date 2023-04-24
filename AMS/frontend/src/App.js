@@ -4,6 +4,8 @@ import Student from './Login/Student/Student'
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Faculty from './Login/Faculty/Faculty';
 import MedicalForm from './Login/Leave/MedicalForm'
+import Admin from './Login/Admin/Admin';
+
 function App() {
   return (
     <>
@@ -13,7 +15,8 @@ function App() {
         <Route path="/Student/*" element={<Student/>}/>
         <Route path="/Faculty/*" element={<Faculty/>}/> 
         <Route path ="/Leave/*" element={<MedicalForm/>}/>
-      </Routes>
+        <Route path="/Admin/*" element={<Admin/>}/> 
+        </Routes>
     </BrowserRouter>
 
     </>
