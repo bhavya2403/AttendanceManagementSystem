@@ -1,8 +1,9 @@
 .studentcard-container {
-	background-color: white;
+	background-Color: #9DC08B;
+	color: white;
 	width: 500px;
 	border-radius: 14px;
-	box-shadow: 0px 10px 30px hsl(185, 75%, 35%);
+	box-shadow: 0px 10px 30px black;
     margin-left: 10px;
     margin-top: 20px;
     height: 650px;
