@@ -1,0 +1,338 @@
+[{
+    "_id": {
+      "$oid": "64199d1141289c5f1b01e4a7"
+    },
+    "email": "shivamkansagara1@gmail.com",
+    "role": "student",
+    "password": "ngnsfgbsgbngngng",
+    "name": "Shivam Kansagara",
+    "batch": "BTech III",
+    "college_id": "s202001086"
+  },{
+    "_id": {
+      "$oid": "6419a0baa90a6552a6f1e08a"
+    },
+    "email": "nikhil_1234@gmail.com",
+    "role": "admin",
+    "password": "pbkdf2_sha256$320000$sFJWedTqWKSXpwLZITjIW3$h7bAtVJgT0O2ww6XBxz8Nw6XulSEITChZvP+SorEAOA=",
+    "name": "Nikhil"
+  },{
+    "_id": {
+      "$oid": "6444fdc4d5b6d4bc99e76537"
+    },
+    "email": "202001087@daiict.ac.in",
+    "role": "student",
+    "password": "fngnsldfngslgj",
+    "name": "Amit Patel",
+    "batch": "BTech II",
+    "college_id": "s202001087"
+  },{
+    "_id": {
+      "$oid": "6444fdc4d5b6d4bc99e76538"
+    },
+    "email": "202001088@daiict.ac.in",
+    "role": "student",
+    "password": "vnskgnksrngbs",
+    "name": "Anjali Shah",
+    "batch": "BTech IV",
+    "college_id": "s202001088"
+  },{
+    "_id": {
+      "$oid": "6444fdc4d5b6d4bc99e76539"
+    },
+    "email": "202001089@daiict.ac.in",
+    "role": "student",
+    "password": "lgnsljgnslgnl",
+    "name": "Siddharth Sharma",
+    "batch": "BTech II",
+    "college_id": "s202001089"
+  },{
+    "_id": {
+      "$oid": "6444fdc4d5b6d4bc99e7653a"
+    },
+    "email": "202001090@daiict.ac.in",
+    "role": "student",
+    "password": "nglksngskjgsn",
+    "name": "Tanvi Patel",
+    "batch": "BTech IV",
+    "college_id": "s202001090"
+  },{
+    "_id": {
+      "$oid": "6444fdc4d5b6d4bc99e7653b"
+    },
+    "email": "202001091@daiict.ac.in",
+    "role": "student",
+    "password": "fngkjngkjndfg",
+    "name": "Rahul Singh",
+    "batch": "BTech II",
+    "college_id": "s202001091"
+  },{
+    "_id": {
+      "$oid": "6444fdc4d5b6d4bc99e7653c"
+    },
+    "email": "202001092@daiict.ac.in",
+    "role": "student",
+    "password": "sldgnlskgnls",
+    "name": "Shreya Mehta",
+    "batch": "BTech IV",
+    "college_id": "s202001092"
+  },{
+    "_id": {
+      "$oid": "6444fdc4d5b6d4bc99e7653d"
+    },
+    "email": "202001093@daiict.ac.in",
+    "role": "student",
+    "password": "wrgmwmgnwerg",
+    "name": "Yash Patel",
+    "batch": "BTech II",
+    "college_id": "s202001093"
+  },{
+    "_id": {
+      "$oid": "6444fdc4d5b6d4bc99e7653e"
+    },
+    "email": "202001094@daiict.ac.in",
+    "role": "student",
+    "password": "mnwernvwenrv",
+    "name": "Karan Shah",
+    "batch": "BTech IV",
+    "college_id": "s202001094"
+  },{
+    "_id": {
+      "$oid": "6444fdc4d5b6d4bc99e7653f"
+    },
+    "email": "202001095@daiict.ac.in",
+    "role": "student",
+    "password": "mkwrngwmnrg",
+    "name": "Nidhi Singh",
+    "batch": "BTech II",
+    "college_id": "s202001095"
+  },{
+    "_id": {
+      "$oid": "6444fdc4d5b6d4bc99e76540"
+    },
+    "email": "202001096@daiict.ac.in",
+    "role": "student",
+    "password": "wnrgmwrmgnw",
+    "name": "Vikas Patel",
+    "batch": "BTech IV",
+    "college_id": "s202001096"
+  },{
+    "_id": {
+      "$oid": "6444fdc4d5b6d4bc99e76541"
+    },
+    "email": "202001097@daiict.ac.in",
+    "role": "student",
+    "password": "lksmglmglkms",
+    "name": "Deepak Sharma",
+    "batch": "BTech II",
+    "college_id": "s202001097"
+  },{
+    "_id": {
+      "$oid": "6444fdc4d5b6d4bc99e76542"
+    },
+    "email": "202001098@daiict.ac.in",
+    "role": "student",
+    "password": "ksngksnrkgns",
+    "name": "Priya Patel",
+    "batch": "BTech IV",
+    "college_id": "s202001098"
+  },{
+    "_id": {
+      "$oid": "6444fdc4d5b6d4bc99e76543"
+    },
+    "email": "202001099@daiict.ac.in",
+    "role": "student",
+    "password": "smglmskglmsl",
+    "name": "Rajesh Singh",
+    "batch": "BTech II",
+    "college_id": "s202001099"
+  },{
+    "_id": {
+      "$oid": "6444fdc4d5b6d4bc99e76544"
+    },
+    "email": "202001100@daiict.ac.in",
+    "role": "student",
+    "password": "skmgskmgslmg",
+    "name": "Ankit Sharma",
+    "batch": "BTech IV",
+    "college_id": "s202001100"
+  },{
+    "_id": {
+      "$oid": "6444fdc4d5b6d4bc99e76545"
+    },
+    "email": "202001101@daiict.ac.in",
+    "role": "student",
+    "password": "smglksnglsnk",
+    "name": "Shivangi Patel",
+    "batch": "BTech II",
+    "college_id": "s202001101"
+  },{
+    "_id": {
+      "$oid": "6444fdc4d5b6d4bc99e76546"
+    },
+    "email": "202001102@daiict.ac.in",
+    "role": "student",
+    "password": "sdhfwefweefw",
+    "name": "Anjali Sharma",
+    "batch": "BTech IV",
+    "college_id": "s202001102"
+  },{
+    "_id": {
+      "$oid": "6444fdc4d5b6d4bc99e76547"
+    },
+    "email": "202001103@daiict.ac.in",
+    "role": "student",
+    "password": "wefwefweeffw",
+    "name": "Ravi Patel",
+    "batch": "BTech II",
+    "college_id": "s202001103"
+  },{
+    "_id": {
+      "$oid": "6444fdc4d5b6d4bc99e76548"
+    },
+    "email": "202001104@daiict.ac.in",
+    "role": "student",
+    "password": "sldfnldfgndf",
+    "name": "Mohan Singh",
+    "batch": "BTech IV",
+    "college_id": "s202001104"
+  },{
+    "_id": {
+      "$oid": "6444fdc4d5b6d4bc99e76549"
+    },
+    "email": "202001105@daiict.ac.in",
+    "role": "student",
+    "password": "wfnefkwefkw",
+    "name": "Nisha Patel",
+    "batch": "BTech II",
+    "college_id": "s202001105"
+  },{
+    "_id": {
+      "$oid": "6444fdc4d5b6d4bc99e7654a"
+    },
+    "email": "202001106@daiict.ac.in",
+    "role": "student",
+    "password": "dsfnlsdfnlsd",
+    "name": "Sachin Sharma",
+    "batch": "BTech IV",
+    "college_id": "s202001106"
+  },{
+    "_id": {
+      "$oid": "6444fdc4d5b6d4bc99e7654b"
+    },
+    "email": "202001107@daiict.ac.in",
+    "role": "student",
+    "password": "sdnlsdnlksdn",
+    "name": "Pooja Patel",
+    "batch": "BTech II",
+    "college_id": "s202001107"
+  },{
+    "_id": {
+      "$oid": "644501c9d5b6d4bc99e7654e"
+    },
+    "email": "rohit_1234@gmail.com",
+    "name": "Rohit",
+    "role": "instructor",
+    "password": "fbfjnnjn",
+    "age": 50,
+    "description": "rohit received his Phd from the Department of Computer Science, IIT Delhi in 2010, after which he joined DAIICT, Gandhinagar. He is an Associate Professor at DAIICT since January 2019 His research interests lie in the areas of Image, Signal and Geometry Processing, often relying on Variational methods, Differential Geometry, Linear algebra and (convex) optimization.",
+    "college_id": "f2019748548"
+  },{
+    "_id": {
+      "$oid": "64450408d5b6d4bc99e76553"
+    },
+    "email": "nancy_1234@gmail.com",
+    "name": "Nancy",
+    "role": "instructor",
+    "password": "fbfjjhnnn",
+    "age": 40,
+    "description": "Nancy received her PhD from the Department of Computer Science, Stanford University in 2010, after which she joined the faculty of MIT. She is an Associate Professor at MIT since January 2019. Her research interests lie in the areas of Machine Learning, Data Mining, and Natural Language Processing.",
+    "college_id": "f2019786456"
+  },{
+    "_id": {
+      "$oid": "64450408d5b6d4bc99e76554"
+    },
+    "email": "amit_1234@gmail.com",
+    "name": "Amit",
+    "role": "instructor",
+    "password": "fbfjnkjnk",
+    "age": 45,
+    "description": "Amit received his PhD from the Department of Computer Science, IIT Kanpur in 2012, after which he joined the faculty of DAIICT. He is an Assistant Professor at DAIICT since January 2014. His research interests lie in the areas of Computer Networks, Distributed Systems, and Security.",
+    "college_id": "f2019775667"
+  },{
+    "_id": {
+      "$oid": "64450408d5b6d4bc99e76555"
+    },
+    "email": "samantha_1234@gmail.com",
+    "name": "Samantha",
+    "role": "instructor",
+    "password": "fbfjnnjnnk",
+    "age": 38,
+    "description": "Samantha received her PhD from the Department of Electrical Engineering, University of Toronto in 2011, after which she joined the faculty of UBC. She is an Associate Professor at UBC since January 2018. Her research interests lie in the areas of Power Electronics, Electric Machines, and Energy Storage.",
+    "college_id": "f2019798765"
+  },{
+    "_id": {
+      "$oid": "64450408d5b6d4bc99e76556"
+    },
+    "email": "john_1234@gmail.com",
+    "name": "John",
+    "role": "instructor",
+    "password": "fbfjnkgf",
+    "age": 55,
+    "description": "John received his PhD from the Department of Physics, University of Cambridge in 1996, after which he joined the faculty of Oxford. He is a Professor at Oxford since January 2005. His research interests lie in the areas of Quantum Field Theory, String Theory, and Black Hole Physics.",
+    "college_id": "f2019723456"
+  },{
+    "_id": {
+      "$oid": "644507fad5b6d4bc99e76558"
+    },
+    "email": "adam_1234@gmail.com",
+    "name": "Adam",
+    "role": "instructor",
+    "password": "fbfjngfhg",
+    "age": 47,
+    "description": "Adam received his PhD from the Department of Economics, Harvard University in 2008, after which he joined the faculty of Yale. He is an Associate Professor at Yale since January 2016. His research interests lie in the areas of Microeconomics, Game Theory, and Mechanism Design.",
+    "college_id": "f2019734567"
+  },{
+    "_id": {
+      "$oid": "644507fad5b6d4bc99e76559"
+    },
+    "email": "sara_1234@gmail.com",
+    "name": "Sara",
+    "role": "instructor",
+    "password": "fbfjnkjkg",
+    "age": 39,
+    "description": "Sara received her PhD from the Department of Psychology, University of Toronto in 2013, after which she joined the faculty of McGill. She is an Assistant Professor at McGill since January 2015. Her research interests lie in the areas of Cognitive Psychology, Neuropsychology, and Psycholinguistics.",
+    "college_id": "f2019712345"
+  },{
+    "_id": {
+      "$oid": "644507fad5b6d4bc99e7655a"
+    },
+    "email": "jason_1234@gmail.com",
+    "name": "Jason",
+    "role": "instructor",
+    "password": "fbfjnmjh",
+    "age": 43,
+    "description": "Jason received his PhD from the Department of Geology, Australian National University in 2011, after which he joined the faculty of University of Melbourne. He is an Associate Professor at University of Melbourne since January 2017. His research interests lie in the areas of Geochemistry, Mineralogy, and Petrology.",
+    "college_id": "f2019754321"
+  },{
+    "_id": {
+      "$oid": "644507fad5b6d4bc99e7655b"
+    },
+    "email": "emma_1234@gmail.com",
+    "name": "Emma",
+    "role": "instructor",
+    "password": "fbfjnmkj",
+    "age": 36,
+    "description": "Emma received her PhD from the Department of Architecture, University College London in 2014, after which she joined the faculty of University of Cambridge. She is an Assistant Professor at University of Cambridge since January 2016. Her research interests lie in the areas of Sustainable Architecture, Building Technology, and Design.",
+    "college_id": "f2019790123"
+  },{
+    "_id": {
+      "$oid": "64450b5cd5b6d4bc99e76563"
+    },
+    "email": "202001067@daiict.ac.in",
+    "password": "pbkdf2_sha256$320000$htW8P1UTeZG9OWi9drMVih$6KhZ/To5eYUeThxpCxZEF8olLTXIQF3Jy0/ku2H+aO4=",
+    "role": "student",
+    "name": "Bhavya Rajdev",
+    "batch": "MTech I",
+    "college_id": "s202001067"
+  }]
