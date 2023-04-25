@@ -18,7 +18,7 @@ function FacultyNavbar(){
               <Link className="nav-link active" to="/Courses" style={{color: 'white'}}>View Courses</Link>
 
               <li className="nav-item">
-                  <Link className="nav-link active" to="/Leave/MedicalForm" style={{color: 'white'}}>Apply for Leave</Link>
+                  <Link className="nav-link active" to="/MedicalForm" style={{color: 'white'}}>Apply for Leave</Link>
                 </li>
           </ul>
           

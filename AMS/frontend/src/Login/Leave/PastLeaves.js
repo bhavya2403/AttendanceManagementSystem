@@ -4,6 +4,7 @@ import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
+import LeaveNavbar from './LeaveNavbar';
 function PastLeaves() {
   const data = [
     {
@@ -33,6 +34,8 @@ function PastLeaves() {
   ];
 
   return (
+    <>
+    <LeaveNavbar/>
     <Card style={{marginLeft: '350px',marginTop: '10px', height: '400px', width:'750px', borderRadius: '14px', boxShadow: '0px 10px 30px black', backgroundColor: '#EDF1D6'}}>
     <div className="table-container" style={{marginLeft: '75px', marginTop: '50px'}} >
       <table className="medical-table">
@@ -63,6 +66,7 @@ function PastLeaves() {
       </table>
     </div>
     </Card>
+    </>
   );
 }
 
