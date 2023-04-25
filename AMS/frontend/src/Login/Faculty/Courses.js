@@ -21,30 +21,30 @@ function Courses() {
     const navigate = useNavigate();
 
     const onStartClickHandler = () => {
-        navigate('/Faculty/AttendanceSheet');
+        navigate('/AttendanceSheet');
     }
     const onViewClickHandler = () => {
-        navigate('/Faculty/ViewAttendance');
+        navigate('/ViewAttendance');
     }
 
 
     return (
         <>
-        <FacultyNavbar/>
-        <div className="grid" >
-            {courses.map(course => (
-                <div className="coursecard" style={{ backgroundColor: '#EDF1D6' }}>
-                    <h1>{course.name}</h1>
-                    <h6>{course.number} students</h6>
-                    <br />
-                    <div style={{ display: 'flex', flexDirection: 'row' }}>
-                        <button style={{ width: '300px', backgroundColor: '#9DC08B', marginRight: '10px', color: 'black' }} onClick={onStartClickHandler}>Start Attendance</button>
-                        <button style={{ width: '300px', backgroundColor: '#9DC08B', color: 'black' }} onClick={onViewClickHandler}>View Attendance</button>
+            <FacultyNavbar />
+            <div className="grid" >
+                {courses.map(course => (
+                    <div className="coursecard" style={{ backgroundColor: '#EDF1D6' }}>
+                        <h1>{course.name}</h1>
+                        <h6>{course.number} students</h6>
+                        <br />
+                        <div style={{ display: 'flex', flexDirection: 'row' }}>
+                            <button style={{ width: '300px', backgroundColor: '#9DC08B', marginRight: '10px', color: 'black' }} onClick={onStartClickHandler}>Start Attendance</button>
+                            <button style={{ width: '300px', backgroundColor: '#9DC08B', color: 'black' }} onClick={onViewClickHandler}>View Attendance</button>
+                        </div>
                     </div>
-                </div>
-            ))}
+                ))}
 
-        </div>
+            </div>
         </>
     )
 }
