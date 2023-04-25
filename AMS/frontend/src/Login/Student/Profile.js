@@ -6,6 +6,7 @@ function Profile(){
       
   return(
       <>
+      
       <Navbar />
       <div style={{display: 'flex'}}>
         <div style={{display: 'inline-block', marginRight: '20px'}}>

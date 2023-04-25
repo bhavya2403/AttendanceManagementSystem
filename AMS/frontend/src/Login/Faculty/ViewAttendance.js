@@ -16,8 +16,9 @@ function ViewAttendance() {
     setStudents(initialStudents);
   };
 
-  const handleDateChange = (event) => {
-    setSelectedDate(event.target.value);
+  const handleDateChange = (date) => {
+    setSelectedDate(date);
+    handleFetchStudents(date);
   };
   const handleAttendanceChange = (event, student) => {
     const checked = event.target.checked;
@@ -43,21 +44,19 @@ function ViewAttendance() {
       <FacultyNavbar />
       <div className="attendance-container">
         <h1 className="attendance-header">View Attendance</h1>
-
-        <button className="attendance-button" onClick={handleFetchStudents}>View Attendance</button>
-        <br />
-        <br />
-        {students.length > 0 && (
-          <div>
-            <label className="attendance-label-date" style={{ color: 'black' }}>
+        <label className="attendance-label-date" style={{ color: 'black', marginTop: '20px' }}>
               Select Date: {' '}
-              <select value={selectedDate} onChange={handleDateChange}>
+              <select selected={selectedDate} onChange={handleDateChange}>
                 <option value="">Select a date</option>
                 {daysInMonth.map(day => (
                   <option key={day.toISOString().slice(0, 10)} value={day.toISOString().slice(0, 10)}>{day.toDateString()}</option>
                 ))}
               </select>
             </label>
+        <br />
+        <br />
+        {selectedDate && students.length > 0 && (
+          <div>
             <br />
             <br />
             {selectedDate && (
@@ -66,7 +65,7 @@ function ViewAttendance() {
                   {students.map(s => (
                     <li key={s.name} className="attendance-item">
                       <label className="attendance-label" style={{ color: getNameColor(s.name) }}>
-                        {s.name}
+                      <span style={{marginLeft: '10px'}}>{s.name}</span>
                       </label>
                     </li>
                   ))}
