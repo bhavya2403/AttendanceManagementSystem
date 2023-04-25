@@ -3,9 +3,11 @@ import FacultyAttendancePie from './FacultyAttendancePie'
 import Fprofile from './Fprofile'
 import TotalCourses from './TotalCourses'
 import Achievements from './Achievements';
-
+import FacultyNavbar from './FacultyNavbar';
 function FacultyProfile() {
     return (
+        <>
+        <FacultyNavbar/>
         <div style={{display: 'flex', flexDirection: 'row'}}>
         <Fprofile/>
             <div style={{display: 'flex', flexDirection: 'column'}}>
@@ -22,6 +24,7 @@ function FacultyProfile() {
                 </div>
             </div>
         </div>
+        </>
     )
 }
 

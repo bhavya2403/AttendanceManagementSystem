@@ -9,10 +9,10 @@ function Achivements() {
             <CardHeader title={Achivements} />
             <CardContent>
                 <ul style={{ fontWeight: 'bold', fontSize: '2em' }}>
-                    <li>Achivement1</li>
-                    <li>Achivement2</li>
-                    <li>Achivement3</li>
-                    <li>Achivement4</li>
+                    <li>Description1</li>
+                    <li>Description2</li>
+                    <li>Description3</li>
+                    <li>Description4</li>
                 </ul>
             </CardContent>
         </Card>

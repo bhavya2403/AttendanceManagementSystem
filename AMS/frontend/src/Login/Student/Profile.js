@@ -1,9 +1,12 @@
 import React from 'react'
 import ProfileCard from './ProfileCard'
 import ProgressBar from './ProgressBar'
-
+import Navbar from './Navbar'
 function Profile(){
-    return(
+      
+  return(
+      <>
+      <Navbar />
       <div style={{display: 'flex'}}>
         <div style={{display: 'inline-block', marginRight: '20px'}}>
           <ProfileCard/>
@@ -11,7 +14,9 @@ function Profile(){
         <div style={{display: 'inline-block'}}>
           <ProgressBar/>
         </div>
+       
       </div>
+      </>
     )
 }
 

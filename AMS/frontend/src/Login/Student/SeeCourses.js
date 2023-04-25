@@ -1,6 +1,7 @@
 import './SeeCourses.css'
 import React from 'react'
 import Collapsible from './Collapsible'
+import Navbar from './Navbar'
 
 
 const courses = [
@@ -141,6 +142,8 @@ const courses = [
 function SeeCourses(){
     
     return (
+        <>
+        <Navbar/>
         <div className="grid">
             {courses.map(course =>(
                 <Collapsible key={course.id} 
@@ -150,6 +153,7 @@ function SeeCourses(){
                 content={course.content} />
             ))}
         </div>
+        </>
     )
 }
 

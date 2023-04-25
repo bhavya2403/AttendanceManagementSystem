@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
 import "./Login.css";
-import Student from './Student/Student';
 import { json, useNavigate } from "react-router-dom";
 import Cookies from 'js-cookie';
 
@@ -13,7 +12,10 @@ function Login(){
 
     const [email,setEmail] = useState(""); //used for taking the email value and setting it 
     const [password,setPassword] = useState(""); //used for taking the password value and setting it
-
+    const [radio, setRadio] = useState({isChecked: ""});
+    function radioHandler(event) {
+        setRadio({ isChecked: event.target.value });
+      }
     const emailHandler=(event)=>{ //es6 function
         setEmail(event.target.value); //function to save email as we write it
     };
@@ -32,16 +34,18 @@ function Login(){
                     'X-CSRFToken': csrftoken
                 },
                 body: JSON.stringify({
-                    'email': '202001067@daiict.ac.in',
-                    'password': 'bhavya',
-                    'role': 'student'
+                    'email': email,
+                    'password': password,
+                    'role': radio.isChecked,
                 })
                 }
             // send request to backend and wait for the response
             const response = await fetch("/auth/login/", requestOptions);
             const data = await response.json();
             if(response.ok){
-                navigate('/Student');
+                if(radio.isChecked==='Student')navigate('/Student');
+                if(radio.isChecked==='Faculty')navigate('./faculty');
+                if(radio.isChecked==='Admin')navigate('./admin');
             }
             console.log(response);
         } catch (error) {
@@ -50,8 +54,10 @@ function Login(){
     
         setEmail('');
         setPassword('');
-    };
+        setRadio({isChecked: ""});
 
+    };
+    //200 ok 401 unauthorized 
     return (
         <div>
             <div className="login-container">
@@ -67,8 +73,15 @@ function Login(){
                         <label>Enter Password</label>
                         <input type="password" className="form-control" id="password" required value={password} onChange={passwordHandler}/>
                     </div><br/>
-                    <div className="d-grid">
-                    <button type="submit" className="btn btn-primary" >Submit</button> 
+                    <div style={{display: 'flex', flexDirection: 'row'}} onChange={radioHandler}>
+                        <input type="radio" value="Student" name="role" style={{marginRight: '4px'}} required/>Student
+                        <div style={{marginRight: '20px'}}/>
+                        <input type="radio" value="Faculty" name="role" style={{marginRight: '4px'}} required/> Faculty
+                        <div style={{marginRight: '20px'}}/>
+                        <input type="radio" value="Admin" name="role" style={{marginRight: '4px'}} required/> Admin
+                    </div>
+                    <div className="d-grid" style={{marginTop: '30px'}}>
+                    <button type="submit" style={{width: '100px'}} >Submit</button> 
                     </div>
                 </form>
                 </div>
