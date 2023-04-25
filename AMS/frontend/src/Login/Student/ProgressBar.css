@@ -1,4 +1,4 @@
-body {
+body{
   background: #f7f7ff;
 
 }
@@ -12,7 +12,13 @@ body {
   font-weight: bold;
 }
 
-.progress {
-  height: 15px;
-  background-color: #9DC08B;
+.progress{
+height: 15px;
+background-color: #9DC08B;
 }
+
+
+
+
+
+
