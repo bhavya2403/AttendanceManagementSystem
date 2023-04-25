@@ -3,7 +3,7 @@ import './AttendanceSheet.css';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
-function Attendance() {
+function AttendanceSheet() {
   const [students, setStudents] = useState([]);
   const [selectedDate, setSelectedDate] = useState('');
   const [isChecked, setIsChecked] = useState(false);
@@ -72,4 +72,4 @@ function Attendance() {
   );
 }
 
-export default Attendance;
+export default AttendanceSheet;

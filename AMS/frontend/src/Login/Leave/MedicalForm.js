@@ -4,6 +4,7 @@ import './MedicalForm.css';  // import the CSS file
 import Card from '@mui/material/Card';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import LeaveNavbar from './LeaveNavbar';
 
 format(new Date(), 'dd.MM.yyyy')
 
@@ -105,7 +106,8 @@ function MedicalForm() {
 
   return(
     <div>
-    <Card style={{ marginLeft: "250px", borderRadius:'10px', backgroundColor: '#EDF1D6', boxShadow: '0px 10px 30px black', marginTop: '80px',marginBottom: '10px',height: 'auto', width: '1000px'}}>
+      <LeaveNavbar/>
+    <Card style={{ marginLeft: "250px", borderRadius:'10px', backgroundColor: '#EDF1D6', boxShadow: '0px 10px 30px black', marginTop: '40px',marginBottom: '40px',height: 'auto', width: '1000px'}}>
     <form className="form" onSubmit={onSubmitHandler} style={{marginTop:'50px'}}>
       <h1>FILL THIS FORM FOR LEAVE</h1><br/><br/><br/>
       <div className="form-group" style={{display: 'flex'}}>

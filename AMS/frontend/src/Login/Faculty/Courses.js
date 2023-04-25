@@ -1,6 +1,7 @@
 import React from 'react'
 import './Courses.css'
 import { useNavigate } from 'react-router-dom';
+import FacultyNavbar from './FacultyNavbar';
 
 const courses = [
     {
@@ -28,6 +29,8 @@ function Courses() {
 
 
     return (
+        <>
+        <FacultyNavbar/>
         <div className="grid" >
             {courses.map(course => (
                 <div className="coursecard" style={{ backgroundColor: '#EDF1D6' }}>
@@ -42,6 +45,7 @@ function Courses() {
             ))}
 
         </div>
+        </>
     )
 }
 
