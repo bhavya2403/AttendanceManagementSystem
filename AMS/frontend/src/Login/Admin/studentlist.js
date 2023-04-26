@@ -1,5 +1,5 @@
 import React from 'react';
-import './StudentList.css';
+import './studentlist.css';
 import { Link } from "react-router-dom";
 
 
