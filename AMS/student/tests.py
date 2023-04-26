@@ -4,7 +4,7 @@ import json
 class TestAuth(TestCase):
     def setUp(self):
         self.client = Client()
-        self.header = {'HTTP_TOKEN': 'pbkdf2_sha256$320000$htW8P1UTeZG9OWi9drMVih$6KhZ/To5eYUeThxpCxZEF8olLTXIQF3Jy0/ku2H+aO4='}
+        self.header = {'HTTP_TOKEN': 'pbkdf2_sha256$320000$yueQDTXzeP5h8SIscEitYn$UG45pIBkEp7NPDiBOwdDcHWn7bq5obHdhengUCr/8sE='}
 
     def test_profile(self):
         response = self.client.post('/student/', {'email': '202001067@daiict.ac.in', 'password':
@@ -18,10 +18,17 @@ class TestAuth(TestCase):
     def test_profile_token(self):
         response = self.client.post('/student/', **self.header)
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(json.loads(response.content), {'name': 'Bhavya Rajdev',
-                                    'batch': 'MTech I',
-                                    'id': '202001067',
-                                    'Organic Chemistry': {'present': 0, 'total': 0},
-                                    'Software Engineering': {'present': 1, 'total': 3}})
+        print(json.loads(response.content))
+        self.assertEqual(json.loads(response.content), {
+            'name': 'Nidhi Singh', 'batch': 'BTech II', 'id': '202001095',
+            'courses': [
+                ['Introduction to Computer Science', 0, 1],
+                ['International Economy', 0, 1],
+                ['Software Engineering', 0, 1],
+                ['digital communication', 0, 1],
+                ['Embedded hardware design', 0, 1],
+                ['Digital-Analog Circuits', 0, 1]]
+            }
+        )
 
 

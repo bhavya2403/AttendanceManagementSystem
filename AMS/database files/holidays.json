@@ -1,12 +1,243 @@
 [{
-    "_id": {
-      "$oid": "64451c08d5b6d4bc99e76592"
-    },
-    "name": "New Year's Day",
-    "start_date": {
-      "$date": "2023-01-01T00:00:00.000Z"
-    },
-    "end_date": {
-      "$date": "2023-01-01T23:59:59.000Z"
-    }
-  }]
+  "_id": {
+    "$oid": "64451c08d5b6d4bc99e76592"
+  },
+  "name": "New Year's Day",
+  "start_date": {
+    "$date": "2023-01-01T00:00:00.000Z"
+  },
+  "end_date": {
+    "$date": "2023-01-01T23:59:59.000Z"
+  }
+},{
+  "_id": {
+    "$oid": "6447d94a7bc5052eb115cafe"
+  },
+  "name": "Republic Day",
+  "start_date": {
+    "$date": "2023-01-26T00:00:00.000Z"
+  },
+  "end_date": {
+    "$date": "2023-01-26T23:59:59.000Z"
+  }
+},{
+  "_id": {
+    "$oid": "6447d9987bc5052eb115caff"
+  },
+  "name": "Holi",
+  "start_date": {
+    "$date": "2023-03-07T00:00:00.000Z"
+  },
+  "end_date": {
+    "$date": "2023-03-07T23:59:59.000Z"
+  }
+},{
+  "_id": {
+    "$oid": "6447d9b47bc5052eb115cb00"
+  },
+  "name": "Dhuleti",
+  "start_date": {
+    "$date": "2023-03-08T00:00:00.000Z"
+  },
+  "end_date": {
+    "$date": "2023-03-08T23:59:59.000Z"
+  }
+},{
+  "_id": {
+    "$oid": "6447d9ea7bc5052eb115cb01"
+  },
+  "name": "Shree Ram Navmi",
+  "start_date": {
+    "$date": "2023-03-30T00:00:00.000Z"
+  },
+  "end_date": {
+    "$date": "2023-03-30T23:59:59.000Z"
+  }
+},{
+  "_id": {
+    "$oid": "6447da367bc5052eb115cb02"
+  },
+  "name": "Good Friday",
+  "start_date": {
+    "$date": "2023-04-07T00:00:00.000Z"
+  },
+  "end_date": {
+    "$date": "2023-04-07T23:59:59.000Z"
+  }
+},{
+  "_id": {
+    "$oid": "6447da707bc5052eb115cb03"
+  },
+  "name": "Ambedkar Jayanti",
+  "start_date": {
+    "$date": "2023-04-14T00:00:00.000Z"
+  },
+  "end_date": {
+    "$date": "2023-04-14T23:59:59.000Z"
+  }
+},{
+  "_id": {
+    "$oid": "6447daa57bc5052eb115cb04"
+  },
+  "name": "Bakri-Eid",
+  "start_date": {
+    "$date": "2023-06-29T00:00:00.000Z"
+  },
+  "end_date": {
+    "$date": "2023-06-29T23:59:59.000Z"
+  }
+},{
+  "_id": {
+    "$oid": "6447dae27bc5052eb115cb05"
+  },
+  "name": "Independence Day",
+  "start_date": {
+    "$date": "2023-08-15T00:00:00.000Z"
+  },
+  "end_date": {
+    "$date": "2023-08-15T23:59:59.000Z"
+  }
+},{
+  "_id": {
+    "$oid": "6447db017bc5052eb115cb06"
+  },
+  "name": "Pateti",
+  "start_date": {
+    "$date": "2023-08-16T00:00:00.000Z"
+  },
+  "end_date": {
+    "$date": "2023-08-16T23:59:59.000Z"
+  }
+},{
+  "_id": {
+    "$oid": "6447db307bc5052eb115cb07"
+  },
+  "name": "Raksha Bandhan",
+  "start_date": {
+    "$date": "2023-08-30T00:00:00.000Z"
+  },
+  "end_date": {
+    "$date": "2023-08-30T23:59:59.000Z"
+  }
+},{
+  "_id": {
+    "$oid": "6447db697bc5052eb115cb08"
+  },
+  "name": "Janmashtami",
+  "start_date": {
+    "$date": "2023-09-07T00:00:00.000Z"
+  },
+  "end_date": {
+    "$date": "2023-09-07T23:59:59.000Z"
+  }
+},{
+  "_id": {
+    "$oid": "6447dc0a7bc5052eb115cb09"
+  },
+  "name": "Samvatsari",
+  "start_date": {
+    "$date": "2023-09-19T00:00:00.000Z"
+  },
+  "end_date": {
+    "$date": "2023-09-19T23:59:59.000Z"
+  }
+},{
+  "_id": {
+    "$oid": "6447dc8c7bc5052eb115cb0a"
+  },
+  "name": "Eid-e-Meeladunnabi",
+  "start_date": {
+    "$date": "2023-09-28T00:00:00.000Z"
+  },
+  "end_date": {
+    "$date": "2023-09-28T23:59:59.000Z"
+  }
+},{
+  "_id": {
+    "$oid": "6447dccf7bc5052eb115cb0b"
+  },
+  "name": "Gandhi Jayanti",
+  "start_date": {
+    "$date": "2023-10-02T00:00:00.000Z"
+  },
+  "end_date": {
+    "$date": "2023-10-02T23:59:59.000Z"
+  }
+},{
+  "_id": {
+    "$oid": "6447dd3c7bc5052eb115cb0c"
+  },
+  "name": "Dusshera",
+  "start_date": {
+    "$date": "2023-10-24T00:00:00.000Z"
+  },
+  "end_date": {
+    "$date": "2023-10-24T23:59:59.000Z"
+  }
+},{
+  "_id": {
+    "$oid": "6447dd947bc5052eb115cb0d"
+  },
+  "name": "Sardar Vallabhbhai Jayanti",
+  "start_date": {
+    "$date": "2023-10-31T00:00:00.000Z"
+  },
+  "end_date": {
+    "$date": "2023-10-31T23:59:59.000Z"
+  }
+},{
+  "_id": {
+    "$oid": "6447de087bc5052eb115cb0e"
+  },
+  "name": "Vikram Samvaant New Year",
+  "start_date": {
+    "$date": "2023-11-14T00:00:00.000Z"
+  },
+  "end_date": {
+    "$date": "2023-11-14T23:59:59.000Z"
+  }
+},{
+  "_id": {
+    "$oid": "6447de397bc5052eb115cb0f"
+  },
+  "name": "Bhai Bij",
+  "start_date": {
+    "$date": "2023-11-15T00:00:00.000Z"
+  },
+  "end_date": {
+    "$date": "2023-11-15T23:59:59.000Z"
+  }
+},{
+  "_id": {
+    "$oid": "6447de7e7bc5052eb115cb10"
+  },
+  "name": "Guru Nanak Jayanti",
+  "start_date": {
+    "$date": "2023-11-27T00:00:00.000Z"
+  },
+  "end_date": {
+    "$date": "2023-11-27T23:59:59.000Z"
+  }
+},{
+  "_id": {
+    "$oid": "6447dead7bc5052eb115cb11"
+  },
+  "name": "Christmas",
+  "start_date": {
+    "$date": "2023-12-25T00:00:00.000Z"
+  },
+  "end_date": {
+    "$date": "2023-12-25T23:59:59.000Z"
+  }
+},{
+  "_id": {
+    "$oid": "6447df247bc5052eb115cb12"
+  },
+  "name": "In-Semester Break",
+  "start_date": {
+    "$date": "2023-03-02T00:00:00.000Z"
+  },
+  "end_date": {
+    "$date": "2023-03-08T23:59:59.000Z"
+  }
+}]

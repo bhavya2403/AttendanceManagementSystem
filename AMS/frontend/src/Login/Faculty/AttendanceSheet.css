@@ -18,6 +18,7 @@
   margin-right: 10px;
   display: flex;
 }
+
 .attendance-label-date {
   font-weight: bold;
   margin-right: 10px;
@@ -36,7 +37,6 @@
 
 .attendance-list {
   list-style: none;
-  margin: 0;
   padding: 0;
 }
 
@@ -52,13 +52,17 @@
   margin-left: 10px;
 
 }
+
 .attendance-date-picker {
   font-size: 16px;
   padding: 10px;
   margin-left: 10px;
   border-radius: 5px;
   border: 1px solid #ccc;
-}
+  width: 300px;
+  margin: 0 auto;
+  }
+
 .attendance-date-picker:focus {
   outline: none;
   border: 1px solid #4CAF50;
@@ -68,5 +72,4 @@
   background-color: #ffffff;
   border: 1px solid #cccccc;
   border-radius: 5px;
-  padding: 10px;
 }
