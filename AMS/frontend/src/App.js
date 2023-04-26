@@ -10,6 +10,8 @@ import FacultyProfile from './Login/Faculty/FacultyProfile';
 import Courses from './Login/Faculty/Courses';
 import ViewAttendance from './Login/Faculty/ViewAttendance';
 import AttendanceSheet from './Login/Faculty/AttendanceSheet';
+import AdminProfile from './Login/Admin/AdminProfile';
+
 function App() {
   return (
     <>
@@ -27,6 +29,7 @@ function App() {
         <Route path="/AttendanceSheet" element={<AttendanceSheet />} />
         <Route path="/ViewAttendance" element={<ViewAttendance />} />
         <Route path="/PastLeaves" element={<PastLeaves/>}/>
+        <Route path="/AdminProfile" element={<AdminProfile/>}/>
       </Routes>
     </BrowserRouter>
 

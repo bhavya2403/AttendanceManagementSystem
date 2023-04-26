@@ -1,7 +1,9 @@
 import React from 'react'
 import AdminNavbar from './AdminNavbar'
-//import SeeCourses from './SeeCourses'
+import BatchList from './BatchList';
+import StudentList from './studentlist';
 import { Routes, Route } from 'react-router-dom';
+import AdminProfile from './AdminProfile';
 
 
 function Admin() {
@@ -9,7 +11,9 @@ function Admin() {
     <div>
       <AdminNavbar />
       <Routes>
-      {/* <Route path="Admin/SeeCourses"  element={<SeeCourses/>} />  */}
+        <Route path="/BatchList"  element={<BatchList/>} /> 
+        <Route path="/StudentList"  element={<StudentList/>} /> 
+        <Route path="/AdminProfile"  element={<AdminProfile/>} />
       </Routes>
     </div>
 
