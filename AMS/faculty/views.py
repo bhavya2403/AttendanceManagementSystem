@@ -1,6 +1,7 @@
 from authorization.views import *
 from rest_framework.response import Response
 from rest_framework.status import *
+from datetime import datetime
 
 def faculty_auth(func):
     def inner(request):
@@ -68,10 +69,44 @@ def mark_attendance(request):
 @authenticate_dec
 @faculty_auth
 def attendance_page(request):
-    pass
+    """
+    given token in header of professor, course_name in body, batch in body, date_time in body
+    return a list of all students with name, id and status 0/1 means absent/present
+    Response format: {
+        data: [
+            [student1 id, student1 name, present or absent in the class],
+            [student2 id, student2 name, present or absent in the class],
+            ...
+        ]
+    }
+    """
+    crs = COLL_CRS.findone({'name': request.data.get('course_name'), 'batch': request.data.get('batch')})
+    students_in_crs = crs['students']
+    student_objs = list(COLL_USR.find({ "_id": { "$in": students_in_crs }}))
+    presence = COLL_ATT.find_one({'course_id': crs['_id'], 'date': request.data.get('date')})
+
+    presence.sort(key=lambda s: s['student_id'])
+    student_objs.sort(key=lambda s: s['_id'])
+    response = {'data': []}
+    for (student, present) in zip(student_objs, presence):
+        response['data'].append([student['id'], student['name'], present['status']])
+    response['data'].sort()
+    return Response(response, HTTP_200_OK)
 
 @api_view(['POST'])
 @authenticate_dec
 @faculty_auth
 def start_attendance(request):
+    crs = COLL_CRS.findone({'name': request.data.get('course_name'), 'batch': request.data.get('batch')})
+    COLL_ATT.insert_one({
+        'course_id': crs['_id'], 'date': datetime.now()[:10],
+        'presence': list(map(lambda student_id: {'student_id': str(student_id), 'status': 'absent'}, crs['students']))
+    })
+    request.data['date'] = datetime.now()[:10]
+    return attendance_page(request)
+
+@api_view(['POST'])
+@authenticate_dec
+@faculty_auth
+def change_attendance(request):
     pass

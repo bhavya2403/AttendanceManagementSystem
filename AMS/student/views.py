@@ -22,9 +22,7 @@ def student_profile(request):
             courses: [
                 [registered course name 1, present in number of sessions, total sessions],
                 [registered course name 2, present, total],
-                .
-                .
-                .
+                ...
             ]
         }
     """
