@@ -16,7 +16,7 @@ class TestAuth(TestCase):
                         'role': 'admin',
                         'create_mail': 'bhavyasdcvdrtx@gmail.com',
                         'create_password': 'noqwaedrqwtBhavya',
-                        'create_role': 'student'})
+                        'c  reate_role': 'student'})
         self.assertEqual(response.status_code, 200)
         COLL_USR.delete_one({'email': 'bhavyasdcvdrtx@gmail.com', 'role': 'student'})
 

@@ -3,6 +3,8 @@ from django.http import JsonResponse
 from django.contrib.auth.hashers import make_password, check_password
 from django.shortcuts import render
 from rest_framework.decorators import api_view
+import logging, logging.config
+import sys
 
 CLIENT = MongoClient("mongodb+srv://202001067:notBhavya2003@cluster0.6u0jcmx.mongodb.net")
 DB = CLIENT.get_database('ams')
@@ -41,6 +43,8 @@ def authenticate_dec(func):
 @api_view(['POST'])
 @authenticate_dec
 def login(request):
+    # print("Hereee:")
+    # logging.config.dictConfig(request.user.get('password'))
     return JsonResponse({'token': request.user.get('password')}, status=200)
 
 @authenticate_dec

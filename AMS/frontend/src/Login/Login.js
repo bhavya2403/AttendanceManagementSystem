@@ -29,26 +29,30 @@ function Login(){
         try {
             const requestOptions = {
                 method: 'POST',
-                headers: {
+                headers: { //
                     'Content-Type': 'application/json',
                     'X-CSRFToken': csrftoken
                 },
                 body: JSON.stringify({
                     'email': email,
                     'password': password,
-                    'role': radio.isChecked,
+                    'role': 'admin',
                 })
-                }
+            }
+            console.log(requestOptions);
             // send request to backend and wait for the response
             const response = await fetch("/auth/login/", requestOptions);
+            console.log(response.body);
             const data = await response.json();
-            if(response.ok){
+            console.log(data);
+            if(response.status === 200 && response.body.token === requestOptions.body.password){
                 if(radio.isChecked==='Student')navigate('/Student');
                 if(radio.isChecked==='Faculty')navigate('./faculty');
                 if(radio.isChecked==='Admin')navigate('./admin');
             }
             console.log(response);
         } catch (error) {
+            console.log(error)
             // an error occured
         }
     
