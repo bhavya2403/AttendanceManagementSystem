@@ -1,48 +1,54 @@
-import React from 'react'
-import ProfileCard from './ProfileCard'
-import ProgressBar from './ProgressBar'
-import Navbar from './Navbar'
-import {useEffect, useState} from "react"
-import { useLocation } from 'react-router-dom'
-function Profile(props){
+import React, { useEffect, useState } from 'react';
+import ProfileCard from './ProfileCard';
+import ProgressBar from './ProgressBar';
+import Navbar from './Navbar';
+import axios from "axios";
+import { useLocation } from 'react-router-dom';
+import { SelectProvider } from '@mui/base';
+
+
+function Profile(props) {
+  // delclaring location, token, csrf, promise, data, requestoptions
   const location = useLocation();
   const token = location?.state?.token;
   const csrftoken = location?.state?.csrftoken;
-  console.log(token);
-
-  const [data, setData] = useState([]);
-  useEffect(() => {
-    async function fetchData() {
-      const requestOptions =  {
-        method: 'POST',
-        headers : {
-          'token': `${token}`,
-          'X-CSRFToken': csrftoken
-        }
-      }
-      const reponse = await fetch("/student/", requestOptions);
-      const data = await reponse.json();
-      setData(data);
+  const requestOptions = {
+    method: 'POST',
+    headers: { 
+        'token': `${token}`,
+        'Content-Type': 'application/json',
+        'X-CSRFToken': csrftoken
     }
-    fetchData();
-  }, []);
-  console.log(data);
+  };
+  let data;
 
-  return(
-      <>
-      
+  console.log("just before function");
+  (async function sendingReq() {
+    console.log("before calling");
+    const response = await fetch("/student/", requestOptions);
+    console.log("after calling");
+    data = await response.json();
+    console.log(data);
+  })();
+  console.log("after function");
+  return (
+    <>
       <Navbar />
-      <div style={{display: 'flex'}}>
-        <div style={{display: 'inline-block', marginRight: '20px'}}>
-          <ProfileCard data={data}/>
+      <div style={{ display: 'flex' }}>
+        <div style={{ display: 'inline-block', marginRight: '20px' }}>
+          <ProfileCard sData={data} />
         </div>
-        <div style={{display: 'inline-block'}}>
-          <ProgressBar data={data}/>
+        <div style={{ display: 'inline-block' }}>
+          <ProgressBar sData={data}/>
         </div>
-       
       </div>
-      </>
-    )
+    </>
+  );
+  // } 
+  // else {
+  //   return <div>loadoing</div>;
+  // }
 }
 
-export default Profile
+
+export default Profile;
