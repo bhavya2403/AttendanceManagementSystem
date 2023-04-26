@@ -5,20 +5,24 @@ import {Link} from "react-router-dom";
 
 const batchlist = [
   {
-      id: '1',
-      StudentName: 'BTECH I',
+    id: '1',
+    Rollno: '202001060',
+    StudentName: 'Student A',
   },
   {
     id: '2',
-    StudentName: 'BTECH II',
+    Rollno: '202001061',
+    StudentName: 'Student B',
   },
   {
     id: '3',
-    StudentName: 'BTECH III',
+    Rollno: '202001064',
+    StudentName: 'Student C',
   },
   {
     id: '4',
-    StudentName: 'BTECH IV',
+    Rollno: '202001069',
+    StudentName: 'Student D',
   },
 ]
 
@@ -29,8 +33,9 @@ function BatchList(){
     <div>
     {batchlist.map((batch) => (
       <div key={batch.id} className='student-list' color='black' >
-        <Link to={`/Admin/StudentList/${batch.id}`}>
-          {batch.StudentName}
+        {/* <Link to={`/Admin/StudentList/${batch.id}`}> */}
+        <Link to={`/Admin/StudentList`}>
+        {batch.Rollno}   {batch.StudentName}
         </Link>
       </div>
     ))}

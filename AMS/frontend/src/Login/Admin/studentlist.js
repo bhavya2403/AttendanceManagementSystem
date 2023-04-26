@@ -1,12 +1,12 @@
 import React from 'react';
-import './SatchList.css';
-import {Link} from "react-router-dom";
+import './StudentList.css';
+import { Link } from "react-router-dom";
 
 
-const studentlist = [
+const Studentli = [
   {
-      id: '1',
-      StudentName: 'Student A',
+    id: '1',
+    StudentName: 'Student A',
   },
   {
     id: '2',
@@ -23,18 +23,19 @@ const studentlist = [
 ]
 
 
-function StudentList(){
-    
+function StudentList() {
+
   return (
     <div>
-    {studentlist.map((batch) => (
-      <div key={batch.id} className='student-list' color='black' >
-        <Link to={`/student/Profile/${batch.id}`}>
-          {batch.StudentName}
-        </Link>
-      </div>
-    ))}
-  </div>
+      {Studentli.map((student) => (
+        <div key={student.id} className='student-list' color='black' >
+          <Link to={`/student/Profile/${student.id}`}>
+          {/* <Link to={`/student/Profile`}> */}
+            {student.StudentName}
+          </Link>
+        </div>
+      ))}
+    </div>
   )
 }
 
