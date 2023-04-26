@@ -10,13 +10,12 @@ COLL_CRS = DB.get_collection('courses')
 COLL_USR = DB.get_collection('user')
 COLL_ATT = DB.get_collection('Attendance')
 COLL_LVE = DB.get_collection('leave certificate')
-print("variables declared")
 
 def is_authenticated(request):
     ''' The method either returns a user object or none in case of authentication failure '''
-
     # the user is sending the token
-    user = COLL_USR.find_one({'password': request.headers.get('token')})
+    print(request.data.get('id'), request.data.get('password'), request.data.get('role'))
+    user = COLL_USR.find_one({'password': request.META.get('HTTP_TOKEN')})
     if user is not None:
         return user
     # the user is sending email address, password and role
@@ -38,7 +37,7 @@ def authenticate_dec(func):
         return func(request)
     return inner1
 
-@api_view(['GET'])
+@api_view(['POST'])
 @authenticate_dec
 def login(request):
     '''

@@ -9,9 +9,9 @@ def student_auth(func):
         return func(request)
     return inner
 
-@api_view(['GET'])
-@student_auth
+@api_view(['POST'])
 @authenticate_dec
+@student_auth
 def student_profile(request):
     """"
         request format: Give only token of the student in headers
@@ -38,9 +38,9 @@ def student_profile(request):
         response[course['name']] = {'present': len(present_sessions), 'total': len(all_sessions)}
     return Response(response, HTTP_200_OK)
 
-@api_view(['GET'])
-@student_auth
+@api_view(['POST'])
 @authenticate_dec
+@student_auth
 def see_all_courses(request):
     """ given the token of student, return all the courses available. """
     crs = COLL_CRS.find()
