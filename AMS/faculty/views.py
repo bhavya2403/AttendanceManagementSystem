@@ -64,6 +64,14 @@ def mark_attendance(request):
                              'total_present': len(list(filter(lambda d: d['status']=='absent', session_obj['present'])))})
     return Response(response, status=200)
 
-# @faculty_auth
-# @authenticate_dec
-# def toggle_attendance(request):
+@api_view(['POST'])
+@authenticate_dec
+@faculty_auth
+def attendance_page(request):
+    pass
+
+@api_view(['POST'])
+@authenticate_dec
+@faculty_auth
+def start_attendance(request):
+    pass

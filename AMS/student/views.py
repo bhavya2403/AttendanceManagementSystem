@@ -20,8 +20,8 @@ def student_profile(request):
             id: student id,
             batch: batch of the student
             courses: [
-                registered course name 1: [present in number of sessions, total sessions],
-                registered course name 2: [present, total]
+                [registered course name 1, present in number of sessions, total sessions],
+                [registered course name 2, present, total],
                 .
                 .
                 .
@@ -39,7 +39,7 @@ def student_profile(request):
                                                'presence': {'$in': [{'student_id': user['_id'], 'status':
                                                    'present'}]}}))
 
-        response['courses'].append({course['name']: {'present': len(present_sessions), 'total': len(all_sessions)}})
+        response['courses'].append([course['name'], len(present_sessions), len(all_sessions)])
     return Response(response, HTTP_200_OK)
 
 @api_view(['POST'])
