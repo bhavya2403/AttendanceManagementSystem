@@ -6,11 +6,10 @@ import { useLocation } from 'react-router-dom';
 import { SelectProvider } from '@mui/base';
 
 
- function Profile(props) {
-  // declaring the states
-  const [data, setData] = useState("");
+function Profile(props) {
+  const [data, setData] = useState(null); // set initial state to null
+  const [isLoading, setIsLoading] = useState(true); // add loading state
 
-  // declaring location, token, csrf, promise, data, requestoptions
   const location = useLocation();
   const token = location?.state?.token;
   const csrftoken = location?.state?.csrftoken;
@@ -22,42 +21,43 @@ import { SelectProvider } from '@mui/base';
         'X-CSRFToken': csrftoken
     }
   };
-  let data_local;
 
-  console.log("just before function");
   async function sendingReq() {
-    try{
-
-    console.log("before calling");
-    const response = await fetch("/student/", requestOptions);
-    console.log("after calling");
-    data_local = await response.json();
-    setData(data_local);
-    console.log(data);
-    console.log("after function");
-  }catch (err)
-    {
+    try {
+      const response = await fetch("/student/", requestOptions);
+      const data_local = await response.json();
+      setData(data_local);
+      setIsLoading(false); // set loading state to false
+    } catch (err) {
+      setIsLoading(false); // set loading state to false in case of error
     }
   }
-  sendingReq()
- return (
-      <>
-        <p>{data.toString()} </p>
-        {/*<div style={{ display: 'flex' }}>*/}
-        {/*  <div style={{ display: 'inline-block', marginRight: '20px' }}>*/}
-        {/*    <ProfileCard sData={data} />*/}
-        {/*  </div>*/}
-        {/*  <div style={{ display: 'inline-block' }}>*/}
-        {/*    <ProgressBar sData={data}/>*/}
-        {/*  </div>*/}
-        {/*</div>*/}
-      </>
-    )
-  // } 
-  // else {
-  //   return <div>loadoing</div>;
-  // }
+
+  useEffect(() => {
+    sendingReq();
+  }, []); // call sendingReq only once, when the component mounts
+
+  return (
+    <>
+      {isLoading ? (
+        <div>Loading...</div>
+      ) : (
+        <>
+          <Navbar/>
+          <div style={{ display: 'flex' }}>
+            <div style={{ display: 'inline-block', marginRight: '20px' }}> 
+              <ProfileCard sData={data} />
+            </div>
+            <div style={{ display: 'inline-block' }}>
+              <ProgressBar sData={data}/>
+            </div>
+          </div>
+        </>
+      )}
+    </>
+  );
 }
+
 
 
 export default Profile;

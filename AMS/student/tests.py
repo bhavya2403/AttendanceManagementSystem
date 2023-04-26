@@ -22,12 +22,12 @@ class TestAuth(TestCase):
         self.assertEqual(json.loads(response.content), {
             'name': 'Nidhi Singh', 'batch': 'BTech II', 'id': '202001095',
             'courses': [
-                ['Introduction to Computer Science', 0, 1],
-                ['International Economy', 0, 1],
-                ['Software Engineering', 0, 1],
-                ['digital communication', 0, 1],
-                ['Embedded hardware design', 0, 1],
-                ['Digital-Analog Circuits', 0, 1]]
+                ['Introduction to Computer Science', 2, 2],
+                ['International Economy', 3, 7],
+                ['Software Engineering', 4, 10],
+                ['digital communication', 5, 20],
+                ['Embedded hardware design', 2, 10],
+                ['Digital-Analog Circuits', 6, 14]]
             }
         )
 
