@@ -43,7 +43,7 @@ function AdminNavbar() {
 
             <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-            <Link className="nav-link active" to="" style={{ color: 'white' }}>Leave Management</Link>
+            <Link className="nav-link active" to="./LeaveManagement" style={{ color: 'white' }}>Leave Management</Link>
 
 
             </ul></div>
