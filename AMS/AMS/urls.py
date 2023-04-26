@@ -23,5 +23,5 @@ urlpatterns = [
     path('faculty/', include("faculty.urls")),
     path('notif/', include("notif.urls")),
     path('admin/', include("adminapp.urls")),
-    path('medicalform/', views.apply_leave, name='apply leave')
+    path('leavemanage/', include("leavemanage.urls"))
 ]
