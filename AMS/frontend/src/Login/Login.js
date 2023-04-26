@@ -57,12 +57,14 @@ function Login(){
             console.log(error)
             // an error occured
         }
-    
+
         setEmail('');
         setPassword('');
         setRadio('');
 
     };
+
+
     //200 ok 401 unauthorized 
     return (
         <div>
