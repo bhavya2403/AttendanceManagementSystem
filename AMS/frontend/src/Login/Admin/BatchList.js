@@ -1,35 +1,35 @@
 import React from 'react';
-import './SatchList.css';
+import './BatchList.css';
 import {Link} from "react-router-dom";
 
 
-const studentlist = [
+const batchlist = [
   {
       id: '1',
-      StudentName: 'Student A',
+      StudentName: 'BTECH I',
   },
   {
     id: '2',
-    StudentName: 'Student B',
+    StudentName: 'BTECH II',
   },
   {
     id: '3',
-    StudentName: 'Student C',
+    StudentName: 'BTECH III',
   },
   {
     id: '4',
-    StudentName: 'Student D',
+    StudentName: 'BTECH IV',
   },
 ]
 
 
-function StudentList(){
+function BatchList(){
     
   return (
     <div>
-    {studentlist.map((batch) => (
+    {batchlist.map((batch) => (
       <div key={batch.id} className='student-list' color='black' >
-        <Link to={`/student/Profile/${batch.id}`}>
+        <Link to={`/Admin/StudentList/${batch.id}`}>
           {batch.StudentName}
         </Link>
       </div>
@@ -38,4 +38,4 @@ function StudentList(){
   )
 }
 
-export default StudentList
+export default BatchList

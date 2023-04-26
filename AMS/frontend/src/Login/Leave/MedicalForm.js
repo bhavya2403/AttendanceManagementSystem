@@ -14,11 +14,15 @@ function MedicalForm() {
   const [endLeaveDate, setEndLeaveDate] = useState('');
   const [reason, setReason] = useState('');
   const [file, setFile] = useState();
+  const [type,setType] = useState();
   
   const studentNameHandler = (event) => {
     setStudentName(event.target.value);
   }
 
+  const setTypeHandler = (event) => {
+    setType(event.target.value);
+  }
   const studentIDHandler = (event) => {
     setStudentID(event.target.value);
   }
@@ -49,6 +53,7 @@ function MedicalForm() {
     formData.append('studentID', studentID);
     formData.append('startLeaveDate', startLeaveDate);
     formData.append('endLeaveDate', endLeaveDate);
+    formData.append('type', type);
     formData.append('reason', reason);
     formData.append('file', file);
 
@@ -65,6 +70,7 @@ function MedicalForm() {
             'studentID': studentID,
             'startLeaveDate': startLeaveDate,
             'endLeaveDate': endLeaveDate,
+            'type': type,
             'reason': reason,
             'file': file,
           }),
@@ -90,6 +96,8 @@ function MedicalForm() {
     setEndLeaveDate('');
     console.log(reason);
     setReason('');
+    console.log(type);
+    setType('');
     console.log(file);
     setFile(null);
     document.getElementById("file").value = "";
@@ -113,6 +121,10 @@ function MedicalForm() {
         <input className="form-input" id="date1" type="date" value={startLeaveDate} onChange={startLeaveDateHandler} style={{width: '177px'}} required/>
         <div style={{marginTop: '10px', marginLeft: '15px'}}>to</div>
         <input className="form-input" id="date2" type="date" value={endLeaveDate} onChange={endLeaveDateHandler} style={{width: '177px'}} required/>
+      </div>
+      <div className="form-group" style={{display: 'flex'}}>
+        <label className="form-label" >Type of Leave: </label>
+        <input className="form-input" id="type" type="text" value={type} onChange={setTypeHandler} required  />
       </div>
       <div className="form-group"  style={{display: 'flex'}}>
         <label className="form-label">Reason:</label>

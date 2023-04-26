@@ -1,6 +1,6 @@
 import React from 'react'
 import AdminNavbar from './AdminNavbar'
-//import SeeCourses from './SeeCourses'
+import BatchList from './BatchList';
 import { Routes, Route } from 'react-router-dom';
 
 
@@ -9,7 +9,7 @@ function Admin() {
     <div>
       <AdminNavbar />
       <Routes>
-      {/* <Route path="Admin/SeeCourses"  element={<SeeCourses/>} />  */}
+        <Route path="/BatchList"  element={<BatchList/>} /> 
       </Routes>
     </div>
 
