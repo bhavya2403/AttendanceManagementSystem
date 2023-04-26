@@ -13,11 +13,12 @@ COLL_LVE = DB.get_collection('leave certificate')
 
 def is_authenticated(request):
     ''' The method either returns a user object or none in case of authentication failure '''
+
     # the user is sending the token
-    print(request.data.get('id'), request.data.get('password'), request.data.get('role'))
     user = COLL_USR.find_one({'password': request.META.get('HTTP_TOKEN')})
     if user is not None:
         return user
+
     # the user is sending email address, password and role
     user = COLL_USR.find_one({'id': request.data.get('id'), 'role': request.data.get('role')})
     if user and check_password(request.data.get('password'), user.get('password')):

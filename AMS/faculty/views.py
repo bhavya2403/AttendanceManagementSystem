@@ -1,17 +1,17 @@
 from authorization.views import *
-from rest_framework.response import *
+from rest_framework.response import Response
 from rest_framework.status import *
 
-def check_faculty_dec(func):
+def faculty_auth(func):
     def inner(request):
         if request.user['role']!='instructor':
             return Response(status=HTTP_401_UNAUTHORIZED)
         return func(request)
     return inner
 
-
-@check_faculty_dec
+@api_view(['POST'])
 @authenticate_dec
+@faculty_auth
 def faculty_profile(request):
     """
     request format: only token of faculty user in headers
@@ -25,8 +25,9 @@ def faculty_profile(request):
     return Response({'id': user['id'], 'id': user['email'],
                      'description': user['description'], 'name': user['name']}, HTTP_200_OK)
 
-@check_faculty_dec
+@api_view(['POST'])
 @authenticate_dec
+@faculty_auth
 def view_courses(request):
     """
         request format: token of faculty in headers.
@@ -42,25 +43,27 @@ def view_courses(request):
             len(course['students'])})
     return Response(response, HTTP_200_OK)
 
-@check_faculty_dec
+@api_view(['POST'])
 @authenticate_dec
-def start_attendance(request):
+@faculty_auth
+def mark_attendance(request):
     """
         request format: {
             token of faculty in headers
-
+            course_name in body
+            semester in body
         }
         Returns a list of classes that happened in the course. each element:
             'date': date and time of the class start in teh format of "2023-03-21 15:30:00"
             'total present': total number of students currently present in the class
     """
-    course_obj = COLL_CRS.find_one({'name': request.POST.get('course_name'), 'semester': request.POST.get('semester')})
+    course_obj = COLL_CRS.find_one({'name': request.data.get('course_name'), 'semester': request.data.get('semester')})
     response = {'data': []}
     for session_obj in COLL_ATT.find({'course_id': course_obj['_id']}):
         response['data'].append({'date': session_obj['date'],
                              'total_present': len(list(filter(lambda d: d['status']=='absent', session_obj['present'])))})
-    return JsonResponse(response, status=200)
+    return Response(response, status=200)
 
-# @check_faculty_dec
+# @faculty_auth
 # @authenticate_dec
 # def toggle_attendance(request):

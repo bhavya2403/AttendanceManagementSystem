@@ -19,15 +19,19 @@ def student_profile(request):
             name: student full name,
             id: student id,
             batch: batch of the student
-            registered course name 1: [present in number of sessions, total sessions],
-            registered course name 2: [present, total]
-            .
-            .
-            .
+            courses: [
+                registered course name 1: [present in number of sessions, total sessions],
+                registered course name 2: [present, total]
+                .
+                .
+                .
+            ]
         }
     """
     user = request.user
-    response = {'name': user['name'], 'batch': user['batch'], 'id': user['email'][:user['email'].find('@')]}
+    response = {'name': user['name'], 'batch': user['batch'],
+                'id': user['email'][:user['email'].find('@')],
+                'courses': []}
     lst = list(COLL_CRS.find({'students': {'$in': [user['_id']]}}))
     for course in lst:
         all_sessions = list(COLL_ATT.find({'course_id': course['_id']}))
@@ -35,7 +39,7 @@ def student_profile(request):
                                                'presence': {'$in': [{'student_id': user['_id'], 'status':
                                                    'present'}]}}))
 
-        response[course['name']] = {'present': len(present_sessions), 'total': len(all_sessions)}
+        response['courses'].append({course['name']: {'present': len(present_sessions), 'total': len(all_sessions)}})
     return Response(response, HTTP_200_OK)
 
 @api_view(['POST'])
