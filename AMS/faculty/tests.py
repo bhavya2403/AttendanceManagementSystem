@@ -4,6 +4,8 @@ import json
 class TestAuth(TestCase):
     def setUp(self):
         self.client = Client(HTTP_TOKEN='')
+        self.token1 = 'pbkdf2_sha256$320000$cR6Y4s8Ohdgw778BQrJXLC$71YNDHFcAiCQL+fcPqogsyOYlCss7s86qYy2jtE0X+w='
+        self.token2 = 'pbkdf2_sha256$320000$FKn16ArC5AlAm4nivt8agY$5IiDXKX0k2hJTujEMXrHmlDmVtKPeun6AIpOzQvXndY='
         self.header = {'HTTP_TOKEN': 'pbkdf2_sha256$320000$cR6Y4s8Ohdgw778BQrJXLC$71YNDHFcAiCQL+fcPqogsyOYlCss7s86qYy2jtE0X+w='}
 
     def test_faculty_profile(self):
@@ -27,7 +29,7 @@ class TestAuth(TestCase):
         })
 
     def test_mark_attendance(self):
-        self.header['HTTP_TOKEN'] = 'pbkdf2_sha256$320000$FKn16ArC5AlAm4nivt8agY$5IiDXKX0k2hJTujEMXrHmlDmVtKPeun6AIpOzQvXndY='
+        self.header['HTTP_TOKEN'] = self.token2
         response = self.client.post('/faculty/view_courses/mark_attendance', {
             'course_name': 'Digital Signal Processing', 'semester': 'Winter-2023'
         }, **self.header)
@@ -38,9 +40,10 @@ class TestAuth(TestCase):
         })
 
     def test_attendance_page(self):
-        self.header['HTTP_TOKEN']='pbkdf2_sha256$320000$FKn16ArC5AlAm4nivt8agY$5IiDXKX0k2hJTujEMXrHmlDmVtKPeun6AIpOzQvXndY='
+        self.header['HTTP_TOKEN'] = self.token2
         response = self.client.post('/faculty/view_courses/mark_attendance/attendance_page', {
-            'course_name': 'Digital Signal Processing', 'semester': 'Winter-2023', 'date': '2023-04-23'
+            'course_name': 'Digital Signal Processing', 'semester': 'Winter-2023',
+            'date': 'Fri Apr 23 2023 00:00:00 GMT+0530 (India Standard Time)'
         }, **self.header)
         self.assertEqual(response.status_code, 200)
         self.assertEqual(json.loads(response.content), {'data': [
@@ -56,9 +59,10 @@ class TestAuth(TestCase):
         ]})
 
     def test_attendance_page_newclass(self):
-        self.header['HTTP_TOKEN']='pbkdf2_sha256$320000$FKn16ArC5AlAm4nivt8agY$5IiDXKX0k2hJTujEMXrHmlDmVtKPeun6AIpOzQvXndY='
+        self.header['HTTP_TOKEN'] = self.token2
         response = self.client.post('/faculty/view_courses/mark_attendance/attendance_page', {
-            'course_name': 'Digital Signal Processing', 'semester': 'Winter-2023', 'date': '2023-04-24'
+            'course_name': 'Digital Signal Processing', 'semester': 'Winter-2023',
+            'date': 'Fri Apr 07 2023 00:00:00 GMT+0530 (India Standard Time)'
         }, **self.header)
         self.assertEqual(response.status_code, 200)
         self.assertEqual(json.loads(response.content), {'data': [
@@ -72,3 +76,21 @@ class TestAuth(TestCase):
             ['202004003', 'Mia Scott', 'absent'], ['202004004', 'Lucas Rodriguez', 'absent'],
             ['202004005', 'Emily Turner', 'absent']
         ]})
+
+    def test_change_attendance(self):
+        self.header['HTTP_TOKEN'] = self.token2
+        response = self.client.post('faculty/view_courses/mark_attendance/attendance_page/submit', {
+            'course_name': 'Digital Signal Processing', 'semester': 'Winter-2023',
+            'date': 'Fri Apr 24 2023 00:00:00 GMT+0530 (India Standard Time)',
+            'presence': [
+                ['202002011', 'Ankit Patel', 'absent'], ['202002012', 'Priya Shah', 'absent'],
+                ['202002013', 'Raj Patel', 'absent'], ['202002014', 'Neha Shah', 'absent'],
+                ['202002015', 'Rajesh Patel', 'absent'], ['202002016', 'Preeti Shah', 'absent'],
+                ['202002017', 'Nikhil Patel', 'absent'], ['202002018', 'Jiya Shah', 'absent'],
+                ['202002019', 'Rakesh Patel', 'absent'], ['202002020', 'Sneha Shah', 'absent'],
+                ['202002021', 'Naman Patel', 'absent'], ['202004000', 'Sophie Nelson', 'absent'],
+                ['202004001', 'Ethan King', 'absent'], ['202004002', 'Oliver Cooper', 'absent'],
+                ['202004003', 'Mia Scott', 'absent'], ['202004004', 'Lucas Rodriguez', 'absent'],
+                ['202004005', 'Emily Turner', 'absent']
+            ]
+        }, **self.header)

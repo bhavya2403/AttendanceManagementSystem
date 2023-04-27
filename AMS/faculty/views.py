@@ -2,6 +2,7 @@ from authorization.views import *
 from rest_framework.response import Response
 from rest_framework.status import *
 from datetime import datetime
+import pandas as pd
 
 def faculty_auth(func):
     def inner(request):
@@ -69,20 +70,13 @@ def mark_attendance(request):
             'total_present': len(list(filter(lambda d: d['status']=='absent', session_obj['presence'])))})
     return Response(response, HTTP_200_OK)
 
-def _start_attendance(course_id, date, student_in_crs):
-    """
-    This is the function used by backend only and not to be called by api
-    """
-
-
-
 @api_view(['POST'])
 @authenticate_dec
 @faculty_auth
 def attendance_page(request):
     """
     given token in header of professor, course_name in body, semester in body, date in body
-    return a list of all students with name, id and status 0/1 means absent/present
+    return a list of all students with name, id and status absent/present
     Response format: {
         data: [
             [student1 id, student1 name, present or absent in the class],
@@ -95,8 +89,10 @@ def attendance_page(request):
     crs = COLL_CRS.find_one({'name': request.data.get('course_name'), 'semester': request.data.get('semester')})
     students_in_crs = crs['students']
     student_objs = list(COLL_USR.find({ "_id": { "$in": students_in_crs }}))
-    date_obj = datetime.strptime(request.data.get('date'), "%Y-%m-%d")
+    date_obj = pd.to_datetime(request.data.get('date')[4:15]).to_pydatetime()
     session_obj = COLL_ATT.find_one({'course_id': crs['_id'], 'date': date_obj})
+
+    # if there's no session for the
     if not session_obj:
         COLL_ATT.insert_one({
             'course_id': crs['_id'], 'date': date_obj,
@@ -122,7 +118,7 @@ def change_attendance(request):
     request format: {
         token in the header
         body: {
-            course_name, batch, date
+            course_name, semester, date
             presence: [
                 [student1 id, student1 name, present or absent in the class],
                 [student2 id, student2 name, present or absent in the class],
@@ -132,7 +128,6 @@ def change_attendance(request):
     }
     response format: just the status code
     """
-
     # computing presence that needs to be stored
     presence_arr = request.data.get('presence')
     student_ids = list(map(lambda arr: arr[0], presence_arr))
