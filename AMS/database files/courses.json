@@ -246,15 +246,16 @@
                 "$oid": "64450b5cd5b6d4bc99e76563"
             }
         ],
-        "semester": "Winter-2023"
+        "semester": "Winter-2023",
+        "description": "Good course"
     },
     {
         "_id": {
             "$oid": "64450f0bd5b6d4bc99e7656a"
         },
-        "name": "digital communication",
+        "name": "Digital Communication",
         "code": "CT101",
-        "department": "communication",
+        "department": "Communication",
         "instructor": {
             "$oid": "64450408d5b6d4bc99e76554"
         },
@@ -418,11 +419,386 @@
         "_id": {
             "$oid": "64451013d5b6d4bc99e7656d"
         },
-        "name": "Digital Analog Circuits",
+        "name": "Digital-Analog Circuits",
         "code": "EL101",
         "department": "Electronics",
         "instructor": {
             "$oid": "644507fad5b6d4bc99e7655b"
+        },
+        "students": [
+            {
+                "$oid": "64199d1141289c5f1b01e4a7"
+            },
+            {
+                "$oid": "6444fdc4d5b6d4bc99e76537"
+            },
+            {
+                "$oid": "6444fdc4d5b6d4bc99e76538"
+            },
+            {
+                "$oid": "6444fdc4d5b6d4bc99e76539"
+            },
+            {
+                "$oid": "6444fdc4d5b6d4bc99e7653a"
+            },
+            {
+                "$oid": "6444fdc4d5b6d4bc99e7653b"
+            },
+            {
+                "$oid": "6444fdc4d5b6d4bc99e7653c"
+            },
+            {
+                "$oid": "6444fdc4d5b6d4bc99e7653d"
+            },
+            {
+                "$oid": "6444fdc4d5b6d4bc99e7653e"
+            },
+            {
+                "$oid": "6444fdc4d5b6d4bc99e7653f"
+            },
+            {
+                "$oid": "6444fdc4d5b6d4bc99e76540"
+            },
+            {
+                "$oid": "6444fdc4d5b6d4bc99e76541"
+            },
+            {
+                "$oid": "6444fdc4d5b6d4bc99e76542"
+            },
+            {
+                "$oid": "6444fdc4d5b6d4bc99e76543"
+            },
+            {
+                "$oid": "6444fdc4d5b6d4bc99e76544"
+            },
+            {
+                "$oid": "6444fdc4d5b6d4bc99e76545"
+            },
+            {
+                "$oid": "6444fdc4d5b6d4bc99e76546"
+            },
+            {
+                "$oid": "6444fdc4d5b6d4bc99e76547"
+            },
+            {
+                "$oid": "6444fdc4d5b6d4bc99e76548"
+            },
+            {
+                "$oid": "6444fdc4d5b6d4bc99e76549"
+            },
+            {
+                "$oid": "6444fdc4d5b6d4bc99e7654a"
+            },
+            {
+                "$oid": "6444fdc4d5b6d4bc99e7654b"
+            },
+            {
+                "$oid": "64450b5cd5b6d4bc99e76563"
+            }
+        ],
+        "semester": "Winter-2023"
+    },
+    {
+        "_id": {
+            "$oid": "644a7920e6dc40268a7581b9"
+        },
+        "name": "Data Structures and Algorithms",
+        "code": "CS202",
+        "department": "Computer Science",
+        "instructor": {
+            "$oid": "644507fad5b6d4bc99e7655b"
+        },
+        "students": [
+            {
+                "$oid": "644a7232e6dc40268a758196"
+            },
+            {
+                "$oid": "644a7232e6dc40268a758197"
+            },
+            {
+                "$oid": "644a7232e6dc40268a758198"
+            },
+            {
+                "$oid": "644a7232e6dc40268a758199"
+            },
+            {
+                "$oid": "644a7232e6dc40268a75819a"
+            },
+            {
+                "$oid": "644a7232e6dc40268a75819b"
+            },
+            {
+                "$oid": "644a7232e6dc40268a75819c"
+            },
+            {
+                "$oid": "644a7232e6dc40268a75819d"
+            },
+            {
+                "$oid": "644a7232e6dc40268a75819e"
+            },
+            {
+                "$oid": "644a7232e6dc40268a75819f"
+            },
+            {
+                "$oid": "644a7232e6dc40268a7581a0"
+            },
+            {
+                "$oid": "644a7490e6dc40268a7581a3"
+            },
+            {
+                "$oid": "644a7490e6dc40268a7581a4"
+            },
+            {
+                "$oid": "644a7490e6dc40268a7581a5"
+            },
+            {
+                "$oid": "644a7490e6dc40268a7581a6"
+            },
+            {
+                "$oid": "644a7490e6dc40268a7581a7"
+            },
+            {
+                "$oid": "644a7490e6dc40268a7581a8"
+            }
+        ],
+        "semester": "Winter-2023"
+    },
+    {
+        "_id": {
+            "$oid": "644a7920e6dc40268a7581ba"
+        },
+        "name": "Computer Networks",
+        "code": "CS310",
+        "department": "Computer Science",
+        "instructor": {
+            "$oid": "64450408d5b6d4bc99e76553"
+        },
+        "students": [
+            {
+                "$oid": "64199d1141289c5f1b01e4a7"
+            },
+            {
+                "$oid": "644a7232e6dc40268a758196"
+            },
+            {
+                "$oid": "644a7232e6dc40268a758199"
+            },
+            {
+                "$oid": "644a7232e6dc40268a75819a"
+            },
+            {
+                "$oid": "644a7232e6dc40268a75819e"
+            },
+            {
+                "$oid": "644a7490e6dc40268a7581a4"
+            }
+        ],
+        "semester": "Winter-2023"
+    },
+    {
+        "_id": {
+            "$oid": "644a796de6dc40268a7581bb"
+        },
+        "name": "Artificial Intelligence",
+        "code": "CS212",
+        "department": "Computer Science",
+        "instructor": {
+            "$oid": "644507fad5b6d4bc99e76558"
+        },
+        "students": [
+            {
+                "$oid": "644a7232e6dc40268a758196"
+            },
+            {
+                "$oid": "644a7232e6dc40268a758197"
+            },
+            {
+                "$oid": "644a7232e6dc40268a758198"
+            },
+            {
+                "$oid": "644a7232e6dc40268a758199"
+            },
+            {
+                "$oid": "644a7232e6dc40268a75819a"
+            },
+            {
+                "$oid": "644a7232e6dc40268a75819b"
+            },
+            {
+                "$oid": "644a7232e6dc40268a75819c"
+            },
+            {
+                "$oid": "644a7232e6dc40268a75819d"
+            },
+            {
+                "$oid": "644a7232e6dc40268a75819e"
+            },
+            {
+                "$oid": "644a7232e6dc40268a75819f"
+            },
+            {
+                "$oid": "644a7232e6dc40268a7581a0"
+            },
+            {
+                "$oid": "644a7490e6dc40268a7581a3"
+            },
+            {
+                "$oid": "644a7490e6dc40268a7581a4"
+            },
+            {
+                "$oid": "644a7490e6dc40268a7581a5"
+            },
+            {
+                "$oid": "644a7490e6dc40268a7581a6"
+            },
+            {
+                "$oid": "644a7490e6dc40268a7581a7"
+            },
+            {
+                "$oid": "644a7490e6dc40268a7581a8"
+            }
+        ],
+        "semester": "Winter-2023"
+    },
+    {
+        "_id": {
+            "$oid": "644a79b8e6dc40268a7581bc"
+        },
+        "name": "Digital Signal Processing",
+        "code": "EC212",
+        "department": "Electrical Engineering",
+        "instructor": {
+            "$oid": "64450408d5b6d4bc99e76555"
+        },
+        "students": [
+            {
+                "$oid": "644a7232e6dc40268a758196"
+            },
+            {
+                "$oid": "644a7232e6dc40268a758197"
+            },
+            {
+                "$oid": "644a7232e6dc40268a758198"
+            },
+            {
+                "$oid": "644a7232e6dc40268a758199"
+            },
+            {
+                "$oid": "644a7232e6dc40268a75819a"
+            },
+            {
+                "$oid": "644a7232e6dc40268a75819b"
+            },
+            {
+                "$oid": "644a7232e6dc40268a75819c"
+            },
+            {
+                "$oid": "644a7232e6dc40268a75819d"
+            },
+            {
+                "$oid": "644a7232e6dc40268a75819e"
+            },
+            {
+                "$oid": "644a7232e6dc40268a75819f"
+            },
+            {
+                "$oid": "644a7232e6dc40268a7581a0"
+            },
+            {
+                "$oid": "644a7490e6dc40268a7581a3"
+            },
+            {
+                "$oid": "644a7490e6dc40268a7581a4"
+            },
+            {
+                "$oid": "644a7490e6dc40268a7581a5"
+            },
+            {
+                "$oid": "644a7490e6dc40268a7581a6"
+            },
+            {
+                "$oid": "644a7490e6dc40268a7581a7"
+            },
+            {
+                "$oid": "644a7490e6dc40268a7581a8"
+            }
+        ],
+        "semester": "Winter-2023"
+    },
+    {
+        "_id": {
+            "$oid": "644a7a2de6dc40268a7581be"
+        },
+        "name": "Web Development",
+        "code": "CS412",
+        "department": "Computer Science",
+        "instructor": {
+            "$oid": "64450408d5b6d4bc99e76553"
+        },
+        "students": [
+            {
+                "$oid": "644a7232e6dc40268a758196"
+            },
+            {
+                "$oid": "644a7232e6dc40268a758197"
+            },
+            {
+                "$oid": "644a7232e6dc40268a758198"
+            },
+            {
+                "$oid": "644a7232e6dc40268a758199"
+            },
+            {
+                "$oid": "644a7232e6dc40268a75819a"
+            },
+            {
+                "$oid": "644a7232e6dc40268a75819b"
+            },
+            {
+                "$oid": "644a7232e6dc40268a75819c"
+            },
+            {
+                "$oid": "644a7232e6dc40268a75819d"
+            },
+            {
+                "$oid": "644a7232e6dc40268a75819e"
+            },
+            {
+                "$oid": "644a7232e6dc40268a75819f"
+            },
+            {
+                "$oid": "644a7232e6dc40268a7581a0"
+            },
+            {
+                "$oid": "644a7490e6dc40268a7581a3"
+            },
+            {
+                "$oid": "644a7490e6dc40268a7581a4"
+            },
+            {
+                "$oid": "644a7490e6dc40268a7581a5"
+            },
+            {
+                "$oid": "644a7490e6dc40268a7581a6"
+            },
+            {
+                "$oid": "644a7490e6dc40268a7581a7"
+            },
+            {
+                "$oid": "644a7490e6dc40268a7581a8"
+            }
+        ],
+        "semester": "Winter-2023"
+    },
+    {
+        "_id": {
+            "$oid": "644a7a55e6dc40268a7581bf"
+        },
+        "name": "Operating Systems",
+        "code": "CS112",
+        "department": "Computer Science",
+        "instructor": {
+            "$oid": "644507fad5b6d4bc99e76559"
         },
         "students": [
             {

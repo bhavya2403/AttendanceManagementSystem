@@ -153,7 +153,7 @@
             },
             {
                 "student_id": "6444fdc4d5b6d4bc99e7653f",
-                "status": "absent"
+                "status": "present"
             },
             {
                 "student_id": "6444fdc4d5b6d4bc99e76540",
@@ -625,6 +625,819 @@
             },
             {
                 "student_id": "64450b5cd5b6d4bc99e76563",
+                "status": "present"
+            }
+        ]
+    },
+    {
+        "_id": {
+            "$oid": "6449055ec23b1bbe7c01ce71"
+        },
+        "date": "2023:12:03T04:03:02Z"
+    },
+    {
+        "_id": {
+            "$oid": "6449059dc23b1bbe7c01ce72"
+        },
+        "date": "2023-12-03T04:03:02.000Z"
+    },
+    {
+        "_id": {
+            "$oid": "644970507bc5052eb115cb31"
+        },
+        "course_id": {
+            "$oid": "64450cc7d5b6d4bc99e76565"
+        },
+        "date": {
+            "$date": "2023-04-27T00:00:00.000Z"
+        },
+        "presence": [
+            {
+                "student_id": "64199d1141289c5f1b01e4a7",
+                "status": "present"
+            },
+            {
+                "student_id": "6444fdc4d5b6d4bc99e76537",
+                "status": "present"
+            },
+            {
+                "student_id": "6444fdc4d5b6d4bc99e76538",
+                "status": "present"
+            },
+            {
+                "student_id": "6444fdc4d5b6d4bc99e76539",
+                "status": "present"
+            },
+            {
+                "student_id": "6444fdc4d5b6d4bc99e7653a",
+                "status": "present"
+            },
+            {
+                "student_id": "6444fdc4d5b6d4bc99e7653b",
+                "status": "present"
+            },
+            {
+                "student_id": "6444fdc4d5b6d4bc99e7653c",
+                "status": "present"
+            },
+            {
+                "student_id": "6444fdc4d5b6d4bc99e7653d",
+                "status": "present"
+            },
+            {
+                "student_id": "6444fdc4d5b6d4bc99e7653e",
+                "status": "present"
+            },
+            {
+                "student_id": "6444fdc4d5b6d4bc99e7653f",
+                "status": "present"
+            },
+            {
+                "student_id": "6444fdc4d5b6d4bc99e76540",
+                "status": "present"
+            },
+            {
+                "student_id": "6444fdc4d5b6d4bc99e76541",
+                "status": "present"
+            },
+            {
+                "student_id": "6444fdc4d5b6d4bc99e76542",
+                "status": "present"
+            },
+            {
+                "student_id": "6444fdc4d5b6d4bc99e76543",
+                "status": "present"
+            },
+            {
+                "student_id": "6444fdc4d5b6d4bc99e76544",
+                "status": "present"
+            },
+            {
+                "student_id": "6444fdc4d5b6d4bc99e76545",
+                "status": "present"
+            },
+            {
+                "student_id": "6444fdc4d5b6d4bc99e76546",
+                "status": "present"
+            },
+            {
+                "student_id": "6444fdc4d5b6d4bc99e76547",
+                "status": "present"
+            },
+            {
+                "student_id": "6444fdc4d5b6d4bc99e76548",
+                "status": "present"
+            },
+            {
+                "student_id": "6444fdc4d5b6d4bc99e76549",
+                "status": "present"
+            },
+            {
+                "student_id": "6444fdc4d5b6d4bc99e7654a",
+                "status": "present"
+            },
+            {
+                "student_id": "6444fdc4d5b6d4bc99e7654b",
+                "status": "present"
+            },
+            {
+                "student_id": "64450b5cd5b6d4bc99e76563",
+                "status": "present"
+            }
+        ]
+    },
+    {
+        "_id": {
+            "$oid": "6449706f7bc5052eb115cb34"
+        },
+        "course_id": {
+            "$oid": "64450d1bd5b6d4bc99e76566"
+        },
+        "date": {
+            "$date": "2023-04-27T00:00:00.000Z"
+        },
+        "presence": [
+            {
+                "student_id": "64199d1141289c5f1b01e4a7",
+                "status": "absent"
+            },
+            {
+                "student_id": "6444fdc4d5b6d4bc99e76537",
+                "status": "present"
+            },
+            {
+                "student_id": "6444fdc4d5b6d4bc99e76538",
+                "status": "present"
+            },
+            {
+                "student_id": "6444fdc4d5b6d4bc99e76539",
+                "status": "present"
+            },
+            {
+                "student_id": "6444fdc4d5b6d4bc99e7653a",
+                "status": "present"
+            },
+            {
+                "student_id": "6444fdc4d5b6d4bc99e7653b",
+                "status": "present"
+            },
+            {
+                "student_id": "6444fdc4d5b6d4bc99e7653c",
+                "status": "present"
+            },
+            {
+                "student_id": "6444fdc4d5b6d4bc99e7653d",
+                "status": "present"
+            },
+            {
+                "student_id": "6444fdc4d5b6d4bc99e7653e",
+                "status": "present"
+            },
+            {
+                "student_id": "6444fdc4d5b6d4bc99e7653f",
+                "status": "absent"
+            },
+            {
+                "student_id": "6444fdc4d5b6d4bc99e76540",
+                "status": "present"
+            },
+            {
+                "student_id": "6444fdc4d5b6d4bc99e76541",
+                "status": "present"
+            },
+            {
+                "student_id": "6444fdc4d5b6d4bc99e76542",
+                "status": "present"
+            },
+            {
+                "student_id": "6444fdc4d5b6d4bc99e76543",
+                "status": "present"
+            },
+            {
+                "student_id": "6444fdc4d5b6d4bc99e76544",
+                "status": "absent"
+            },
+            {
+                "student_id": "6444fdc4d5b6d4bc99e76545",
+                "status": "present"
+            },
+            {
+                "student_id": "6444fdc4d5b6d4bc99e76546",
+                "status": "present"
+            },
+            {
+                "student_id": "6444fdc4d5b6d4bc99e76547",
+                "status": "present"
+            },
+            {
+                "student_id": "6444fdc4d5b6d4bc99e76548",
+                "status": "present"
+            },
+            {
+                "student_id": "6444fdc4d5b6d4bc99e76549",
+                "status": "present"
+            },
+            {
+                "student_id": "6444fdc4d5b6d4bc99e7654a",
+                "status": "present"
+            },
+            {
+                "student_id": "6444fdc4d5b6d4bc99e7654b",
+                "status": "present"
+            },
+            {
+                "student_id": "64450b5cd5b6d4bc99e76563",
+                "status": "present"
+            }
+        ]
+    },
+    {
+        "_id": {
+            "$oid": "644a36dc90a300601220e25e"
+        },
+        "course_id": {
+            "$oid": "644a34c990a300601220e25a"
+        },
+        "date": {
+            "$date": "2023-03-21T00:00:00.000Z"
+        },
+        "presence": [
+            {
+                "student_id": "64199d1141289c5f1b01e4a7",
+                "status": "present"
+            },
+            {
+                "student_id": "6444fdc4d5b6d4bc99e76537",
+                "status": "present"
+            },
+            {
+                "student_id": "6444fdc4d5b6d4bc99e76538",
+                "status": "present"
+            },
+            {
+                "student_id": "6444fdc4d5b6d4bc99e76539",
+                "status": "present"
+            },
+            {
+                "student_id": "6444fdc4d5b6d4bc99e7653a",
+                "status": "absent"
+            },
+            {
+                "student_id": "6444fdc4d5b6d4bc99e7653b",
+                "status": "present"
+            },
+            {
+                "student_id": "6444fdc4d5b6d4bc99e7653c",
+                "status": "present"
+            },
+            {
+                "student_id": "6444fdc4d5b6d4bc99e7653d",
+                "status": "present"
+            },
+            {
+                "student_id": "6444fdc4d5b6d4bc99e7653e",
+                "status": "present"
+            },
+            {
+                "student_id": "6444fdc4d5b6d4bc99e7653f",
+                "status": "present"
+            },
+            {
+                "student_id": "6444fdc4d5b6d4bc99e76540",
+                "status": "present"
+            },
+            {
+                "student_id": "6444fdc4d5b6d4bc99e76541",
+                "status": "present"
+            },
+            {
+                "student_id": "6444fdc4d5b6d4bc99e76542",
+                "status": "present"
+            },
+            {
+                "student_id": "6444fdc4d5b6d4bc99e76543",
+                "status": "present"
+            },
+            {
+                "student_id": "6444fdc4d5b6d4bc99e76544",
+                "status": "present"
+            },
+            {
+                "student_id": "6444fdc4d5b6d4bc99e76545",
+                "status": "present"
+            },
+            {
+                "student_id": "6444fdc4d5b6d4bc99e76546",
+                "status": "present"
+            },
+            {
+                "student_id": "6444fdc4d5b6d4bc99e76547",
+                "status": "present"
+            },
+            {
+                "student_id": "6444fdc4d5b6d4bc99e76548",
+                "status": "present"
+            },
+            {
+                "student_id": "6444fdc4d5b6d4bc99e76549",
+                "status": "present"
+            },
+            {
+                "student_id": "6444fdc4d5b6d4bc99e7654a",
+                "status": "present"
+            },
+            {
+                "student_id": "6444fdc4d5b6d4bc99e7654b",
+                "status": "present"
+            },
+            {
+                "student_id": "64450b5cd5b6d4bc99e76563",
+                "status": "present"
+            }
+        ]
+    },
+    {
+        "_id": {
+            "$oid": "644a8162e6dc40268a7581cc"
+        },
+        "course_id": {
+            "$oid": "644a7a55e6dc40268a7581bf"
+        },
+        "date": {
+            "$date": "2023-04-28T00:00:00.000Z"
+        },
+        "presence": [
+            {
+                "student_id": "644a7232e6dc40268a758196",
+                "status": "present"
+            },
+            {
+                "student_id": "644a7232e6dc40268a758197",
+                "status": "present"
+            },
+            {
+                "student_id": "644a7232e6dc40268a758198",
+                "status": "present"
+            },
+            {
+                "student_id": "644a7232e6dc40268a758199",
+                "status": "present"
+            },
+            {
+                "student_id": "644a7232e6dc40268a75819a",
+                "status": "present"
+            },
+            {
+                "student_id": "644a7232e6dc40268a75819b",
+                "status": "present"
+            },
+            {
+                "student_id": "644a7232e6dc40268a75819c",
+                "status": "present"
+            },
+            {
+                "student_id": "644a7232e6dc40268a75819d",
+                "status": "present"
+            },
+            {
+                "student_id": "644a7232e6dc40268a75819e",
+                "status": "present"
+            },
+            {
+                "student_id": "644a7232e6dc40268a75819f",
+                "status": "present"
+            },
+            {
+                "student_id": "644a7232e6dc40268a7581a0",
+                "status": "present"
+            },
+            {
+                "student_id": "644a7490e6dc40268a7581a3",
+                "status": "present"
+            },
+            {
+                "student_id": "644a7490e6dc40268a7581a4",
+                "status": "present"
+            },
+            {
+                "student_id": "644a7490e6dc40268a7581a5",
+                "status": "present"
+            },
+            {
+                "student_id": "644a7490e6dc40268a7581a6",
+                "status": "present"
+            },
+            {
+                "student_id": "644a7490e6dc40268a7581a7",
+                "status": "present"
+            },
+            {
+                "student_id": "644a7490e6dc40268a7581a8",
+                "status": "present"
+            }
+        ]
+    },
+    {
+        "_id": {
+            "$oid": "644a8188e6dc40268a7581cd"
+        },
+        "course_id": {
+            "$oid": "644a7a2de6dc40268a7581be"
+        },
+        "date": {
+            "$date": "2023-04-28T00:00:00.000Z"
+        },
+        "presence": [
+            {
+                "student_id": "644a7232e6dc40268a758196",
+                "status": "present"
+            },
+            {
+                "student_id": "644a7232e6dc40268a758197",
+                "status": "present"
+            },
+            {
+                "student_id": "644a7232e6dc40268a758198",
+                "status": "present"
+            },
+            {
+                "student_id": "644a7232e6dc40268a758199",
+                "status": "present"
+            },
+            {
+                "student_id": "644a7232e6dc40268a75819a",
+                "status": "present"
+            },
+            {
+                "student_id": "644a7232e6dc40268a75819b",
+                "status": "present"
+            },
+            {
+                "student_id": "644a7232e6dc40268a75819c",
+                "status": "present"
+            },
+            {
+                "student_id": "644a7232e6dc40268a75819d",
+                "status": "present"
+            },
+            {
+                "student_id": "644a7232e6dc40268a75819e",
+                "status": "present"
+            },
+            {
+                "student_id": "644a7232e6dc40268a75819f",
+                "status": "present"
+            },
+            {
+                "student_id": "644a7232e6dc40268a7581a0",
+                "status": "present"
+            },
+            {
+                "student_id": "644a7490e6dc40268a7581a3",
+                "status": "present"
+            },
+            {
+                "student_id": "644a7490e6dc40268a7581a4",
+                "status": "absent"
+            },
+            {
+                "student_id": "644a7490e6dc40268a7581a5",
+                "status": "absent"
+            },
+            {
+                "student_id": "644a7490e6dc40268a7581a6",
+                "status": "absent"
+            },
+            {
+                "student_id": "644a7490e6dc40268a7581a7",
+                "status": "present"
+            },
+            {
+                "student_id": "644a7490e6dc40268a7581a8",
+                "status": "present"
+            }
+        ]
+    },
+    {
+        "_id": {
+            "$oid": "644a819ee6dc40268a7581ce"
+        },
+        "course_id": {
+            "$oid": "644a79b8e6dc40268a7581bc"
+        },
+        "date": {
+            "$date": "2023-04-28T00:00:00.000Z"
+        },
+        "presence": [
+            {
+                "student_id": "644a7232e6dc40268a758196",
+                "status": "present"
+            },
+            {
+                "student_id": "644a7232e6dc40268a758197",
+                "status": "present"
+            },
+            {
+                "student_id": "644a7232e6dc40268a758198",
+                "status": "present"
+            },
+            {
+                "student_id": "644a7232e6dc40268a758199",
+                "status": "present"
+            },
+            {
+                "student_id": "644a7232e6dc40268a75819a",
+                "status": "present"
+            },
+            {
+                "student_id": "644a7232e6dc40268a75819b",
+                "status": "present"
+            },
+            {
+                "student_id": "644a7232e6dc40268a75819c",
+                "status": "present"
+            },
+            {
+                "student_id": "644a7232e6dc40268a75819d",
+                "status": "present"
+            },
+            {
+                "student_id": "644a7232e6dc40268a75819e",
+                "status": "present"
+            },
+            {
+                "student_id": "644a7232e6dc40268a75819f",
+                "status": "present"
+            },
+            {
+                "student_id": "644a7232e6dc40268a7581a0",
+                "status": "present"
+            },
+            {
+                "student_id": "644a7490e6dc40268a7581a3",
+                "status": "present"
+            },
+            {
+                "student_id": "644a7490e6dc40268a7581a4",
+                "status": "present"
+            },
+            {
+                "student_id": "644a7490e6dc40268a7581a5",
+                "status": "absent"
+            },
+            {
+                "student_id": "644a7490e6dc40268a7581a6",
+                "status": "absent"
+            },
+            {
+                "student_id": "644a7490e6dc40268a7581a7",
+                "status": "absent"
+            },
+            {
+                "student_id": "644a7490e6dc40268a7581a8",
+                "status": "absent"
+            }
+        ]
+    },
+    {
+        "_id": {
+            "$oid": "644a81b5e6dc40268a7581cf"
+        },
+        "course_id": {
+            "$oid": "644a796de6dc40268a7581bb"
+        },
+        "date": {
+            "$date": "2023-04-28T00:00:00.000Z"
+        },
+        "presence": [
+            {
+                "student_id": "644a7232e6dc40268a758196",
+                "status": "present"
+            },
+            {
+                "student_id": "644a7232e6dc40268a758197",
+                "status": "present"
+            },
+            {
+                "student_id": "644a7232e6dc40268a758198",
+                "status": "present"
+            },
+            {
+                "student_id": "644a7232e6dc40268a758199",
+                "status": "present"
+            },
+            {
+                "student_id": "644a7232e6dc40268a75819a",
+                "status": "absent"
+            },
+            {
+                "student_id": "644a7232e6dc40268a75819b",
+                "status": "absent"
+            },
+            {
+                "student_id": "644a7232e6dc40268a75819c",
+                "status": "absent"
+            },
+            {
+                "student_id": "644a7232e6dc40268a75819d",
+                "status": "absent"
+            },
+            {
+                "student_id": "644a7232e6dc40268a75819e",
+                "status": "absent"
+            },
+            {
+                "student_id": "644a7232e6dc40268a75819f",
+                "status": "present"
+            },
+            {
+                "student_id": "644a7232e6dc40268a7581a0",
+                "status": "present"
+            },
+            {
+                "student_id": "644a7490e6dc40268a7581a3",
+                "status": "present"
+            },
+            {
+                "student_id": "644a7490e6dc40268a7581a4",
+                "status": "present"
+            },
+            {
+                "student_id": "644a7490e6dc40268a7581a5",
+                "status": "present"
+            },
+            {
+                "student_id": "644a7490e6dc40268a7581a6",
+                "status": "present"
+            },
+            {
+                "student_id": "644a7490e6dc40268a7581a7",
+                "status": "present"
+            },
+            {
+                "student_id": "644a7490e6dc40268a7581a8",
+                "status": "present"
+            }
+        ]
+    },
+    {
+        "_id": {
+            "$oid": "644a81c7e6dc40268a7581d0"
+        },
+        "course_id": {
+            "$oid": "644a7920e6dc40268a7581ba"
+        },
+        "date": {
+            "$date": "2023-04-28T00:00:00.000Z"
+        },
+        "presence": [
+            {
+                "student_id": "644a7232e6dc40268a758196",
+                "status": "absent"
+            },
+            {
+                "student_id": "644a7232e6dc40268a758197",
+                "status": "absent"
+            },
+            {
+                "student_id": "644a7232e6dc40268a758198",
+                "status": "absent"
+            },
+            {
+                "student_id": "644a7232e6dc40268a758199",
+                "status": "present"
+            },
+            {
+                "student_id": "644a7232e6dc40268a75819a",
+                "status": "present"
+            },
+            {
+                "student_id": "644a7232e6dc40268a75819b",
+                "status": "present"
+            },
+            {
+                "student_id": "644a7232e6dc40268a75819c",
+                "status": "present"
+            },
+            {
+                "student_id": "644a7232e6dc40268a75819d",
+                "status": "present"
+            },
+            {
+                "student_id": "644a7232e6dc40268a75819e",
+                "status": "present"
+            },
+            {
+                "student_id": "644a7232e6dc40268a75819f",
+                "status": "present"
+            },
+            {
+                "student_id": "644a7232e6dc40268a7581a0",
+                "status": "present"
+            },
+            {
+                "student_id": "644a7490e6dc40268a7581a3",
+                "status": "present"
+            },
+            {
+                "student_id": "644a7490e6dc40268a7581a4",
+                "status": "present"
+            },
+            {
+                "student_id": "644a7490e6dc40268a7581a5",
+                "status": "present"
+            },
+            {
+                "student_id": "644a7490e6dc40268a7581a6",
+                "status": "present"
+            },
+            {
+                "student_id": "644a7490e6dc40268a7581a7",
+                "status": "present"
+            },
+            {
+                "student_id": "644a7490e6dc40268a7581a8",
+                "status": "present"
+            }
+        ]
+    },
+    {
+        "_id": {
+            "$oid": "644a81f9e6dc40268a7581d2"
+        },
+        "course_id": {
+            "$oid": "644a7920e6dc40268a7581b9"
+        },
+        "date": {
+            "$date": "2023-04-28T00:00:00.000Z"
+        },
+        "presence": [
+            {
+                "student_id": "644a7232e6dc40268a758196",
+                "status": "present"
+            },
+            {
+                "student_id": "644a7232e6dc40268a758197",
+                "status": "absent"
+            },
+            {
+                "student_id": "644a7232e6dc40268a758198",
+                "status": "present"
+            },
+            {
+                "student_id": "644a7232e6dc40268a758199",
+                "status": "absent"
+            },
+            {
+                "student_id": "644a7232e6dc40268a75819a",
+                "status": "present"
+            },
+            {
+                "student_id": "644a7232e6dc40268a75819b",
+                "status": "present"
+            },
+            {
+                "student_id": "644a7232e6dc40268a75819c",
+                "status": "present"
+            },
+            {
+                "student_id": "644a7232e6dc40268a75819d",
+                "status": "absent"
+            },
+            {
+                "student_id": "644a7232e6dc40268a75819e",
+                "status": "present"
+            },
+            {
+                "student_id": "644a7232e6dc40268a75819f",
+                "status": "present"
+            },
+            {
+                "student_id": "644a7232e6dc40268a7581a0",
+                "status": "present"
+            },
+            {
+                "student_id": "644a7490e6dc40268a7581a3",
+                "status": "present"
+            },
+            {
+                "student_id": "644a7490e6dc40268a7581a4",
+                "status": "present"
+            },
+            {
+                "student_id": "644a7490e6dc40268a7581a5",
+                "status": "present"
+            },
+            {
+                "student_id": "644a7490e6dc40268a7581a6",
+                "status": "present"
+            },
+            {
+                "student_id": "644a7490e6dc40268a7581a7",
+                "status": "present"
+            },
+            {
+                "student_id": "644a7490e6dc40268a7581a8",
                 "status": "present"
             }
         ]
