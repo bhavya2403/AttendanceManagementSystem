@@ -28,13 +28,12 @@ def student_profile(request):
     """
     user = request.user
     response = {'name': user['name'], 'batch': user['batch'],
-                'id': user['email'][:user['email'].find('@')],
-                'courses': []}
+                'id': user['id'], 'email': user['email'], 'courses': []}
     lst = list(COLL_CRS.find({'students': {'$in': [user['_id']]}}))
     for course in lst:
         all_sessions = list(COLL_ATT.find({'course_id': course['_id']}))
         present_sessions = list(COLL_ATT.find({'course_id': course['_id'],
-                                               'presence': {'$in': [{'student_id': user['_id'], 'status':
+                                               'presence': {'$in': [{'student_id': str(user['_id']), 'status':
                                                    'present'}]}}))
 
         response['courses'].append([course['name'], len(present_sessions), len(all_sessions)])

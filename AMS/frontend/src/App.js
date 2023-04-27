@@ -12,6 +12,7 @@ import ViewAttendance from './Login/Faculty/ViewAttendance';
 import AttendanceSheet from './Login/Faculty/AttendanceSheet';
 import AdminProfile from './Login/Admin/AdminProfile';
 import Navbar from './Login/Student/Navbar';
+import LeaveManagement from './Login/Admin/LeaveManagement';
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
           <Route path="/ViewAttendance" element={<ViewAttendance />} />
           <Route path="/PastLeaves" element={<PastLeaves />} />
           <Route path="/AdminProfile" element={<AdminProfile />} />
+          <Route path="/LeaveManagement" element={<LeaveManagement />} />
         </Routes>
       </BrowserRouter>
 

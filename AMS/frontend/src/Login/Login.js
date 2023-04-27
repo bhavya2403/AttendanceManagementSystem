@@ -37,7 +37,7 @@ function Login(){
                 body: JSON.stringify({
                     'id': email,
                     'password': password,
-                    'role': radio, // fix radio.isChecked
+                    'role': (radio==='faculty'? 'instructor': radio),
                 })
             }
             console.log(requestOptions);
@@ -63,7 +63,6 @@ function Login(){
         setRadio('');
 
     };
-
 
     //200 ok 401 unauthorized 
     return (

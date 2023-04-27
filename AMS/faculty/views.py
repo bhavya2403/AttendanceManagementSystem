@@ -19,11 +19,13 @@ def faculty_profile(request):
     response format: {
         id: id,
         name: name,
-        description: description
+        description: description,
+        gender, post, age
     }
     """
     user = request.user
     return Response({'id': user['id'], 'email': user['email'],
+                     'age': user['age'], 'gender': user['gender'], 'post': user['post'],
                      'description': user['description'], 'name': user['name']}, HTTP_200_OK)
 
 @api_view(['POST'])
