@@ -43,4 +43,14 @@ class TestAuth(TestCase):
             'course_name': 'Digital Signal Processing', 'semester': 'Winter-2023', 'date': '2023-04-23'
         }, **self.header)
         self.assertEqual(response.status_code, 200)
-        print(json.loads(response.content))
+        self.assertEqual(json.loads(response.content), {'data': [
+            ['202002011', 'Ankit Patel', 'present'], ['202002012', 'Priya Shah', 'present'],
+            ['202002013', 'Raj Patel', 'present'], ['202002014', 'Neha Shah', 'present'],
+            ['202002015', 'Rajesh Patel', 'present'], ['202002016', 'Preeti Shah', 'present'],
+            ['202002017', 'Nikhil Patel', 'present'], ['202002018', 'Jiya Shah', 'present'],
+            ['202002019', 'Rakesh Patel', 'present'], ['202002020', 'Sneha Shah', 'present'],
+            ['202002021', 'Naman Patel', 'present'], ['202004000', 'Sophie Nelson', 'present'],
+            ['202004001', 'Ethan King', 'present'], ['202004002', 'Oliver Cooper', 'absent'],
+            ['202004003', 'Mia Scott', 'absent'], ['202004004', 'Lucas Rodriguez', 'absent'],
+            ['202004005', 'Emily Turner', 'absent']
+        ]})
