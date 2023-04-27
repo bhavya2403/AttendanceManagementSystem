@@ -69,6 +69,13 @@ def mark_attendance(request):
             'total_present': len(list(filter(lambda d: d['status']=='absent', session_obj['presence'])))})
     return Response(response, HTTP_200_OK)
 
+def _start_attendance(course_id, date, student_in_crs):
+    """
+    This is the function used by backend only and not to be called by api
+    """
+
+
+
 @api_view(['POST'])
 @authenticate_dec
 @faculty_auth
@@ -84,12 +91,18 @@ def attendance_page(request):
         ]
     }
     """
-
     # getting student objects from database and presence array from attendance data
     crs = COLL_CRS.find_one({'name': request.data.get('course_name'), 'semester': request.data.get('semester')})
     students_in_crs = crs['students']
     student_objs = list(COLL_USR.find({ "_id": { "$in": students_in_crs }}))
-    session_obj = COLL_ATT.find_one({'course_id': crs['_id'], 'date': datetime.strptime("2023-04-23", "%Y-%m-%d")})
+    date_obj = datetime.strptime(request.data.get('date'), "%Y-%m-%d")
+    session_obj = COLL_ATT.find_one({'course_id': crs['_id'], 'date': date_obj})
+    if not session_obj:
+        COLL_ATT.insert_one({
+            'course_id': crs['_id'], 'date': date_obj,
+            'presence': list(map(lambda student_id: {'student_id': str(student_id), 'status': 'absent'}, students_in_crs))
+        })
+        session_obj = COLL_ATT.find_one({'course_id': crs['_id'], 'date': date_obj})
     presence = session_obj['presence']
 
     # sorting both of the arrays id'wise
@@ -100,32 +113,6 @@ def attendance_page(request):
         response['data'].append([student['college_id'], student['name'], present['status']])
     response['data'].sort()
     return Response(response, HTTP_200_OK)
-
-@api_view(['POST'])
-@authenticate_dec
-@faculty_auth
-def start_attendance(request):
-    """
-    request format: {
-        token in the header
-        course_name, batch in teh body
-    }
-    response format: data of all the students with absent code
-    """
-
-    crs = COLL_CRS.findone({'name': request.data.get('course_name'), 'batch': request.data.get('batch')})
-    curr_date = datetime.now()[:10]
-
-    # check if the class already exist
-    if COLL_ATT.find_one({'course_id': crs['_id'], 'date': curr_date}) is not None:
-        return Response(status=HTTP_409_CONFLICT)
-
-    COLL_ATT.insert_one({
-        'course_id': crs['_id'], 'date': curr_date,
-        'presence': list(map(lambda student_id: {'student_id': str(student_id), 'status': 'absent'}, crs['students']))
-    })
-    request.data['date'] = datetime.now()[:10]
-    return attendance_page(request)
 
 @api_view(['POST'])
 @authenticate_dec

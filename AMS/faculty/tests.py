@@ -54,3 +54,21 @@ class TestAuth(TestCase):
             ['202004003', 'Mia Scott', 'absent'], ['202004004', 'Lucas Rodriguez', 'absent'],
             ['202004005', 'Emily Turner', 'absent']
         ]})
+
+    def test_attendance_page_newclass(self):
+        self.header['HTTP_TOKEN']='pbkdf2_sha256$320000$FKn16ArC5AlAm4nivt8agY$5IiDXKX0k2hJTujEMXrHmlDmVtKPeun6AIpOzQvXndY='
+        response = self.client.post('/faculty/view_courses/mark_attendance/attendance_page', {
+            'course_name': 'Digital Signal Processing', 'semester': 'Winter-2023', 'date': '2023-04-24'
+        }, **self.header)
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(json.loads(response.content), {'data': [
+            ['202002011', 'Ankit Patel', 'absent'], ['202002012', 'Priya Shah', 'absent'],
+            ['202002013', 'Raj Patel', 'absent'], ['202002014', 'Neha Shah', 'absent'],
+            ['202002015', 'Rajesh Patel', 'absent'], ['202002016', 'Preeti Shah', 'absent'],
+            ['202002017', 'Nikhil Patel', 'absent'], ['202002018', 'Jiya Shah', 'absent'],
+            ['202002019', 'Rakesh Patel', 'absent'], ['202002020', 'Sneha Shah', 'absent'],
+            ['202002021', 'Naman Patel', 'absent'], ['202004000', 'Sophie Nelson', 'absent'],
+            ['202004001', 'Ethan King', 'absent'], ['202004002', 'Oliver Cooper', 'absent'],
+            ['202004003', 'Mia Scott', 'absent'], ['202004004', 'Lucas Rodriguez', 'absent'],
+            ['202004005', 'Emily Turner', 'absent']
+        ]})
