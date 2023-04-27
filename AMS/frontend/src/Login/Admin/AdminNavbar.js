@@ -35,7 +35,7 @@ function AdminNavbar() {
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
 
 
-              <Link className="nav-link active" to="" style={{ color: 'white' }}>View Courses</Link>
+              <Link className="nav-link active" to="./ViewCourses" style={{ color: 'white' }}>View Courses</Link>
 
               
 
