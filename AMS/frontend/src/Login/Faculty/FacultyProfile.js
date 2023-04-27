@@ -7,13 +7,18 @@ import FacultyNavbar from './FacultyNavbar';
 import {useEffect, useState} from 'react'
 import { useLocation } from 'react-router-dom';
 
+  
+
+
 function FacultyProfile() {
     const [data, setData] = useState(null); // set initial state to null
     const [isLoading, setIsLoading] = useState(true); // add loading state
-  
     const location = useLocation();
     const token = location?.state?.token;
     const csrftoken = location?.state?.csrftoken;
+
+    window.token = token;
+    console.log(token);
     const requestOptions = {
       method: 'POST',
       headers: { 
@@ -38,8 +43,12 @@ function FacultyProfile() {
       sendingReq();
     }, []);
     return (
+      <>
+      {isLoading ? (
+        <div>Loading...</div>
+      ) : (
         <>
-        <FacultyNavbar/>
+        <FacultyNavbar token={token} csrftoken={csrftoken}/>
         <div style={{display: 'flex', flexDirection: 'row'}}>
         <Fprofile sData={data}/>
             <div style={{display: 'flex', flexDirection: 'column'}}>
@@ -57,6 +66,8 @@ function FacultyProfile() {
             </div>
         </div>
         </>
+         )}
+         </>
     )
 }
 

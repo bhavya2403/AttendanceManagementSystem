@@ -14,6 +14,8 @@ import AdminProfile from './Login/Admin/AdminProfile';
 import Navbar from './Login/Student/Navbar';
 import LeaveManagement from './Login/Admin/LeaveManagement';
 
+window.token="";
+
 function App() {
   return (
     <>
@@ -21,9 +23,6 @@ function App() {
         <Routes>
           <Route path="/" element={<Login />} />
           <Route path="/Student" element={<Navbar />} />
-          <Route path="/Profile" element={<Profile />} />
-          <Route path="/Faculty" element={<FacultyProfile />} />
-          <Route path="/Admin/*" element={<Admin />} />
           <Route path="/Profile" element={<Profile />} />
           <Route path="/SeeCourses/" element={<SeeCourses />} />
           <Route path="/MedicalForm" element={<MedicalForm />} />

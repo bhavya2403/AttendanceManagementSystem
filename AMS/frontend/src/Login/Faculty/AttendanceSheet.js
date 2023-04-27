@@ -1,41 +1,89 @@
-import React, { useState } from 'react';
 import './AttendanceSheet.css';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import FacultyNavbar from './FacultyNavbar';
+import {useEffect, useState} from 'react'
+import { useLocation } from 'react-router-dom';
+import Cookies from 'js-cookie';
 
 function AttendanceSheet() {
+
+  const location = useLocation();
+
+  const [isLoading, setIsLoading] = useState(true); // add loading state
   const [students, setStudents] = useState([]);
   const [selectedDate, setSelectedDate] = useState('');
   const [isChecked, setIsChecked] = useState(false);
-
-  const handleFetchStudents = (date) => {
-    // Replace the following line with an API call to fetch the students for the given date
-    const studentNames = ['Alice', 'Bob', 'Charlie'];
-    const initialStudents = studentNames.map(name => ({ id: name, name, present: false }));
-    setStudents(initialStudents);
-    setIsChecked(false);
-  };
 
   const handleDateChange = (date) => {
     setSelectedDate(date);
     handleFetchStudents(date);
   };
 
+  const handleFetchStudents = async () => {
+
+       const requestOptions = {
+         method : 'POST',
+         headers: {
+           'Content-Type': 'application/json',
+            'X-CSRFToken': csrftoken,
+            'token': `${window.token}`,
+            'date': selectedDate,
+          }
+        };
+        // sname sid presence: true, false
+      
+        try{
+              // Replace the following line with an API call to fetch the students for the given date
+            const response = await fetch ("faculty/fetchStudents", requestOptions);
+            const data_local = await response.json();
+            // id,name,present/absent
+            setStudents(data_local)
+            setIsLoading(false);
+        } catch (err) {
+          setIsLoading(false); // set loading state to false in case of error
+        
+  };
+  
+}
+
   const handleAttendanceChange = (event, studentId) => {
     const checked = event.target.checked;
     setStudents(students.map(s => s.id === studentId ? { ...s, present: checked } : s));
   };
 
-  const onSubmitHandler = (event) => {
+
+  const onSubmitHandler = async (event) => {
     event.preventDefault();
+  
+    const presentStudents = students.filter(s => s.present).map(s => ({ id: s.id, name: s.name }));
+  
+    const requestOptions = {
+      method: 'POST',
+      headers: { 
+        'Content-Type': 'application/json',
+        'token': `${token}`,
+        'Content-Type': 'application/json',
+        'X-CSRFToken': csrftoken
+      },
+      body: JSON.stringify({ 
+        'date': selectedDate,
+        'arrayOfStudents':  presentStudents 
+      })
+    };
+  
+    const response = await fetch('/api/markAttendance', requestOptions);
+    if (response.ok) {
+      // Handle success
+    } else {
+      // Handle error
+    }
+  
     setStudents([]);
     setIsChecked(true);
     setSelectedDate(null);
-
   };
-
-
+    
   return (
     <>
       <FacultyNavbar />
@@ -59,19 +107,20 @@ function AttendanceSheet() {
                     <li key={s.id} className="attendance-item">
                       <label className="attendance-label" style={{ color: 'black' }}>
                         <input type="checkbox" checked={s.present} onChange={e => handleAttendanceChange(e, s.id)} style={{marginLeft: '10px' }} />
+                        <span style={{marginLeft: '10px'}}>{s.id}</span>
                         <span style={{marginLeft: '10px'}}>{s.name}</span>
                       </label>
                     </li>
                   ))}
                 </ul>
               </div>
-              <button type="submit">Submit</button>
+              <button type="submit" onClick={onSubmitHandler}>Submit</button>
             </form>
           </div>
         )}
       </div>
     </>
   );
-}
 
+ };
 export default AttendanceSheet;

@@ -52,7 +52,7 @@ function MedicalForm() {
     formData.append('endLeaveDate', endLeaveDate);
     formData.append('type', type);
     formData.append('reason', reason);
-    formData.append('file', file);
+    // formData.append('file', file);
 
     try {
       const requestOptions = {
@@ -68,11 +68,11 @@ function MedicalForm() {
           'endLeaveDate': endLeaveDate,
           'type': type,
           'reason': reason,
-          'file': file,
+          // 'file': file,
         }),
       }
 
-      const response = await fetch("URL", requestOptions);
+      const response = await fetch("medicalform/", requestOptions);
       const data = await response.json();
       if (response.ok) {
         toast.success("Leave application submitted successfully!");

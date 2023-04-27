@@ -6,7 +6,10 @@ import { useLocation } from 'react-router-dom';
 import { SelectProvider } from '@mui/base';
 
 function Profile(props) {
-  const [data, setData] = useState(null); // set initial state to null
+
+  // declaring the states
+  const [data, setData] = useState("");
+
   const [isLoading, setIsLoading] = useState(true); // add loading state
   const location = useLocation();
   const token = location?.state?.token;
@@ -56,3 +59,4 @@ function Profile(props) {
   );
 }
 export default Profile
+

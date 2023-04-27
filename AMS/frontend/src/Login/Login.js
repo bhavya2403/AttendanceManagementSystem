@@ -37,7 +37,7 @@ function Login(){
                 body: JSON.stringify({
                     'id': email,
                     'password': password,
-                    'role': (radio==='faculty'? 'instructor': radio),
+                    'role': radio,
                 })
             }
             console.log(requestOptions);
@@ -48,10 +48,15 @@ function Login(){
              const token = data['token'];
              setToken(token);   
             if(response.status === 200){
-                if(radio==='student')navigate('/Profile', {state: {token}}, {csrf: {csrftoken}});
-                if(radio==='faculty')navigate('./faculty', {state: {token}});
-                if(radio==='admin')navigate('./admin', {state: {token}});
+                if (radio === "student") {
+                    navigate("/Profile", { state: { token } }, { csrf: { csrftoken } });
+                  } else if (radio === "instructor") {
+                    navigate("/FacultyProfile", { state: { token } }, { csrf: { csrftoken } });
+                  } else if (radio === "admin") {
+                    navigate("/AdminProfile", { state: { token } }, { csrf: { csrftoken } });
+                  }
             }
+            console.log(radio);
             console.log(response);
         } catch (error) {
             console.log(error)
@@ -83,7 +88,7 @@ function Login(){
                     <div style={{display: 'flex', flexDirection: 'row'}} onChange={radioHandler}>
                         <input type="radio" value="student" name="role" style={{marginRight: '4px'}} required/>Student
                         <div style={{marginRight: '20px'}}/>
-                        <input type="radio" value="faculty" name="role" style={{marginRight: '4px'}} required/> Faculty
+                        <input type="radio" value="instructor" name="role" style={{marginRight: '4px'}} required/> Faculty
                         <div style={{marginRight: '20px'}}/>
                         <input type="radio" value="admin" name="role" style={{marginRight: '4px'}} required/> Admin
                     </div>

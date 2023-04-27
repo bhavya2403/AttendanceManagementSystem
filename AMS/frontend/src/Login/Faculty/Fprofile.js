@@ -12,9 +12,10 @@ function Fprofile(props) {
             <h2 className="bold-text">{props.sData.id}</h2>
             <br />
             <ul style={{ fontWeight: 'bold', fontSize: '1.5em', marginLeft: '15px' }}>
-                <li>{props.sData.age}</li>
-                <li>{props.sData.experience}</li>
-                <li>{props.sData.role}</li>
+                <li><span style={{ marginRight: '10px' }}>Age:</span>{props.sData.age}</li>
+                <li><span style={{ marginRight: '10px' }}>Gender:</span>{props.sData.gender}</li>
+                <li><span style={{ marginRight: '10px' }}>Post:</span>{props.sData.post}</li>
+                <li><span style={{ marginRight: '10px' }}>Email:</span>{props.sData.email}</li>
             </ul>
         </div>
     )

@@ -9,38 +9,38 @@ function ProgessBar(props) {
                 <h1 className="d-flex align-items-center mb-3" style={{ paddingBottom: '10px' }}>Attendance</h1>
                 <h2>{props.sData.courses[0][0]}</h2>
                 <div className="progress mb-4">                                                   
-                    <div className="progress-bar custom-progress-bar" label={`${props.sData.courses[0][1]}%`} role="progressbar" style={{ width: "10%"}} aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">
-                        <span style={{ textAlign: 'right' }}>{`${props.sData.courses[0][1]}`}</span>
+                    <div className="progress-bar custom-progress-bar" label={`${props.sData.courses[0][1]}%`} role="progressbar" style={{ width: `${props.sData.courses[0][1]/parseFloat(props.sData.courses[0][2])*100}%`}} aria-valuenow={parseInt(props.sData.courses[0][1])} aria-valuemin="0" aria-valuemax={parseInt(props.sData.courses[0][2])}>
+                        <span style={{ textAlign: 'right' }}>{`${props.sData.courses[0][1]/parseFloat(props.sData.courses[0][2])*100}%`}</span>
                     </div>
                 </div>
                 <h2>{props.sData.courses[1][0]}</h2>
                 <div className="progress mb-4">
-                    <div className="progress-bar custom-progress-bar" label={`${props.sData.courses[1][1]}%`} role="progressbar" style={{ width: `${props.sData.courses[1][1]}%`}} aria-valuenow={`${props.sData.courses[1][1]}`} aria-valuemin="0" aria-valuemax={`${props.sData.courses[1][2]}`}>
-                        <span style={{ textAlign: 'right' }}>{`${props.sData.courses[1][1]}`}</span>
+                    <div className="progress-bar custom-progress-bar" label={`${props.sData.courses[1][1]}%`} role="progressbar" style={{ width: `${props.sData.courses[1][1]/parseFloat(props.sData.courses[1][2])*100}%`}} aria-valuenow={parseInt(props.sData.courses[1][1])} aria-valuemin="0" aria-valuemax={parseInt(props.sData.courses[1][1])}>
+                        <span style={{ textAlign: 'right' }}>{`${props.sData.courses[1][1]/parseFloat(props.sData.courses[1][2])*100}%`}</span>
                     </div>
                 </div>
                 <h2>{props.sData.courses[2][0]}</h2>
                 <div className="progress mb-4">
-                    <div className="progress-bar custom-progress-bar" role="progressbar" style={{ width: `${props.sData.courses[2][1]}%`}} aria-valuenow={`${props.sData.courses[2][1]}%`} aria-valuemin={`${props.sData.courses[2][1]}`} aria-valuemax={`${props.sData.courses[3][2]}`}>
-                        <span style={{ textAlign: 'right' }}>{`${props.sData.courses[2][1]}`}</span>
+                    <div className="progress-bar custom-progress-bar" role="progressbar" style={{ width: `${props.sData.courses[2][1]/parseFloat(props.sData.courses[2][2])*100}%`}} aria-valuenow={parseInt(props.sData.courses[2][1])} aria-valuemin="0" aria-valuemax={parseInt(props.sData.courses[2][2])}>
+                        <span style={{ textAlign: 'right' }}>{`${props.sData.courses[2][1]/parseFloat(props.sData.courses[2][2])*100}%`}</span>
                     </div>
                 </div>
                 <h2>{props.sData.courses[3][0]}</h2>
                 <div className="progress mb-4">
-                    <div className="progress-bar custom-progress-bar" role="progressbar" style={{ width: `${props.sData.courses[3][1]}%` }} aria-valuenow={`${props.sData.courses[3][1]}`} aria-valuemin="0" aria-valuemax={`${props.sData.courses[3][2]}`}>
-                        <span style={{ textAlign: 'right' }}>{`${props.sData.courses[3][1]}`}</span>
+                    <div className="progress-bar custom-progress-bar" role="progressbar" style={{ width: `${props.sData.courses[3][1]/parseFloat(props.sData.courses[3][2])*100}%` }} aria-valuenow={parseInt(props.sData.courses[3][1])} aria-valuemin="0" aria-valuemax={parseInt(props.sData.courses[3][2])}>
+                        <span style={{ textAlign: 'right' }}>{`${props.sData.courses[3][1]/parseFloat(props.sData.courses[3][2])*100}%`}</span>
                     </div>
                 </div>
                 <h2>{props.sData.courses[4][0]}</h2>
                 <div className="progress mb-4">
-                    <div className="progress-bar custom-progress-bar" role="progressbar" style={{ width: `${props.sData.courses[4][1]}%` }} aria-valuenow={`${props.sData.courses[4][1]}`} aria-valuemin="0" aria-valuemax={`${props.sData.courses[4][2]}`}>
-                        <span style={{ textAlign: 'right' }}>{`${props.sData.courses[4][1]}`}</span>
+                    <div className="progress-bar custom-progress-bar" role="progressbar" style={{ width: `${props.sData.courses[4][1]/parseFloat(props.sData.courses[4][2])*100}%` }} aria-valuenow={parseInt(props.sData.courses[4][1])} aria-valuemin="0" aria-valuemax={parseInt(props.sData.courses[4][2])}>
+                        <span style={{ textAlign: 'right' }}>{`${props.sData.courses[4][1]/parseFloat(props.sData.courses[4][2])*100}%`}</span>
                     </div>
                 </div>
                 <h2>{props.sData.courses[5][0]}</h2>
                 <div className="progress mb-4">
-                    <div className="progress-bar custom-progress-bar" role="progressbar" style={{ width: `${props.sData.courses[5][1]}%` }} aria-valuenow={`${props.sData.courses[5][1]}`} aria-valuemin="0" aria-valuemax={`${props.sData.courses[5][2]}`}>
-                        <span style={{ textAlign: 'right' }}>{`${props.sData.courses[5][1]}`}</span>
+                    <div className="progress-bar custom-progress-bar" role="progressbar" style={{ width: `${props.sData.courses[5][1]/parseFloat(props.sData.courses[5][2])*100}%` }} aria-valuenow={parseInt(props.sData.courses[5][1])} aria-valuemin="0" aria-valuemax={parseInt(props.sData.courses[5][2])}>
+                        <span style={{ textAlign: 'right' }}>{`${props.sData.courses[5][1]/parseFloat(props.sData.courses[5][2])*100}%`}</span>
                     </div>
                 </div>
             </div>
