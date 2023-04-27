@@ -89,12 +89,7 @@ def attendance_page(request):
     crs = COLL_CRS.find_one({'name': request.data.get('course_name'), 'semester': request.data.get('semester')})
     students_in_crs = crs['students']
     student_objs = list(COLL_USR.find({ "_id": { "$in": students_in_crs }}))
-    print(request.data.get('date'))
-    print(request.data.get('date')[:10])
-    # print(pd.to_datetime(request.data.get('date')[4:15]))
-    # date_obj = pd.to_datetime(request.data.get('date')[4:15]).to_pydatetime()
     date_obj = datetime.strptime(request.data.get('date')[:10], "%Y-%m-%d")
-    print(date_obj)
     session_obj = COLL_ATT.find_one({'course_id': crs['_id'], 'date': date_obj})
 
     # if there's no session for the
