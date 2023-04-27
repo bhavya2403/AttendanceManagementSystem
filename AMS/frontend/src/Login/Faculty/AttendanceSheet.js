@@ -5,7 +5,6 @@ import FacultyNavbar from './FacultyNavbar';
 import {useEffect, useState} from 'react'
 import { useLocation } from 'react-router-dom';
 import Cookies from 'js-cookie';
-
 function AttendanceSheet() {
 
   const location = useLocation();
@@ -15,27 +14,35 @@ function AttendanceSheet() {
   const [selectedDate, setSelectedDate] = useState('');
   const [isChecked, setIsChecked] = useState(false);
 
+  console.log(selectedDate);
   const handleDateChange = (date) => {
     setSelectedDate(date);
-    handleFetchStudents(date);
+    handleFetchStudents(); //--> while tempdata is being used
+    // setStudents(tempData) // comment during backend use
   };
-
   const handleFetchStudents = async () => {
 
+    console.log(window.course);
+    console.log(window.sem);
+    console.log(selectedDate);
        const requestOptions = {
          method : 'POST',
          headers: {
            'Content-Type': 'application/json',
-            'X-CSRFToken': csrftoken,
+            // 'X-CSRFToken': csrftoken,
             'token': `${window.token}`,
-            'date': selectedDate,
-          }
+          },
+          body: JSON.stringify({
+            'course_name': `${window.course}`,
+            'semester': `${window.sem}`,
+            'date': selectedDate
+          })
         };
         // sname sid presence: true, false
       
         try{
               // Replace the following line with an API call to fetch the students for the given date
-            const response = await fetch ("faculty/fetchStudents", requestOptions);
+            const response = await fetch ("faculty/view_courses/mark_attendance/attendance_page", requestOptions);
             const data_local = await response.json();
             // id,name,present/absent
             setStudents(data_local)
@@ -46,6 +53,7 @@ function AttendanceSheet() {
   };
   
 }
+console.log(students);
 
   const handleAttendanceChange = (event, studentId) => {
     const checked = event.target.checked;
@@ -62,18 +70,23 @@ function AttendanceSheet() {
       method: 'POST',
       headers: { 
         'Content-Type': 'application/json',
-        'token': `${token}`,
+        'token': `${window.token}`,
         'Content-Type': 'application/json',
-        'X-CSRFToken': csrftoken
+        // 'X-CSRFToken': csrftoken
       },
       body: JSON.stringify({ 
+        'course_name' : `${window.course}`,
+        'semester': `${window.sem}`,
+        presence: students,
         'date': selectedDate,
         'arrayOfStudents':  presentStudents 
       })
     };
   
-    const response = await fetch('/api/markAttendance', requestOptions);
+    const response = await fetch('/faculty/view_courses/mark_attendance/attendance_page/submit', requestOptions);
     if (response.ok) {
+      console.log('responce on clicking submit ')
+      console.log(response)
       // Handle success
     } else {
       // Handle error
@@ -86,6 +99,7 @@ function AttendanceSheet() {
     
   return (
     <>
+     
       <FacultyNavbar />
       <div className="attendance-container">
       <h1 className="attendance-header">Take Attendance</h1>
@@ -120,6 +134,7 @@ function AttendanceSheet() {
         )}
       </div>
     </>
+
   );
 
  };

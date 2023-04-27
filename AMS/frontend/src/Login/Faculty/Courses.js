@@ -11,7 +11,6 @@ function Courses() {
 
     const [data, setData] = useState(null); // set initial state to null
     const [isLoading, setIsLoading] = useState(true); // add loading state
-
     const requestOptions = {
         method: 'POST',
         headers: { 
@@ -56,6 +55,8 @@ function Courses() {
             <FacultyNavbar/>
             <div className="grid" >
                 {data && data.data.map((course)=>{
+                    window.sem = course.semester;
+                    window.course = course.course_name;
                     console.log('heeeeeeeee')
                     console.log(course)
                     return(

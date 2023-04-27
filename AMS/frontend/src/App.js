@@ -16,6 +16,8 @@ import LeaveManagement from './Login/Admin/LeaveManagement';
 import ViewCourses from './Login/Admin/ViewCourses'
 
 window.token="";
+window.course="";
+window.sem="";
 
 function App() {
   return (
