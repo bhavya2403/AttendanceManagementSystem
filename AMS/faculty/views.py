@@ -59,13 +59,14 @@ def mark_attendance(request):
     }
     response format: Returns a list of classes that happened in the course. each element:
         'date': date of the class start in the format of "2023-03-21"
-        'total present': total number of students currently present in the class
+        'total_present': total number of students currently present in the class
     """
     course_obj = COLL_CRS.find_one({'name': request.data.get('course_name'), 'semester': request.data.get('semester')})
     response = {'data': []}
     for session_obj in COLL_ATT.find({'course_id': course_obj['_id']}):
-        response['data'].append({'date': session_obj['date'],
-                             'total_present': len(list(filter(lambda d: d['status']=='absent', session_obj['present'])))})
+        response['data'].append({
+            'date': str(session_obj['date'].date()),
+            'total_present': len(list(filter(lambda d: d['status']=='absent', session_obj['presence'])))})
     return Response(response, HTTP_200_OK)
 
 @api_view(['POST'])

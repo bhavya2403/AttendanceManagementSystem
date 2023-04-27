@@ -15,8 +15,6 @@ def is_authenticated(request):
     ''' The method either returns a user object or none in case of authentication failure '''
 
     # the user is sending the token
-    print(request.META.get('HTTP_TOKEN'))
-    print(request.data.get('id'), request.data.get('password'))
     user = COLL_USR.find_one({'password': request.META.get('HTTP_TOKEN')})
     if user is not None:
         return user
