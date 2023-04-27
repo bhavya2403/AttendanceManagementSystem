@@ -16,7 +16,7 @@ class TestAuth(TestCase):
                            'since January 2019 His research interests lie in the areas of Image, Signal and '
                            'Geometry Processing, often relying on Variational methods, Differential Geometry, '
                            'Linear algebra and (convex) optimization.',
-            'name': 'Rohit'})
+            'name': 'Rohit', 'tot_courses': 3})
 
     def test_mark_attendance_token(self):
         response = self.client.post('/faculty/mark_attendance/', **self.header)
