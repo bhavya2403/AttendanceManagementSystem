@@ -5,6 +5,7 @@ import StudentList from './studentlist';
 import { Routes, Route } from 'react-router-dom';
 import AdminProfile from './AdminProfile';
 import LeaveManagement from './LeaveManagement';
+import ViewCourses from './ViewCourses';
 
 
 function Admin() {
@@ -16,6 +17,8 @@ function Admin() {
         <Route path="/StudentList"  element={<StudentList/>} /> 
         <Route path="/AdminProfile"  element={<AdminProfile/>} />
         <Route path="/LeaveManagement"  element={<LeaveManagement/>} />
+        <Route path="/ViewCourses"  element={<ViewCourses/>} />
+
       </Routes>
     </div>
 

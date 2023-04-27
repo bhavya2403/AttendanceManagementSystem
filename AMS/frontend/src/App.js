@@ -13,6 +13,7 @@ import AttendanceSheet from './Login/Faculty/AttendanceSheet';
 import AdminProfile from './Login/Admin/AdminProfile';
 import Navbar from './Login/Student/Navbar';
 import LeaveManagement from './Login/Admin/LeaveManagement';
+import ViewCourses from './Login/Admin/ViewCourses'
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
           <Route path="/PastLeaves" element={<PastLeaves />} />
           <Route path="/AdminProfile" element={<AdminProfile />} />
           <Route path="/LeaveManagement" element={<LeaveManagement />} />
+          <Route path="/ViewCourses" element={<ViewCourses />} />
         </Routes>
       </BrowserRouter>
 
