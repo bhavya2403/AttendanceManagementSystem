@@ -74,7 +74,7 @@ def mark_attendance(request):
 @faculty_auth
 def attendance_page(request):
     """
-    given token in header of professor, course_name in body, batch in body, date in body
+    given token in header of professor, course_name in body, semester in body, date in body
     return a list of all students with name, id and status 0/1 means absent/present
     Response format: {
         data: [
@@ -86,17 +86,18 @@ def attendance_page(request):
     """
 
     # getting student objects from database and presence array from attendance data
-    crs = COLL_CRS.findone({'name': request.data.get('course_name'), 'batch': request.data.get('batch')})
+    crs = COLL_CRS.find_one({'name': request.data.get('course_name'), 'semester': request.data.get('semester')})
     students_in_crs = crs['students']
     student_objs = list(COLL_USR.find({ "_id": { "$in": students_in_crs }}))
-    presence = COLL_ATT.find_one({'course_id': crs['_id'], 'date': request.data.get('date')})
+    session_obj = COLL_ATT.find_one({'course_id': crs['_id'], 'date': datetime.strptime("2023-04-23", "%Y-%m-%d")})
+    presence = session_obj['presence']
 
     # sorting both of the arrays id'wise
     presence.sort(key=lambda s: s['student_id'])
     student_objs.sort(key=lambda s: s['_id'])
     response = {'data': []}
     for (student, present) in zip(student_objs, presence):
-        response['data'].append([student['id'], student['name'], present['status']])
+        response['data'].append([student['college_id'], student['name'], present['status']])
     response['data'].sort()
     return Response(response, HTTP_200_OK)
 

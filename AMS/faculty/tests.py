@@ -36,3 +36,11 @@ class TestAuth(TestCase):
             {'date': '2023-04-28', 'total_present': 4},
             {'date': '2023-04-23', 'total_present': 4}]
         })
+
+    def test_attendance_page(self):
+        self.header['HTTP_TOKEN']='pbkdf2_sha256$320000$FKn16ArC5AlAm4nivt8agY$5IiDXKX0k2hJTujEMXrHmlDmVtKPeun6AIpOzQvXndY='
+        response = self.client.post('/faculty/view_courses/mark_attendance/attendance_page', {
+            'course_name': 'Digital Signal Processing', 'semester': 'Winter-2023', 'date': '2023-04-23'
+        }, **self.header)
+        self.assertEqual(response.status_code, 200)
+        print(json.loads(response.content))
