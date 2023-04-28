@@ -1,12 +1,15 @@
+import json
 from authorization.views import *
 from rest_framework.response import Response
 from rest_framework.status import *
-from datetime import datetime
 import pandas as pd
+
+def _convert_date(date):
+    return pd.to_datetime(date[4:15]).to_pydatetime()
 
 def faculty_auth(func):
     def inner(request):
-        if request.user['role']!='instructor':
+        if request.user.get('role')!='instructor':
             return Response(status=HTTP_401_UNAUTHORIZED)
         return func(request)
     return inner
@@ -25,10 +28,10 @@ def faculty_profile(request):
     }
     """
     user = request.user
-    return Response({'id': user['id'], 'email': user['email'],
-                     'age': user['age'], 'gender': user['gender'], 'post': user['post'],
-                     'description': user['description'], 'name': user['name'],
-                     'tot_courses': len(list(COLL_CRS.find({'instructor': user['_id']})))}, HTTP_200_OK)
+    return Response({'id': user.get('id'), 'email': user.get('email'),
+                     'age': user.get('age'), 'gender': user.get('gender'), 'post': user.get('post'),
+                     'description': user.get('description'), 'name': user.get('name'),
+                     'tot_courses': len(list(COLL_CRS.find({'instructor': user.get('_id')})))}, HTTP_200_OK)
 
 @api_view(['POST'])
 @authenticate_dec
@@ -41,7 +44,7 @@ def view_courses(request):
         semester: winter-2021/winter-2020/autumn-2200
         total students: 1/2/3/..
     """
-    courses = list(COLL_CRS.find({'instructor': request.user['_id']}))
+    courses = list(COLL_CRS.find({'instructor': request.user.get('_id')}))
     response = {'data': []}
     for course in courses:
         response['data'].append({'course_name': course['name'], 'semester': course['semester'], 'total_students':
@@ -89,7 +92,7 @@ def attendance_page(request):
     crs = COLL_CRS.find_one({'name': request.data.get('course_name'), 'semester': request.data.get('semester')})
     students_in_crs = crs['students']
     student_objs = list(COLL_USR.find({ "_id": { "$in": students_in_crs }}))
-    date_obj = datetime.strptime(request.data.get('date')[:10], "%Y-%m-%d")
+    date_obj = _convert_date(request.data.get('date'))
     session_obj = COLL_ATT.find_one({'course_id': crs['_id'], 'date': date_obj})
 
     # if there's no session for the
@@ -129,13 +132,15 @@ def change_attendance(request):
     response format: just the status code
     """
     # computing presence that needs to be stored
-    presence_arr = request.data.get('presence')
+    presence_arr = json.loads(request.data.get('presence'))
     student_ids = list(map(lambda arr: arr[0], presence_arr))
     student_objs = list(COLL_USR.find({"id": {"$in": student_ids}}))
-    presence = list(map(lambda tup: {'student_id': tup[0]['_id'], 'status': tup[1][2]}, zip(student_objs, presence_arr)))
+    presence = list(map(lambda tup: {'student_id': str(tup[0]['_id']), 'status': tup[1][2]}, zip(student_objs, presence_arr)))
 
     # getting course id from course name and batch
-    crs = COLL_CRS.find_one({'name': request.data.get('course_name'), 'batch': request.data.get('batch')})
+    crs = COLL_CRS.find_one({'name': request.data.get('course_name'), 'semester': request.data.get('semester')})
 
     # inserting the data
-    COLL_ATT.update_one({'course_id': crs['_id'], 'date': request.data.get('date'), 'presence': presence})
+    COLL_ATT.update_one({'course_id': crs['_id'], 'date': _convert_date(request.data.get('date'))},
+                        {'$set': {'presence': presence}})
+    return Response(status=HTTP_200_OK)
