@@ -59,11 +59,8 @@ function AttendanceSheet() {
 }
 
 const handleClickOnCheckBox = (event, index) => {  
-  console.log('hereeeeeeeeeeeeeeeeeeeeeeeeeee')
-  console.log(event)
-  console.log(index)
+
   const checked = event.target.value;
-  console.log(checked)
   setData((prevData) => {
     const newData = data;
     newData.data[index][2] = (checked) ? 'present' : 'absent';
@@ -143,7 +140,7 @@ const handleClickOnCheckBox = (event, index) => {
                           <label className="attendance-label" style={{ color: 'black' }}>
                             <input
                               type="checkbox"
-                              value={data.data[index][2] == 'absent' ? false : true}
+                              value={course[2]=== 'absent' ? false : true}
                               // disabled={true}
                               // onChange={e => handleAttendanceChange(e, course)}
                               // onChange={(e)=>{handleClickOnCheckBox(e, index )}}
