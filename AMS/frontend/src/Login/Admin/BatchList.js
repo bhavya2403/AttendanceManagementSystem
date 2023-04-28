@@ -1,5 +1,6 @@
 import React from 'react';
 import './BatchList.css';
+import FacultyTa from './FacultyTable';
 import {Link} from "react-router-dom";
 
 
@@ -31,14 +32,15 @@ function BatchList(){
     
   return (
     <div>
-    {batchlist.map((batch) => (
+    {/* {batchlist.map((batch) => (
       <div key={batch.id} className='student-list' color='black' >
-        {/* <Link to={`/Admin/StudentList/${batch.id}`}> */}
+        <Link to={`/Admin/StudentList/${batch.id}`}>
         <Link to={`/Admin/StudentList`}>
         {batch.Rollno}   {batch.StudentName}
         </Link>
       </div>
-    ))}
+    ))} */}
+    <FacultyTa data={batchlist} />
   </div>
   )
 }
