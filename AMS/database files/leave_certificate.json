@@ -1,53 +1,49 @@
-[
-    {
-        "_id": {
-            "$oid": "64466c497338944ea2f0e97b"
-        },
-        "student_id": {
-            "$oid": "6444fdc4d5b6d4bc99e7653a"
-        },
-        "report": "https://drive.google.com/drive/folders/16zR6SlgEUVHNsLKL4Mapx08bZ4mX12HX?usp=sharing",
-        "end_date": {
-            "$date": "2023-01-05T18:30:00.000Z"
-        },
-        "start_date": {
-            "$date": "2023-01-02T18:30:00.000Z"
-        },
-        "reason": "sick",
-        "status": "pending"
+[{
+    "_id": {
+      "$oid": "64466c637338944ea2f0e97c"
     },
-    {
-        "_id": {
-            "$oid": "64466c637338944ea2f0e97c"
-        },
-        "student_id": {
-            "$oid": "6444fdc4d5b6d4bc99e76541"
-        },
-        "report": "https://drive.google.com/drive/folders/16zR6SlgEUVHNsLKL4Mapx08bZ4mX12HX?usp=sharing",
-        "end_date": {
-            "$date": "2023-01-06T18:30:00.000Z"
-        },
-        "start_date": {
-            "$date": "2023-01-01T18:30:00.000Z"
-        },
-        "reason": "sick",
-        "status": "approved"
+    "student_id": {
+      "$oid": "6444fdc4d5b6d4bc99e76541"
     },
-    {
-        "_id": {
-            "$oid": "64466c7d7338944ea2f0e97d"
-        },
-        "student_id": {
-            "$oid": "6444fdc4d5b6d4bc99e76537"
-        },
-        "report": "https://drive.google.com/drive/folders/16zR6SlgEUVHNsLKL4Mapx08bZ4mX12HX?usp=sharing",
-        "end_date": {
-            "$date": "2023-02-05T18:30:00.000Z"
-        },
-        "start_date": {
-            "$date": "2023-02-02T18:30:00.000Z"
-        },
-        "reason": "not stated",
-        "status": "rejected"
-    }
-]
+    "end_date": {
+      "$date": "2023-01-06T18:30:00.000Z"
+    },
+    "start_date": {
+      "$date": "2023-01-01T18:30:00.000Z"
+    },
+    "reason": "sick",
+    "status": "approved",
+    "leave_type": "wedding"
+  },{
+    "_id": {
+      "$oid": "64466c7d7338944ea2f0e97d"
+    },
+    "student_id": {
+      "$oid": "6444fdc4d5b6d4bc99e76537"
+    },
+    "end_date": {
+      "$date": "2023-02-05T18:30:00.000Z"
+    },
+    "start_date": {
+      "$date": "2023-02-02T18:30:00.000Z"
+    },
+    "reason": "not stated",
+    "status": "rejected",
+    "leave_type": "function"
+  },{
+    "_id": {
+      "$oid": "6447b1b5b0d6afbe10a48ec0"
+    },
+    "student_id": {
+      "$oid": "6444fdc4d5b6d4bc99e7653a"
+    },
+    "end_date": {
+      "$date": "2023-01-05T18:30:00.000Z"
+    },
+    "start_date": {
+      "$date": "2023-01-02T18:30:00.000Z"
+    },
+    "reason": "sick",
+    "leave_type": "sick leave",
+    "status": "pending"
+  }]
