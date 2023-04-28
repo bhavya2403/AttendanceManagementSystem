@@ -5,7 +5,7 @@ from rest_framework.status import *
 import pandas as pd
 
 def _convert_date(date):
-    return pd.to_datetime(date[4:15]).to_pydatetime()
+    return pd.to_datetime(date[:10]).to_pydatetime()
 
 def faculty_auth(func):
     def inner(request):
