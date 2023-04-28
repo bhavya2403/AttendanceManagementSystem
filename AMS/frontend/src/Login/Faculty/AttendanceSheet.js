@@ -15,7 +15,7 @@ function AttendanceSheet() {
   const [isChecked, setIsChecked] = useState(false);
 
   const handleDateChange = (date) => {
-    setSelectedDate(date.toISOString());
+    setSelectedDate(date);
     handleFetchStudents(); //--> while tempdata is being used
     // setStudents(tempData) // comment during backend use
   };
@@ -32,11 +32,11 @@ function AttendanceSheet() {
           body: JSON.stringify({
             'course_name': `${window.course}`,
             'semester': `${window.sem}`,
-            'date': selectedDate,
+            'date': selectedDate.toString(),
           })
         };
         // sname sid presence: true, false
-      
+
         try{
               // Replace the following line with an API call to fetch the students for the given date
             const response = await fetch ("faculty/view_courses/mark_attendance/attendance_page", requestOptions);
@@ -46,9 +46,9 @@ function AttendanceSheet() {
             setIsLoading(false);
         } catch (err) {
           setIsLoading(false); // set loading state to false in case of error
-        
+
   };
-  
+
 }
 
   const handleAttendanceChange = (event, studentId) => {
@@ -59,25 +59,25 @@ function AttendanceSheet() {
 
   const onSubmitHandler = async (event) => {
     event.preventDefault();
-  
+
     const presentStudents = data.filter(s => s.present).map(s => ({ id: s.id, name: s.name }));
-  
+
     const requestOptions = {
       method: 'POST',
-      headers: { 
+      headers: {
         'Content-Type': 'application/json',
         'token': `${window.token}`,
         'Content-Type': 'application/json',
         // 'X-CSRFToken': csrftoken
       },
-      body: JSON.stringify({ 
+      body: JSON.stringify({
         'course_name' : `${window.course}`,
         'semester': `${window.sem}`,
         'date': selectedDate,
-        'arrayOfStudents':  presentStudents 
+        'arrayOfStudents':  presentStudents
       })
     };
-  
+
     const response = await fetch('/faculty/view_courses/mark_attendance/attendance_page/submit', requestOptions);
     if (response.ok) {
       console.log('responce on clicking submit ')
@@ -86,7 +86,7 @@ function AttendanceSheet() {
     } else {
       // Handle error
     }
-  
+
     setData([]);
     setIsChecked(true);
     setSelectedDate(null);
@@ -95,7 +95,7 @@ function AttendanceSheet() {
   console.log(data);
   return (
     <>
-      
+
       <FacultyNavbar />
       <div className="attendance-container">
       <h1 className="attendance-header">Take Attendance</h1>
@@ -116,12 +116,12 @@ function AttendanceSheet() {
             <form onSubmit={onSubmitHandler}>
               <div className="card" style={{ marginBottom: '20px' }}>
                 <ul className="attendance-list" style={{ width: '500px' }}>
-                  
+
                   <li>hello2</li>
                 {data.data.map((course, index) => {
                   console.log(course[1])
                   return (
-    
+
                       <li key={index} className="attendance-item">
                       <label className="attendance-label" style={{ color: 'black' }}>
                         <input
@@ -150,4 +150,4 @@ function AttendanceSheet() {
   );
 
  };
-export default AttendanceSheet; 
+export default AttendanceSheet;

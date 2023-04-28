@@ -1,18 +1,17 @@
 from django.test import TestCase, Client
 import json
 
-class TestAuth(TestCase):
+class TestFaculty(TestCase):
     def setUp(self):
         self.client = Client()
         self.token1 = 'pbkdf2_sha256$320000$cR6Y4s8Ohdgw778BQrJXLC$71YNDHFcAiCQL+fcPqogsyOYlCss7s86qYy2jtE0X+w='
         self.token2 = 'pbkdf2_sha256$320000$FKn16ArC5AlAm4nivt8agY$5IiDXKX0k2hJTujEMXrHmlDmVtKPeun6AIpOzQvXndY='
-        self.header = {'HTTP_TOKEN': 'pbkdf2_sha256$320000$cR6Y4s8Ohdgw778BQrJXLC$71YNDHFcAiCQL+fcPqogsyOYlCss7s86qYy2jtE0X+w='}
+        self.header = {'HTTP_TOKEN': self.token1}
 
     def test_faculty_profile(self):
         self.header['HTTP_TOKEN'] = self.token1
         response = self.client.post('/faculty/', **self.header)
         self.assertEqual(response.status_code, 200)
-        print(json.loads(response.content))
         self.assertEqual(json.loads(response.content), {
             'id': '2019748548', 'email': 'rohit_1234@gmail.com', 'age': 50, 'gender': 'Male', 'post': 'Professor',
             'description': 'rohit received his Phd from the Department of Computer Science, IIT Delhi in 2010, '
@@ -46,7 +45,7 @@ class TestAuth(TestCase):
         self.header['HTTP_TOKEN'] = self.token2
         response = self.client.post('/faculty/view_courses/mark_attendance/attendance_page', {
             'course_name': 'Digital Signal Processing', 'semester': 'Winter-2023',
-            'date': 'Fri Apr 23 2023 00:00:00 GMT+0530 (India Standard Time)'
+            'date': '2023-04-23'
         }, **self.header)
         self.assertEqual(response.status_code, 200)
         self.assertEqual(json.loads(response.content), {'data': [
@@ -65,7 +64,7 @@ class TestAuth(TestCase):
         self.header['HTTP_TOKEN'] = self.token2
         response = self.client.post('/faculty/view_courses/mark_attendance/attendance_page', {
             'course_name': 'Digital Signal Processing', 'semester': 'Winter-2023',
-            'date': 'Fri Apr 07 2023 00:00:00 GMT+0530 (India Standard Time)'
+            'date': '2023-08-01'
         }, **self.header)
         self.assertEqual(response.status_code, 200)
         self.assertEqual(json.loads(response.content), {'data': [
@@ -84,7 +83,7 @@ class TestAuth(TestCase):
         self.header['HTTP_TOKEN'] = self.token2
         response = self.client.post('/faculty/view_courses/mark_attendance/attendance_page/submit', {
             'course_name': 'Digital Signal Processing', 'semester': 'Winter-2023',
-            'date': 'Fri Apr 24 2023 00:00:00 GMT+0530 (India Standard Time)',
+            'date': '2023-04-24',
             'presence': json.dumps([
                 ['202002011', 'Ankit Patel', 'present'], ['202002012', 'Priya Shah', 'present'],
                 ['202002013', 'Raj Patel', 'present'], ['202002014', 'Neha Shah', 'present'],
