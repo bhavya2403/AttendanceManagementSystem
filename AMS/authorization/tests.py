@@ -30,9 +30,20 @@ class TestAuth(TestCase):
         self.assertEqual(response.status_code, 409) # conflict
 
     def test_login(self):
-        response = self.client.post('/auth/login/', {'email': 'nikhil_1234@gmail.com', 'password': 'rohnikhilt2002',
-                                                'role': 'admin'})
+        response = self.client.post('/auth/login/', {'id': '202001095', 'password': 'mkwrngwmnrg',
+                                                'role': 'student'})
         self.assertEqual(response.status_code, 200)
+
+    def test_login_faculty(self):
+        response = self.client.post('/auth/login/', {'id': '2019748548', 'password': 'fbfjnnjn',
+                                        'role': 'instructor'})
+        self.assertEqual(response.status_code, 200)
+
+    def test_login_admin(self):
+        response = self.client.post('/auth/login/', {'id': '208310832', 'password': 'nikhil1234',
+                                        'role': 'admin'})
+        self.assertEqual(response.status_code, 200)
+
 
     def test_login_fail(self):
         response = self.client.post('/auth/login/', {'email': 'abcd@gmail.com', 'password': 'efgh',

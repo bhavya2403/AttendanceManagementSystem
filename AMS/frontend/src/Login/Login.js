@@ -12,9 +12,10 @@ function Login(){
 
     const [email,setEmail] = useState(""); //used for taking the email value and setting it 
     const [password,setPassword] = useState(""); //used for taking the password value and setting it
-    const [radio, setRadio] = useState({isChecked: ""});
+    const [radio, setRadio] = useState("");
+    const [token, setToken] = useState(""); 
     function radioHandler(event) {
-        setRadio({ isChecked: event.target.value });
+        setRadio(event.target.value );
       }
     const emailHandler=(event)=>{ //es6 function
         setEmail(event.target.value); //function to save email as we write it
@@ -29,34 +30,45 @@ function Login(){
         try {
             const requestOptions = {
                 method: 'POST',
-                headers: {
+                headers: { //
                     'Content-Type': 'application/json',
                     'X-CSRFToken': csrftoken
                 },
                 body: JSON.stringify({
-                    'email': email,
+                    'id': email,
                     'password': password,
-                    'role': radio.isChecked,
+                    'role': radio,
                 })
-                }
+            }
+            console.log(requestOptions);
             // send request to backend and wait for the response
             const response = await fetch("/auth/login/", requestOptions);
+            console.log(response.body);
             const data = await response.json();
-            if(response.ok){
-                if(radio.isChecked==='Student')navigate('/Student');
-                if(radio.isChecked==='Faculty')navigate('./faculty');
-                if(radio.isChecked==='Admin')navigate('./admin');
+             const token = data['token'];
+             setToken(token);   
+            if(response.status === 200){
+                if (radio === "student") {
+                    navigate("/Profile", { state: { token } }, { csrf: { csrftoken } });
+                  } else if (radio === "instructor") {
+                    navigate("/FacultyProfile", { state: { token } }, { csrf: { csrftoken } });
+                  } else if (radio === "admin") {
+                    navigate("/AdminProfile", { state: { token } }, { csrf: { csrftoken } });
+                  }
             }
+            console.log(radio);
             console.log(response);
         } catch (error) {
+            console.log(error)
             // an error occured
         }
-    
+
         setEmail('');
         setPassword('');
-        setRadio({isChecked: ""});
+        setRadio('');
 
     };
+
     //200 ok 401 unauthorized 
     return (
         <div>
@@ -66,19 +78,19 @@ function Login(){
                 <form onSubmit={onSubmitHandler}>
                     <h3 style={{textAlign: "center"}}>Sign in</h3><br/>
                     <div className="mb-3">
-                        <label>Enter Email Address</label>
-                        <input type="email" className="form-control" id="email" required value={email} onChange={emailHandler}/>
+                        <label>Enter College ID</label>
+                        <input type="text" className="form-control" id="email" required value={email} onChange={emailHandler}/>
                     </div>
                     <div className="mb-3">
                         <label>Enter Password</label>
                         <input type="password" className="form-control" id="password" required value={password} onChange={passwordHandler}/>
                     </div><br/>
                     <div style={{display: 'flex', flexDirection: 'row'}} onChange={radioHandler}>
-                        <input type="radio" value="Student" name="role" style={{marginRight: '4px'}} required/>Student
+                        <input type="radio" value="student" name="role" style={{marginRight: '4px'}} required/>Student
                         <div style={{marginRight: '20px'}}/>
-                        <input type="radio" value="Faculty" name="role" style={{marginRight: '4px'}} required/> Faculty
+                        <input type="radio" value="instructor" name="role" style={{marginRight: '4px'}} required/> Faculty
                         <div style={{marginRight: '20px'}}/>
-                        <input type="radio" value="Admin" name="role" style={{marginRight: '4px'}} required/> Admin
+                        <input type="radio" value="admin" name="role" style={{marginRight: '4px'}} required/> Admin
                     </div>
                     <div className="d-grid" style={{marginTop: '30px'}}>
                     <button type="submit" style={{width: '100px'}} >Submit</button> 

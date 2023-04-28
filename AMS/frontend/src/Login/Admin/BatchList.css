@@ -1,0 +1,25 @@
+.student-list-container {
+    border: 1px solid black;
+    padding: 10px;
+  }
+
+  a {
+    color: #0a0909;
+  }
+  a:hover {
+     color: #00F
+  }
+  
+  .student-list {
+    list-style-type: none;
+    text-decoration-color: black;
+    /* margin: ; */
+    padding-bottom: 10px;
+    border: 1px solid black; 
+    text-align: center;
+  }
+  
+  .student-list li {
+    margin-bottom: 5px;
+    border: 1px solid black; 
+  }

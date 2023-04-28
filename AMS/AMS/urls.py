@@ -22,5 +22,6 @@ urlpatterns = [
     path('student/', include("student.urls")),
     path('faculty/', include("faculty.urls")),
     path('notif/', include("notif.urls")),
-    path('admin/', include("adminapp.urls"))
+    path('admin/', include("adminapp.urls")),
+    path('leavemanage/', include("leavemanage.urls"))
 ]

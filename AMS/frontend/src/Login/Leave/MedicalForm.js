@@ -5,17 +5,21 @@ import Card from '@mui/material/Card';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import LeaveNavbar from './LeaveNavbar';
+import { useLocation } from 'react-router-dom';
 
 format(new Date(), 'dd.MM.yyyy')
 
 function MedicalForm() {
+
+  const location = useLocation();
+  const token = location?.state?.token;
+  const csrftoken = location?.state?.csrftoken;
+  console.log(csrftoken);
   const [startLeaveDate, setStartLeaveDate] = useState('');
   const [endLeaveDate, setEndLeaveDate] = useState('');
   const [reason, setReason] = useState('');
   const [file, setFile] = useState();
   const [type, setType] = useState();
-
-
 
   const setTypeHandler = (event) => {
     setType(event.target.value);
@@ -48,14 +52,15 @@ function MedicalForm() {
     formData.append('endLeaveDate', endLeaveDate);
     formData.append('type', type);
     formData.append('reason', reason);
-    formData.append('file', file);
+    // formData.append('file', file);
 
     try {
       const requestOptions = {
         method: 'POST',
         headers: {
+          'token': `${token}`,
           'Content-Type': 'application/json',
-          // 'X-CSRFToken': csrftoken
+          'X-CSRFToken': csrftoken,
         },
 
         body: JSON.stringify({
@@ -63,11 +68,11 @@ function MedicalForm() {
           'endLeaveDate': endLeaveDate,
           'type': type,
           'reason': reason,
-          'file': file,
+          // 'file': file,
         }),
       }
 
-      const response = await fetch("URL", requestOptions);
+      const response = await fetch("medicalform/", requestOptions);
       const data = await response.json();
       if (response.ok) {
         toast.success("Leave application submitted successfully!");

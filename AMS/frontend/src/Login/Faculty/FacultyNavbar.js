@@ -2,7 +2,9 @@ import React from 'react'
 import { Link } from 'react-router-dom';
 import './FacultyNavbar.css'
 import '../Leave/MedicalForm.css'
-function FacultyNavbar(){
+
+function FacultyNavbar(props){
+    console.log(props.token);
     return (   
       <div>
       <nav className="navbar navbar-expand-lg" style={{backgroundColor: '#40513B', }} >
@@ -15,7 +17,8 @@ function FacultyNavbar(){
 
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-              <Link className="nav-link active" to="/Courses" style={{color: 'white'}}>View Courses</Link>
+          <Link className="nav-link active" to={{ pathname: "/Courses", state: { token: props.token } }} style={{color: 'white'}} >View Courses</Link>
+
 
               <li className="nav-item">
                   <Link className="nav-link active" to="/MedicalForm" style={{color: 'white'}}>Apply for Leave</Link>
