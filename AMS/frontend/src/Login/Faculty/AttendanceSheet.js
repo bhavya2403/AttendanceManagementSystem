@@ -7,19 +7,24 @@ import { useLocation } from 'react-router-dom';
 import { parseISO } from 'date-fns';
 function AttendanceSheet() {
 
-  const location = useLocation();
+  const [checkstatus, setcheckstatus] = useState(
+    new Array(100).fill(false)
+  );
 
+  let date_temp
   const [isLoading, setIsLoading] = useState(true); // add loading state
-  const [data, setData] = useState([]);
-  const [selectedDate, setSelectedDate] = useState();
+  const [data, setData] = useState(null);
+  const [selectedDate, setSelectedDate] = useState("");
   const [isChecked, setIsChecked] = useState(false);
 
   const handleDateChange = (date) => {
-    setSelectedDate(date.toISOString());
-    handleFetchStudents(); //--> while tempdata is being used
+    console.log(date);
+    setSelectedDate(date);
+    handleFetchStudents(date); //--> while tempdata is being used
     // setStudents(tempData) // comment during backend use
   };
-  const handleFetchStudents = async () => {
+  
+  const handleFetchStudents = async (date) => {
 
 
        const requestOptions = {
@@ -32,53 +37,68 @@ function AttendanceSheet() {
           body: JSON.stringify({
             'course_name': `${window.course}`,
             'semester': `${window.sem}`,
-            'date': selectedDate,
+            'date': date,
           })
         };
         // sname sid presence: true, false
-      
+
         try{
-              // Replace the following line with an API call to fetch the students for the given date
+              // Replace the following line with an API call  fetch the students for the given date
             const response = await fetch ("faculty/view_courses/mark_attendance/attendance_page", requestOptions);
             const data_local = await response.json();
             // id,name,present/absent
+            console.log("data local", data_local)
             setData(data_local)
+            console.log("data", data)
             setIsLoading(false);
         } catch (err) {
           setIsLoading(false); // set loading state to false in case of error
-        
+
   };
-  
+
 }
 
-  const handleAttendanceChange = (event, studentId) => {
-    const checked = event.target.checked;
-    setData(data.map(s => s.id === studentId ? { ...s, present: checked } : s));
-  };
+const handleClickOnCheckBox = (event, index) => {  
+  console.log('hereeeeeeeeeeeeeeeeeeeeeeeeeee')
+  console.log(event)
+  console.log(index)
+  const checked = event.target.value;
+  console.log(checked)
+  setData((prevData) => {
+    const newData = data;
+    newData.data[index][2] = (checked) ? 'present' : 'absent';
+    event.target.value = (checked) ? 'present' : 'absent';
+    setcheckstatus((newCheck)=>{
+      let new_t = checkstatus
+      new_t[index] = (new_t[index] ? false : true);
+      return new_t;
+    })
+    return newData;
+  });
+  console.log(data);
+}
+
 
 
   const onSubmitHandler = async (event) => {
     event.preventDefault();
-  
-    const presentStudents = data.filter(s => s.present).map(s => ({ id: s.id, name: s.name }));
-  
+
     const requestOptions = {
       method: 'POST',
-      headers: { 
+      headers: {
         'Content-Type': 'application/json',
         'token': `${window.token}`,
-        'Content-Type': 'application/json',
         // 'X-CSRFToken': csrftoken
       },
-      body: JSON.stringify({ 
+      body: JSON.stringify({
         'course_name' : `${window.course}`,
         'semester': `${window.sem}`,
         'date': selectedDate,
-        'arrayOfStudents':  presentStudents 
+        'presence':  data.data,
       })
     };
-  
     const response = await fetch('/faculty/view_courses/mark_attendance/attendance_page/submit', requestOptions);
+    console.log(response);
     if (response.ok) {
       console.log('responce on clicking submit ')
       console.log(response)
@@ -86,16 +106,15 @@ function AttendanceSheet() {
     } else {
       // Handle error
     }
-  
-    setData([]);
-    setIsChecked(true);
-    setSelectedDate(null);
+    setData(null)
+    setSelectedDate("")
+    setIsLoading(true)
   };
   console.log(selectedDate);
   console.log(data);
   return (
     <>
-      
+
       <FacultyNavbar />
       <div className="attendance-container">
       <h1 className="attendance-header">Take Attendance</h1>
@@ -104,45 +123,47 @@ function AttendanceSheet() {
           <label className="attendance-label-date" style={{ marginTop: '20px',color: 'black', textAlign: 'center' }}>
             Select Date{''}
           </label>
-          <DatePicker className="attendance-date-picker" selected={selectedDate} onChange={handleDateChange} minDate={new Date(2023, 0, 1)} placeholderText="Select a date" dateFormat="dd/MM/yyyy" />
+          <DatePicker className="attendance-date-picker" selected={selectedDate} onChange={handleDateChange} minDate={new Date(2023, 0, 1)} placeholderText="Select a date"/>
         </div>
         <br />
         <br />
-        <li>hello0</li>
-        {selectedDate && data.length>0 && (
-          <>
-          <li>hello1</li>
-          <div>
-            <form onSubmit={onSubmitHandler}>
-              <div className="card" style={{ marginBottom: '20px' }}>
-                <ul className="attendance-list" style={{ width: '500px' }}>
-                  
-                  <li>hello2</li>
-                {data.data.map((course, index) => {
-                  console.log(course[1])
-                  return (
-    
-                      <li key={index} className="attendance-item">
-                      <label className="attendance-label" style={{ color: 'black' }}>
-                        <input
-                          type="checkbox"
-                          checked={course[2]}
-                          onChange={e => handleAttendanceChange(e, course[0])}
-                          style={{marginLeft: '10px' }}
-                        />
-                        <span style={{marginLeft: '10px'}}>{course[0]}</span>
-                        <span style={{marginLeft: '10px'}}>{course[1]}</span>
-                      </label>
-                    </li>
-                  );
-                })}
-                </ul>
-              </div>
-              <button type="submit" onClick={onSubmitHandler}>Submit</button>
-            </form>
-          </div>
-      </>
+        
+        {data && (
+            <>
+              <div>
+                <form>
+                  <div className="card" style={{ marginBottom: '20px' }}>
+                    <ul className="attendance-list" style={{ width: '500px' }}>
 
+                    {data.data.map((course, index) => {
+                      
+                      return (
+
+                          <li key={index} className="attendance-item">
+                          <label className="attendance-label" style={{ color: 'black' }}>
+                            <input
+                              type="checkbox"
+                              value={data.data[index][2] == 'absent' ? false : true}
+                              // disabled={true}
+                              // onChange={e => handleAttendanceChange(e, course)}
+                              // onChange={(e)=>{handleClickOnCheckBox(e, index )}}
+                              onClick={(e)=>{handleClickOnCheckBox(e, index )}}
+                              style={{marginLeft: '10px' }}
+                            />
+
+                            <span style={{marginLeft: '10px'}}>{course[0]}</span>
+                            <span style={{marginLeft: '10px'}}>{course[1]}</span>
+                          </label>
+                        </li>
+                      );
+                    })}
+                    </ul>
+                  </div>
+                  <button type="submit" onClick={onSubmitHandler}>Submit</button>
+                </form>
+              </div>
+            </>
+          
         )}
       </div>
     </>
@@ -150,4 +171,4 @@ function AttendanceSheet() {
   );
 
  };
-export default AttendanceSheet; 
+export default AttendanceSheet;
