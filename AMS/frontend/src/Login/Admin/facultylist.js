@@ -1,34 +1,36 @@
 import React from 'react';
 import './StudentList.css';
+import FacultyTa from './FacultyTable';
 import {Link} from "react-router-dom";
-import { createElement } from 'react';
 
 
-const studentlist = [
+
+const facultyli = [
   {
-      id: '1',
+      id: '243455465',
       StudentName: 'Vineet',
   },
   {
-    id: '2',
-    StudentName: 'Samay',
+      id: '234556778',
+      StudentName: 'Samay',
   },
 ]
 
 
-function StudentList(){
+function FacultyList(){
     
   return (
     <div>
-    {studentlist.map((student) => (
-      <div key={student.id} style={{ display: 'block', backgroundColor: '#60573D', flexDirection: 'row' }}>
-        <Link to={`/student/Profile/${student.id}`}>
-          {student.id} ({student.StudentName})
+    {/* {facultyli.map((faculty) => (
+      <div key={faculty.id} className='list-container'  style={{ display: 'block', flexDirection: 'row' }}>
+        <Link to={`/student/Profile/${faculty.id}`} className='list-item'>
+          {faculty.id} ({faculty.StudentName})
         </Link>
       </div>
-    ))}
+    ))} */}
+    <FacultyTa data={facultyli} />
   </div>
   )
 }
 
-export default StudentList 
+export default FacultyList 
