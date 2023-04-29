@@ -48,7 +48,11 @@ function Login(){
              const token = data['token'];
              setToken(token);   
             if(response.status === 200){
+                window.role= radio
+                window.id = email
                 if (radio === "student") {
+                    window.role= radio
+                    window.id = email
                     navigate("/Profile", { state: { token } }, { csrf: { csrftoken } });
                   } else if (radio === "instructor") {
                     navigate("/FacultyProfile", { state: { token } }, { csrf: { csrftoken } });

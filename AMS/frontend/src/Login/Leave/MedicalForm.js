@@ -14,7 +14,6 @@ function MedicalForm() {
   const location = useLocation();
   const token = location?.state?.token;
   const csrftoken = location?.state?.csrftoken;
-  console.log(csrftoken);
   const [startLeaveDate, setStartLeaveDate] = useState('');
   const [endLeaveDate, setEndLeaveDate] = useState('');
   const [reason, setReason] = useState('');
@@ -64,15 +63,17 @@ function MedicalForm() {
         },
 
         body: JSON.stringify({
-          'startLeaveDate': startLeaveDate,
-          'endLeaveDate': endLeaveDate,
-          'type': type,
-          'reason': reason,
+          'start_date': startLeaveDate,
+          'end_date': endLeaveDate,
+          'leave_type': type,
+          'report': reason,
+          'id': `${window.id}`,
+          'role': `${window.role}`,
           // 'file': file,
         }),
       }
 
-      const response = await fetch("medicalform/", requestOptions);
+      const response = await fetch("leavemanage/medicalform/", requestOptions);
       const data = await response.json();
       if (response.ok) {
         toast.success("Leave application submitted successfully!");

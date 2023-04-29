@@ -1,8 +1,9 @@
-import json
+from bson.objectid import ObjectId
 from authorization.views import *
 from rest_framework.response import Response
 from rest_framework.status import *
 import pandas as pd
+import json
 
 def _convert_date(date):
     return pd.to_datetime(date[:10]).to_pydatetime()
@@ -62,7 +63,7 @@ def mark_attendance(request):
         semester in body
     }
     response format: Returns a list of classes that happened in the course. each element:
-        'date': date of the class start in the format of "2023-03-21"
+        'date': date of the class start in the format as shown in test
         'total_present': total number of students currently present in the class
     """
     course_obj = COLL_CRS.find_one({'name': request.data.get('course_name'), 'semester': request.data.get('semester')})
@@ -89,35 +90,22 @@ def attendance_page(request):
     }
     """
     # getting student objects from database and presence array from attendance data
-    print("__________________________________")
-    print("normal date", request.data.get('date'))
     crs = COLL_CRS.find_one({'name': request.data.get('course_name'), 'semester': request.data.get('semester')})
-    students_in_crs = crs['students']
-    student_objs = list(COLL_USR.find({ "_id": { "$in": students_in_crs }}))
     date_obj = _convert_date(request.data.get('date'))
-    print("converted-date in attendance page", date_obj)
-    
     session_obj = COLL_ATT.find_one({'course_id': crs['_id'], 'date': date_obj})
-    print(session_obj)
-
-    # if there's no session for the
     if not session_obj:
         COLL_ATT.insert_one({
             'course_id': crs['_id'], 'date': date_obj,
-            'presence': list(map(lambda student_id: {'student_id': str(student_id), 'status': 'absent'}, students_in_crs))
+            'presence': list(map(lambda student_id: {'student_id': str(student_id), 'status': 'absent'}, crs['students']))
         })
         session_obj = COLL_ATT.find_one({'course_id': crs['_id'], 'date': date_obj})
-    presence = session_obj['presence']
 
-    # sorting both of the arrays id'wise
-    presence.sort(key=lambda s: s['student_id'])
-    student_objs.sort(key=lambda s: str(s['_id']))
-    response = {'data': []}
-    for (student, present) in zip(student_objs, presence):
-        response['data'].append([student['id'], student['name'], present['status']])
-    response['data'].sort()
-    print("printing data inside attendance page", response['data'])
-    return Response(response, HTTP_200_OK)
+    data = []
+    for presence_stud in session_obj['presence']:
+        student_obj = COLL_USR.find_one({'_id': ObjectId(presence_stud['student_id'])})
+        data.append([student_obj['id'], student_obj['name'], presence_stud['status']])
+    data.sort()
+    return Response({'data': data}, HTTP_200_OK)
 
 @api_view(['POST'])
 @authenticate_dec
@@ -138,19 +126,16 @@ def change_attendance(request):
     response format: just the status code
     """
     # computing presence that needs to be stored
-
     presence_arr = request.data.get('presence')
-    student_ids = list(map(lambda arr: arr[0], presence_arr))
-    student_objs = list(COLL_USR.find({"id": {"$in": student_ids}}))
-    presence = list(map(lambda tup: {'student_id': str(tup[0]['_id']), 'status': tup[1][2]}, zip(student_objs, presence_arr)))
-    print("____________________________")
-    print("normal date", request.data.get('date'))
-    print("converted-date in change attendance",  _convert_date(request.data.get('date')))
-
+    go_in_db = []
+    for stud_id, name, present in presence_arr:
+        stud_obj = COLL_USR.find_one({'id': stud_id})
+        go_in_db.append({'student_id': str(stud_obj['_id']), 'status': present})
 
     # getting course id from course name and batch
     crs = COLL_CRS.find_one({'name': request.data.get('course_name'), 'semester': request.data.get('semester')})
+
     # inserting the data
     COLL_ATT.update_one({'course_id': crs['_id'], 'date': _convert_date(request.data.get('date'))},
-                        {'$set': {'presence': presence}})
+                        {'$set': {'presence': go_in_db}})
     return Response(status=HTTP_200_OK)
