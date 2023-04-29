@@ -91,7 +91,7 @@ const handleClickOnCheckBox = (event, index) => {
         'course_name' : `${window.course}`,
         'semester': `${window.sem}`,
         'date': selectedDate,
-        'presence':  data.data,
+        'presence':   JSON.stringify(data.data),
       })
     };
     const response = await fetch('/faculty/view_courses/mark_attendance/attendance_page/submit', requestOptions);

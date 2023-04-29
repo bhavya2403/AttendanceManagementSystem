@@ -126,11 +126,10 @@ def change_attendance(request):
     response format: just the status code
     """
     # computing presence that needs to be stored
-<<<<<<< HEAD
+ 
     presence_arr = request.data.get('presence')
-=======
+
     presence_arr = json.loads(request.data.get('presence'))
->>>>>>> 701170ec626a83a1d16d6e1563af3624f2d6ba19
     go_in_db = []
     for stud_id, name, present in presence_arr:
         stud_obj = COLL_USR.find_one({'id': stud_id})

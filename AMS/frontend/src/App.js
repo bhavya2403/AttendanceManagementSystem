@@ -15,11 +15,13 @@ import Navbar from './Login/Student/Navbar';
 import LeaveManagement from './Login/Admin/LeaveManagement';
 import ViewCourses from './Login/Admin/ViewCourses'
 
+
 window.token="";
 window.course="";
 window.sem="";
 window.role="";
 window.id="";
+
 function App() {
   return (
     <>

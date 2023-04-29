@@ -17,7 +17,7 @@ def apply_leave(request):
     COLL_LVE.insert_one({'start_date': request.data.get("start_date"),
                          'end_date': request.data.get("end_date"),
                          'leave_type': request.data.get('leave_type'),
-                         'report': request.data.get('reason'),
+                         'report': request.data.get('report'),
                          'id': request.user.get('id'),
                          'role': request.user.get('role'),
                          'status': 'pending'})
@@ -48,11 +48,12 @@ def change_status(request):
 def get_leaves(request):
     """
         given the token of user we return the list of leaves
-        response is list of [leave id, leave type, reason, start date, end date and status]
+        response is list of [leave id, user id, user role, leave type, reason, start date, end date and status]
     """
     usr = request.user
-    leave_objs = list(COLL_LVE.find({'id': usr['_id']} if usr['role']!='admin' else None))
+    leave_objs = list(COLL_LVE.find({'id': usr['id'], 'role': usr['role']} if usr['role']!='admin' else None))
     data = []
     for obj in leave_objs:
-        data.append([obj['_id', obj['leave_type'], obj['reason'], obj['start_date'], obj['end_date'], obj['status']]])
+        data.append([str(obj['_id']), obj['id'], obj['role'], obj['leave_type'], obj['report'], obj['start_date'],
+                     obj['end_date'], obj['status']])
     return Response({'data': data}, HTTP_200_OK)

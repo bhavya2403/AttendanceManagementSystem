@@ -18,7 +18,7 @@ function LeaveNavbar(){
                   <Link className="nav-link active" to="/PastLeaves" style={{color: 'white'}}>See Past Leaves</Link>
               </ul>
 
-              <Link className="nav-link active" to="/"  style={{ color: 'white'}}>Go back</Link>
+              <Link className="nav-link active" to="/"  style={{ color: 'white'}}>Logout</Link>
             </div>
           </div>
         </nav>

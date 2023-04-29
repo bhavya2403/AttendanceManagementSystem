@@ -3,8 +3,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import FacultyNavbar from './FacultyNavbar';
 import {useEffect, useState} from 'react'
-import { useLocation } from 'react-router-dom';
-import { parseISO } from 'date-fns';
+
 function AttendanceSheet() {
 
   const [checkstatus, setcheckstatus] = useState(
@@ -19,7 +18,6 @@ function AttendanceSheet() {
 
   const handleDateChange = (date) => {
     console.log(date);
-    setSelectedDate(date);
     handleFetchStudents(date); //--> while tempdata is being used
     // setStudents(tempData) // comment during backend use
   };
@@ -58,63 +56,14 @@ function AttendanceSheet() {
 
 }
 
-const handleClickOnCheckBox = (event, index) => {  
-
-  const checked = event.target.value;
-  setData((prevData) => {
-    const newData = data;
-    newData.data[index][2] = (checked) ? 'present' : 'absent';
-    event.target.value = (checked) ? 'present' : 'absent';
-    setcheckstatus((newCheck)=>{
-      let new_t = checkstatus
-      new_t[index] = (new_t[index] ? false : true);
-      return new_t;
-    })
-    return newData;
-  });
-  console.log(data);
-}
-
-
-
-  const onSubmitHandler = async (event) => {
-    event.preventDefault();
-
-    const requestOptions = {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'token': `${window.token}`,
-        // 'X-CSRFToken': csrftoken
-      },
-      body: JSON.stringify({
-        'course_name' : `${window.course}`,
-        'semester': `${window.sem}`,
-        'date': selectedDate,
-        'presence':  data.data,
-      })
-    };
-    const response = await fetch('/faculty/view_courses/mark_attendance/attendance_page/submit', requestOptions);
-    console.log(response);
-    if (response.ok) {
-      console.log('responce on clicking submit ')
-      console.log(response)
-      // Handle success
-    } else {
-      // Handle error
-    }
-    setData(null)
-    setSelectedDate("")
-    setIsLoading(true)
-  };
   console.log(selectedDate);
   console.log(data);
+
   const getColor = (atten) => {
     return atten==='present'?'green':'red';
   }
   return (
     <>
-
       <FacultyNavbar />
       <div className="attendance-container">
       <h1 className="attendance-header">Take Attendance</h1>
@@ -142,8 +91,7 @@ const handleClickOnCheckBox = (event, index) => {
                           <li key={index} className="attendance-item">
                              
                           <label className="attendance-label" style={{ color: getColor(course[2]) }}>
-                           
-
+                          
                             <span style={{marginLeft: '10px'}}>{course[0]}</span>
                             <span style={{marginLeft: '10px'}}>{course[1]}</span>
                           </label>
