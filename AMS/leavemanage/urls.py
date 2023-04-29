@@ -14,8 +14,10 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.urls import path
-from authorization import views
+from leavemanage import views
 
 urlpatterns = [
-    path('medicalform/', views.apply_leave, name='apply leave')
+    path('medicalform/', views.apply_leave, name='apply leave'),
+    path('change_status/', views.change_status, name='change status'),
+    path('get_leaves/', views.get_leaves, name='get leaves')
 ]
