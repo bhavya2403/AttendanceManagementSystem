@@ -1,26 +1,26 @@
 .medical-table {
     border-collapse: collapse;
+    background-color: #EDF1D6;
     margin-top: 20px;
+    margin: 0 auto;
 }
   
   .medical-table th,
   .medical-table td {
     padding: 8px;
     text-align: left;
-    border: 1px solid #ddd;
+    border: 1px solid black;
+    color: black;
   }
   
   .medical-table th {
-    background-color: #f2f2f2;
+    background-color: #EDF1D6;
+    color: black;
   }
-  
-  
-  .medical-form-table tr:nth-child(even) {
-    background-color: #f9f9f9;
-  }
-  
+
   .medical-form-table tr:hover {
-    background-color: #ddd;
+    background-color: #EDF1D6;
+    color: black;
   }
   
   .medical-form-table .approved {

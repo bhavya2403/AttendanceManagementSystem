@@ -18,7 +18,7 @@ function FacultyProfile() {
     const csrftoken = location?.state?.csrftoken;
 
     window.token = token;
-    console.log(token);
+
     const requestOptions = {
       method: 'POST',
       headers: { 

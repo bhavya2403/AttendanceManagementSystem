@@ -16,9 +16,12 @@ import LeaveManagement from './Login/Admin/LeaveManagement';
 import ViewCourses from './Login/Admin/ViewCourses'
 import FacultyNavbar from './Login/Faculty/FacultyNavbar';
 
+
 window.token="";
 window.course="";
 window.sem="";
+window.role="";
+window.id="";
 
 function App() {
   return (

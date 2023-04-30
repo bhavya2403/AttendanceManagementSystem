@@ -14,6 +14,7 @@ function Profile(props) {
   const location = useLocation();
   const token = location?.state?.token;
   const csrftoken = location?.state?.csrftoken;
+  window.token = token;
   const requestOptions = {
     method: 'POST',
     headers: {

@@ -2,7 +2,9 @@ import React from 'react'
 import { Link } from 'react-router-dom';
 import './Navbar.css'
 function Navbar() {
+  
   return (
+
 
     <nav className="navbar navbar-expand-lg" style={{ backgroundColor: '#40513B', }}>
       <div className="container-fluid" >
@@ -25,7 +27,7 @@ function Navbar() {
 
           </ul>
 
-          <Link className="nav-link active" to="/" style={{ color: 'white' }}>Logout</Link>
+          <Link className="nav-link active" to ="/" style={{ color: 'white' }}>Logout</Link>
         </div>
       </div>
     </nav>

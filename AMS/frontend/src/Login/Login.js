@@ -48,11 +48,18 @@ function Login(){
              const token = data['token'];
              setToken(token);   
             if(response.status === 200){
+                
                 if (radio === "student") {
+                    window.role= radio
+                    window.id = email
                     navigate("/Profile", { state: { token } }, { csrf: { csrftoken } });
                   } else if (radio === "instructor") {
+                    window.role= radio
+                    window.id = email
                     navigate("/FacultyProfile", { state: { token } }, { csrf: { csrftoken } });
                   } else if (radio === "admin") {
+                    window.role= radio
+                    window.id = email
                     navigate("/AdminProfile", { state: { token } }, { csrf: { csrftoken } });
                   }
             }

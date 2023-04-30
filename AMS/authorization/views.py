@@ -46,35 +46,3 @@ def login(request):
         input and returns token in case of successful scenario
     '''
     return Response({'token': request.user.get('password')}, HTTP_200_OK)
-
-@api_view(['POST'])
-@authenticate_dec
-def register(request):
-    '''
-        Takes token of admin, create_id, create_password, create_role as
-        input and adds entry of new user into database
-    '''
-    if request.data.get('role')!='admin':
-        return Response(status=HTTP_401_UNAUTHORIZED)
-    user = COLL_USR.find_one({'id': request.data.get('create_id'),
-                              'role': request.data.get('create_role')})
-    if user is not None:
-        return Response(status=HTTP_409_CONFLICT)
-    COLL_USR.insert_one({'id': request.data.get('create_id'),
-                         'password': make_password(request.data.get('create_password')),
-                         'role': request.data.get('create_role')})
-    return Response(status=HTTP_200_OK)
-
-@api_view(['POST'])
-@authenticate_dec
-def apply_leave(request):
-    """"""
-    if request.data.get('role') not in {'student', 'instructor'}:
-        return Response(status=HTTP_401_UNAUTHORIZED)
-    COLL_LVE.insert_one({'start_date': request.data.get("start_date"),
-                         'end_date': request.data.get("end_date"),
-                         'reason': request.data.get('reason'),
-                         'report': request.data.get('reason'),
-                         'id': request.user.get('id'),
-                         'status': 'pending'})
-    return Response(status=HTTP_200_OK)

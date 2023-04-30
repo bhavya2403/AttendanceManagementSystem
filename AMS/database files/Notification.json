@@ -1,0 +1,28 @@
+[{
+    "_id": {
+      "$oid": "6419b38357057177e69f8de3"
+    },
+    "userID": "6151df68b0d0da57c49e146f",
+    "message": "New message from admin",
+    "date_created": {
+      "$date": "2023-03-22T15:30:00.000Z"
+    }
+  },{
+    "_id": {
+      "$oid": "6419b49657057177e69f8deb"
+    },
+    "userID": "6151df68b0w0da57c49e146f",
+    "message": "New message from admin",
+    "date_created": {
+      "$date": "2023-03-22T15:30:00.000Z"
+    }
+  },{
+    "_id": {
+      "$oid": "6419b4a157057177e69f8dec"
+    },
+    "userID": "6151df68q0d0da57c49e146f",
+    "message": "New message from admin",
+    "date_created": {
+      "$date": "2023-03-22T15:30:00.000Z"
+    }
+  }]

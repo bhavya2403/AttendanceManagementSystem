@@ -14,11 +14,9 @@ function MedicalForm() {
   const location = useLocation();
   const token = location?.state?.token;
   const csrftoken = location?.state?.csrftoken;
-  console.log(csrftoken);
   const [startLeaveDate, setStartLeaveDate] = useState('');
   const [endLeaveDate, setEndLeaveDate] = useState('');
   const [reason, setReason] = useState('');
-  const [file, setFile] = useState();
   const [type, setType] = useState();
 
   const setTypeHandler = (event) => {
@@ -35,10 +33,6 @@ function MedicalForm() {
 
   const reasonHandler = (event) => {
     setReason(event.target.value);
-  }
-
-  const fileHandler = (event) => {
-    setFile(event.target.files[0]);
   }
 
 
@@ -58,21 +52,23 @@ function MedicalForm() {
       const requestOptions = {
         method: 'POST',
         headers: {
-          'token': `${token}`,
+          'token': `${window.token}`,
           'Content-Type': 'application/json',
           'X-CSRFToken': csrftoken,
         },
 
         body: JSON.stringify({
-          'startLeaveDate': startLeaveDate,
-          'endLeaveDate': endLeaveDate,
-          'type': type,
-          'reason': reason,
+          'start_date': startLeaveDate,
+          'end_date': endLeaveDate,
+          'leave_type': type,
+          'report': reason,
+          'id': `${window.id}`,
+          'role': `${window.role}`,
           // 'file': file,
         }),
       }
-
-      const response = await fetch("medicalform/", requestOptions);
+      
+      const response = await fetch("leavemanage/medicalform/", requestOptions);
       const data = await response.json();
       if (response.ok) {
         toast.success("Leave application submitted successfully!");
@@ -90,15 +86,12 @@ function MedicalForm() {
     setReason('');
     console.log(type);
     setType('');
-    console.log(file);
-    setFile(null);
-    document.getElementById("file").value = "";
   }
 
   return (
     <div>
       <LeaveNavbar />
-      <Card style={{ marginLeft: "250px", borderRadius: '10px', backgroundColor: '#EDF1D6', boxShadow: '0px 10px 30px black', marginTop: '40px', marginBottom: '40px', height: 'auto', width: '1000px' }}>
+      <Card style={{ marginLeft: "250px", borderRadius: '10px', backgroundColor: '#EDF1D6', boxShadow: '0px 10px 30px black', marginTop: '110px', marginBottom: '40px', height: 'auto', width: '1000px' }}>
         <form className="form" onSubmit={onSubmitHandler} style={{ marginTop: '50px' }}>
           <h1>FILL THIS FORM FOR LEAVE</h1><br /><br /><br />
 
@@ -116,11 +109,7 @@ function MedicalForm() {
             <label className="form-label">Reason:</label>
             <textarea className="form-textarea" id="reason" value={reason} onChange={reasonHandler} required />
           </div>
-          <div style={{ display: 'flex' }}>
-            <label className="form-label" style={{ marginRight: '110px' }}>Upload Documents</label>
-            <input style={{ border: 'none', outline: 'none', }} id="file" type="file" accepts=".pdf,.doc.,.docx" onChange={fileHandler} required />
-          </div>
-          <button className="form-button" style={{ backgroundColor: '#40513B', marginRight: '50px', marginTop: '30px' }} type="submit">Submit</button>
+          <button className="form-button" style={{ backgroundColor: '#40513B', marginRight: '50px', marginTop: '30px', marginBottom: '40px' }} type="submit">Submit</button>
         </form>
       </Card>
     </div>

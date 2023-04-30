@@ -1,7 +1,7 @@
 import React from 'react'
 import AdminNavbar from './AdminNavbar'
 import BatchList from './BatchList';
-import FacultyList from './Facultylist';
+import FacultyList from './FacultyList';
 import { Routes, Route } from 'react-router-dom';
 import AdminProfile from './AdminProfile';
 import LeaveManagement from './LeaveManagement';
