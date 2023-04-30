@@ -2,6 +2,7 @@ import React from 'react';
 import './StudentList.css';
 import FacultyTa from './FacultyTable';
 import {Link} from "react-router-dom";
+import AdminNavbar from './AdminNavbar';
 
 
 
@@ -20,6 +21,8 @@ const facultyli = [
 function FacultyList(){
     
   return (
+    <>
+    {/* <AdminNavbar/> */}
     <div>
     {/* {facultyli.map((faculty) => (
       <div key={faculty.id} className='list-container'  style={{ display: 'block', flexDirection: 'row' }}>
@@ -30,6 +33,7 @@ function FacultyList(){
     ))} */}
     <FacultyTa data={facultyli} />
   </div>
+  </>
   )
 }
 

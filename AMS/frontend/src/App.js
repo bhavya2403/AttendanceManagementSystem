@@ -14,6 +14,7 @@ import AdminProfile from './Login/Admin/AdminProfile';
 import Navbar from './Login/Student/Navbar';
 import LeaveManagement from './Login/Admin/LeaveManagement';
 import ViewCourses from './Login/Admin/ViewCourses'
+import FacultyNavbar from './Login/Faculty/FacultyNavbar';
 
 
 window.token="";
@@ -28,6 +29,9 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Login />} />
+          <Route path="/Faculty" element={<FacultyNavbar />} />
+          {/* <Route path="/AdminProfile" element={<AdminProfile />} /> */}
+          <Route path="/Admin/*" element={<Admin />} />
           <Route path="/Student" element={<Navbar />} />
           <Route path="/Profile" element={<Profile />} />
           <Route path="/SeeCourses/" element={<SeeCourses />} />
@@ -37,7 +41,6 @@ function App() {
           <Route path="/AttendanceSheet" element={<AttendanceSheet />} />
           <Route path="/ViewAttendance" element={<ViewAttendance />} />
           <Route path="/PastLeaves" element={<PastLeaves />} />
-          <Route path="/AdminProfile" element={<AdminProfile />} />
           <Route path="/LeaveManagement" element={<LeaveManagement />} />
           <Route path="/ViewCourses" element={<ViewCourses />} />
         </Routes>

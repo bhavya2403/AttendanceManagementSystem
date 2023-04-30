@@ -1,5 +1,6 @@
 import React from 'react';
 import Table from './Table';
+import AdminNavbar from './AdminNavbar';
 
 const data = [
   {
@@ -27,9 +28,12 @@ const data = [
 
 const Display = () => {
   return (
+    <>
+    {/* <AdminNavbar/> */}
     <div>
       <Table data={data} />
     </div>
+    </>
   );
 };
 

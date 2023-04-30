@@ -1,12 +1,21 @@
 import React from 'react'
 import './AdminProfile.css'
+<<<<<<< HEAD
 import AdminNavbar from './AdminNavbar'
+=======
+import AdminNavbar from './AdminNavbar';
+
+>>>>>>> 0b7e41036ce9c776574414996ffce35276a50a86
 function AdminProfile() {
    
     
     return (
         <>
+<<<<<<< HEAD
         <AdminNavbar/>
+=======
+        {/* <AdminNavbar/> */}
+>>>>>>> 0b7e41036ce9c776574414996ffce35276a50a86
         <div className="Acard-container" style={{ backgroundColor: '#9DC08B', color: 'white' }}>
             <header>
                 <img src="https://e7.pngegg.com/pngimages/109/994/png-clipart-teacher-student-college-school-education-avatars-child-face.png" />
