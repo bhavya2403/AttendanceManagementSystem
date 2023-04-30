@@ -17,16 +17,20 @@ function AdminNavbar() {
 
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-
-            <Link className="nav-link active" to="./Facultylist" style={{ color: 'white' }}>Faculty</Link>
-
+            <Link className="nav-link active" to="./RegisterUser" style={{ color: 'white' }}>Register User</Link>
           </ul>
           </div>
           
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+            <Link className="nav-link active" to="./Facultylist" style={{ color: 'white' }}>Faculty</Link>
+          </ul>
+          </div>
 
-            <Link className="nav-link active" to="./BatchList" style={{ color: 'white' }}>Student</Link>
+          <div className="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+
+            <Link className="nav-link active" to="./RegisterCourse" style={{ color: 'white' }}>Student</Link>
            </ul>
           </div>
 

@@ -6,6 +6,8 @@ import { Routes, Route } from 'react-router-dom';
 import AdminProfile from './AdminProfile';
 import LeaveManagement from './LeaveManagement';
 import ViewCourses from './ViewCourses';
+import Registration from './RegisterUser';
+import CourseRegistrationForm from './RegisterCourse';
 
 
 function Admin() {
@@ -14,6 +16,8 @@ function Admin() {
       <AdminNavbar />
       <Routes>
         <Route path="/BatchList"  element={<BatchList/>} /> 
+        <Route path="/RegisterUser"  element={<Registration/>} /> 
+        <Route path="/RegisterCourse"  element={<CourseRegistrationForm/>} /> 
         <Route path="/Facultylist"  element={<FacultyList/>} /> 
         <Route path="/AdminProfile"  element={<AdminProfile/>} />
         <Route path="/LeaveManagement"  element={<LeaveManagement/>} />
