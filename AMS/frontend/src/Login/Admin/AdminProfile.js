@@ -1,8 +1,12 @@
 import React from 'react'
 import './AdminProfile.css'
-
+import AdminNavbar from './AdminNavbar'
 function AdminProfile() {
+   
+    
     return (
+        <>
+        <AdminNavbar/>
         <div className="Acard-container" style={{ backgroundColor: '#9DC08B', color: 'white' }}>
             <header>
                 <img src="https://e7.pngegg.com/pngimages/109/994/png-clipart-teacher-student-college-school-education-avatars-child-face.png" />
@@ -17,6 +21,7 @@ function AdminProfile() {
                 <li>Designation</li>
             </ul>
         </div>
+        </>
     )
 }
 

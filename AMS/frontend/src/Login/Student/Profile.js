@@ -4,6 +4,7 @@ import ProgressBar from './ProgressBar';
 import Navbar from './Navbar';
 import { useLocation } from 'react-router-dom';
 import { SelectProvider } from '@mui/base';
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
 function Profile(props) {
 
