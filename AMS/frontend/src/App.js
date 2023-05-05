@@ -1,5 +1,6 @@
 import './App.css';
 import Login from './Login/Login';
+<<<<<<< HEAD
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Profile from './Login/Student/Profile'
 import SeeCourses from './Login/Student/SeeCourses';
@@ -17,10 +18,20 @@ window.course="";
 window.sem="";
 window.role="";
 window.id="";
+=======
+import StudentRoutes from './StudentRoutes';
+import FacultyRoutes from './FacultyRoutes';
+import LeaveManageRoutes from './LeaveManageRoutes';
+import AdminRoutes from './AdminRoutes';
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
+>>>>>>> 11538885694ad0082e1103cbd787ca4ce617fb4c
 
 function App() {
+  const location = useLocation();
+  console.log(location);
   return (
     <>
+<<<<<<< HEAD
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Login />} />
@@ -37,6 +48,15 @@ function App() {
         </Routes>
       </BrowserRouter>
 
+=======
+      <Routes>
+        <Route path="/" element={<Login />} />
+        <Route path="/student/*" element={<StudentRoutes />} />
+        <Route path="/faculty/*" element={<FacultyRoutes />} />
+        <Route path="/admin/*" element={<AdminRoutes />} />
+        <Route path="/leavemanage/*" element={<LeaveManageRoutes />} />
+      </Routes>
+>>>>>>> 11538885694ad0082e1103cbd787ca4ce617fb4c
     </>
   );
 }

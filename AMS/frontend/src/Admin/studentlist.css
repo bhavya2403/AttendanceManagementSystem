@@ -1,0 +1,54 @@
+.student-list-container {
+    border: 1px solid black;
+    padding: 10px;
+  }
+
+  a {
+    color: #0a0909;
+  }
+  a:hover {
+     color: #00F
+  }
+  
+  .student-list {
+    list-style-type: none;
+    text-decoration-color: black;
+    /* margin: ; */
+    padding-bottom: 10px;
+    border: 1px solid black; 
+    text-align: center;
+  }
+  
+  .student-list li {
+    margin-bottom: 5px;
+    border: 1px solid black; 
+  }
+
+  .list-container {
+    width: 100%;
+    text-align: center;
+    /* max-width: 600px; */
+    margin: 0 auto;
+    padding: 6px;
+    background-color: #c9b6b6;
+    border-radius: 5px;
+  }
+  
+  .list-item {
+    /* display: flex; */
+    align-items: center;
+    text-align: center;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+    font-size: 1.2rem;
+  }
+  
+  .list-item:last-child {
+    border-bottom: none;
+    text-align: center;
+  }
+  
+  .list-item:hover {
+    text-align: center;
+    background-color: #eee;
+  }

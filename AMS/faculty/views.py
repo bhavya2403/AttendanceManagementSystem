@@ -15,7 +15,7 @@ def faculty_auth(func):
         return func(request)
     return inner
 
-@api_view(['POST'])
+@api_view(['POST', 'GET'])
 @authenticate_dec
 @faculty_auth
 def faculty_profile(request):
@@ -55,7 +55,7 @@ def view_courses(request):
 @api_view(['POST'])
 @authenticate_dec
 @faculty_auth
-def mark_attendance(request):
+def view_attendance(request):
     """
     request format: {
         token of faculty in headers
@@ -90,6 +90,7 @@ def attendance_page(request):
     }
     """
     # getting student objects from database and presence array from attendance data
+    print(request.data.get('course_name'), request.data.get('semester'), request.data.get('date'))
     crs = COLL_CRS.find_one({'name': request.data.get('course_name'), 'semester': request.data.get('semester')})
     date_obj = _convert_date(request.data.get('date'))
     session_obj = COLL_ATT.find_one({'course_id': crs['_id'], 'date': date_obj})
@@ -104,7 +105,8 @@ def attendance_page(request):
     for presence_stud in session_obj['presence']:
         student_obj = COLL_USR.find_one({'_id': ObjectId(presence_stud['student_id'])})
         data.append([student_obj['id'], student_obj['name'], presence_stud['status']])
-    data.sort()
+    data.sort(key=lambda s: s[2]=='absent')
+    print(data)
     return Response({'data': data}, HTTP_200_OK)
 
 @api_view(['POST'])
