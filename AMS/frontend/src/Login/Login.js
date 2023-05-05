@@ -1,8 +1,16 @@
 import React, { useState} from 'react';
 import "./Login.css";
+<<<<<<< HEAD
+import Alert from 'react-bootstrap/Alert';
+import { json, useNavigate } from "react-router-dom";
+import Cookies from 'js-cookie';
+import { ToastContainer, toast } from 'react-toastify';
+const csrftoken = Cookies.get('csrftoken');
+=======
 import { Link, Outlet, json, useNavigate} from "react-router-dom";
 import { NavItem } from 'react-bootstrap';
 
+>>>>>>> 11538885694ad0082e1103cbd787ca4ce617fb4c
 
 function Login(){
     // declare states
@@ -32,9 +40,36 @@ function Login(){
         else if (response.status==401) setPageStatus('unauthorized');
         else {
             const data = await response.json();
+<<<<<<< HEAD
+             const token = data['token'];
+             setToken(token);   
+            if(response.status === 200){
+                
+                if (radio === "student") {
+                    window.role= radio
+                    window.id = email
+                    navigate("/Profile", { state: { token } }, { csrf: { csrftoken } });
+                  } else if (radio === "instructor") {
+                    window.role= radio
+                    window.id = email
+                    navigate("/FacultyProfile", { state: { token } }, { csrf: { csrftoken } });
+                  } else if (radio === "admin") {
+                    window.role= radio
+                    window.id = email
+                    navigate("/AdminProfile", { state: { token } }, { csrf: { csrftoken } });
+                  }
+            }
+            console.log(radio);
+            console.log(response);
+        } catch (error) {
+            console.log(error);
+            <Alert>Incorrect ID and Password</Alert>
+            // an error occured
+=======
             setToken(() => data.token);
             window.token = data.token;
             window.role = radio;
+>>>>>>> 11538885694ad0082e1103cbd787ca4ce617fb4c
         }
     };
     
