@@ -40,7 +40,7 @@ def change_status(request):
         return Response(HTTP_406_NOT_ACCEPTABLE)
     if request.data.get('change_to') not in {'pending', 'approved', 'rejected'}:
         return Response(status=HTTP_406_NOT_ACCEPTABLE)
-    COLL_LVE.update_one({'_id': leaveobj['_id']}, {'status': request.data.get('change_to')})
+    COLL_LVE.update_one({'_id': leaveobj['_id']}, {'$set':{'status': request.data.get('change_to')}})
     return Response(status=200)
 
 @api_view(['POST'])

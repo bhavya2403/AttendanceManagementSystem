@@ -13,11 +13,17 @@ class TestLeave(TestCase):
         response = self.client.post('/leavemanage/get_leaves/', **self.header)
         self.assertEqual(response.status_code, 200)
 
+    def test_get_leaves_other(self):
+        self.header = {'HTTP_TOKEN': self.token2}
+        response = self.client.post('/leavemanage/get_leaves/', **self.header)
+
+        self.assertEqual(response.status_code, 200)
+
     def test_insert_leave_fail(self):
         self.header = {'HTTP_TOKEN': self.token2}
         response = self.client.post('/leavemanage/medicalform/', {
             'leave_type': 'sick leave',
-            'reason': "I can't attend the class because of bla bla bla",
+            'report': "I can't attend the class because of bla bla bla",
             'start_date': "2023-04-25",
             'end_date': "2023-04-23"
         }, **self.header)
@@ -27,8 +33,14 @@ class TestLeave(TestCase):
         self.header = {'HTTP_TOKEN': self.token2}
         response = self.client.post('/leavemanage/medicalform/', {
             'leave_type': 'sick leave',
-            'reason': "I can't attend the class because of bla bla bla",
+            'report': "I can't attend the class because of bla bla bla",
             'start_date': "2023-04-25",
             'end_date': "2023-04-26"
         }, **self.header)
+        self.assertEqual(response.status_code, 200)
+
+    def test_change(self):
+        self.header =  {'HTTP_TOKEN': self.token1}
+        response = self.client.post('/leavemanage/change_status/', {
+            'leave_id': '644d273e551a2b0793ad1ea7', 'change_to': 'approved'}, **self.header)
         self.assertEqual(response.status_code, 200)

@@ -2,92 +2,63 @@ import React, { useState } from 'react';
 import { format } from 'date-fns'
 import './MedicalForm.css';  // import the CSS file
 import Card from '@mui/material/Card';
-import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import LeaveNavbar from './LeaveNavbar';
-import { useLocation } from 'react-router-dom';
+import Profile from '../Student/Profile';
+import { useNavigate } from 'react-router-dom';
 
 format(new Date(), 'dd.MM.yyyy')
 
 function MedicalForm() {
-
-  const location = useLocation();
-  const token = location?.state?.token;
-  const csrftoken = location?.state?.csrftoken;
+  const navigate = useNavigate();
   const [startLeaveDate, setStartLeaveDate] = useState('');
   const [endLeaveDate, setEndLeaveDate] = useState('');
   const [reason, setReason] = useState('');
   const [type, setType] = useState();
+  const [pageStatus, setPageStatus] = useState('noloading');
 
   const setTypeHandler = (event) => {
     setType(event.target.value);
   }
-
   const startLeaveDateHandler = (event) => {
     setStartLeaveDate(event.target.value);
   }
-
   const endLeaveDateHandler = (event) => {
     setEndLeaveDate(event.target.value);
   }
-
   const reasonHandler = (event) => {
     setReason(event.target.value);
   }
-
-
-
   let onSubmitHandler = async (event) => {
     event.preventDefault();
-
     const formData = new FormData();
-
     formData.append('startLeaveDate', startLeaveDate);
     formData.append('endLeaveDate', endLeaveDate);
     formData.append('type', type);
     formData.append('reason', reason);
     // formData.append('file', file);
 
-    try {
-      const requestOptions = {
-        method: 'POST',
-        headers: {
-          'token': `${window.token}`,
-          'Content-Type': 'application/json',
-          'X-CSRFToken': csrftoken,
-        },
+    const response = await fetch("/leavemanage/medicalform/", {
+      method: 'POST',
+      headers: {
+        'token': `${window.token}`,
+        'Content-Type': 'application/json',
+      },
 
-        body: JSON.stringify({
-          'start_date': startLeaveDate,
-          'end_date': endLeaveDate,
-          'leave_type': type,
-          'report': reason,
-          'id': `${window.id}`,
-          'role': `${window.role}`,
-          // 'file': file,
-        }),
-      }
-      
-      const response = await fetch("leavemanage/medicalform/", requestOptions);
-      const data = await response.json();
-      if (response.ok) {
-        toast.success("Leave application submitted successfully!");
-      }
-      console.log(response);
-    } catch (error) {
-
-    }
-
-    console.log(startLeaveDate);
-    setStartLeaveDate('');
-    console.log(endLeaveDate);
-    setEndLeaveDate('');
-    console.log(reason);
-    setReason('');
-    console.log(type);
-    setType('');
+      body: JSON.stringify({
+        'start_date': startLeaveDate,
+        'end_date': endLeaveDate,
+        'leave_type': type,
+        'report': reason,
+      }),
+    });
+    setPageStatus(() => (!response ? 'loading' : response.status == 406 ? 'wrongdata' : 'done'));
   }
 
+  if (pageStatus == 'done') {
+    alert("Data submitted successfully");
+    navigate(`/${window.role}/`);
+  }
   return (
     <div>
       <LeaveNavbar />
@@ -109,7 +80,8 @@ function MedicalForm() {
             <label className="form-label">Reason:</label>
             <textarea className="form-textarea" id="reason" value={reason} onChange={reasonHandler} required />
           </div>
-          <button className="form-button" style={{ backgroundColor: '#40513B', marginRight: '50px', marginTop: '30px', marginBottom: '40px' }} type="submit">Submit</button>
+          <div>{pageStatus == 'loading' ? "Please wait while submitting..." : pageStatus=='wrongdata'? 'End date < start date': ''}</div>
+          <button className="form-button" style={{ backgroundColor: '#40513B', marginRight: '50px', marginTop: '30px', marginBottom: '40px' }} type="submit" disabled={pageStatus == 'loading'}>Submit</button>
         </form>
       </Card>
     </div>

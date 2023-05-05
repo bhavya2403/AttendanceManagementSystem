@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import { useLocation } from 'react-router-dom';
 import AdminNavbar from './AdminNavbar'
 import BatchList from './BatchList';
 import FacultyList from './Facultylist';
@@ -10,7 +11,7 @@ import Registration from './RegisterUser';
 import CourseRegistrationForm from './RegisterCourse';
 
 
-function Admin() {
+function Admin(props) {
   return (
     <div>
       <AdminNavbar />
@@ -25,7 +26,6 @@ function Admin() {
 
       </Routes>
     </div>
-
   )
 }
 

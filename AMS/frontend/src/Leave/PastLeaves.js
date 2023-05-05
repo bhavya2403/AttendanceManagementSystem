@@ -1,43 +1,32 @@
 import React, { useState, useEffect } from 'react';
 import './PastLeaves.css';
 import Card from '@mui/material/Card';
-import CardHeader from '@mui/material/CardHeader';
-import CardContent from '@mui/material/CardContent';
-import Typography from '@mui/material/Typography';
 import LeaveNavbar from './LeaveNavbar';
+
 function PastLeaves() {
   const [data, setData] = useState(null); // set initial state to null
   const [isLoading, setIsLoading] = useState(true); // add loading state
-  const requestOptions = {
-    method: 'POST',
-    headers: {
-      'token': `${window.token}`,
-      'Content-Type': 'application/json',
-    },
 
-    body: JSON.stringify({
-      'id': `${window.id}`,
-      'role': `${window.role}`,
-      // 'file': file,
-    }),
+  async function sendingReq() {
+    const response = await fetch("/leavemanage/get_leaves/", {
+      method: 'POST',
+      headers: {
+        'token': `${window.token}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        'id': `${window.id}`,
+        'role': `${window.role}`,
+      }),
+    });
+    const data_local = await response.json();
+    setData(() => data_local);
+    setIsLoading(() => false); // set loading state to false
   }
-    
-      async function sendingReq() {
-        try {
-          const response = await fetch("leavemanage/get_leaves/", requestOptions);
-          const data_local = await response.json();
-          setData(data_local);
-          setIsLoading(false); // set loading state to false
-        } catch (err) {
-          setIsLoading(false); // set loading state to false in case of error
-        }
-      }
-    
-      useEffect(() => {
-        sendingReq();
-      }, []);
-      console.log(data);
-      console.log(requestOptions);
+  useEffect(() => {
+    sendingReq();
+  }, []);
+
   return (
     <>
     {isLoading ? (

@@ -1,51 +1,23 @@
 import './App.css';
 import Login from './Login/Login';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Admin from './Login/Admin/Admin';
-import Profile from './Login/Student/Profile'
-import SeeCourses from './Login/Student/SeeCourses';
-import MedicalForm from './Login/Leave/MedicalForm';
-import PastLeaves from './Login/Leave/PastLeaves';
-import FacultyProfile from './Login/Faculty/FacultyProfile';
-import Courses from './Login/Faculty/Courses';
-import ViewAttendance from './Login/Faculty/ViewAttendance';
-import AttendanceSheet from './Login/Faculty/AttendanceSheet';
-import AdminProfile from './Login/Admin/AdminProfile';
-import Navbar from './Login/Student/Navbar';
-import LeaveManagement from './Login/Admin/LeaveManagement';
-import ViewCourses from './Login/Admin/ViewCourses'
-import FacultyNavbar from './Login/Faculty/FacultyNavbar';
-
-
-window.token="";
-window.course="";
-window.sem="";
-window.role="";
-window.id="";
+import StudentRoutes from './StudentRoutes';
+import FacultyRoutes from './FacultyRoutes';
+import LeaveManageRoutes from './LeaveManageRoutes';
+import AdminRoutes from './AdminRoutes';
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 
 function App() {
+  const location = useLocation();
+  console.log(location);
   return (
     <>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Login />} />
-          <Route path="/Faculty" element={<FacultyNavbar />} />
-          {/* <Route path="/AdminProfile" element={<AdminProfile />} /> */}
-          <Route path="/Admin/*" element={<Admin />} />
-          <Route path="/Student" element={<Navbar />} />
-          <Route path="/Profile" element={<Profile />} />
-          <Route path="/SeeCourses/" element={<SeeCourses />} />
-          <Route path="/MedicalForm" element={<MedicalForm />} />
-          <Route path="/FacultyProfile" element={<FacultyProfile />} />
-          <Route path="/Courses" element={<Courses />} />
-          <Route path="/AttendanceSheet" element={<AttendanceSheet />} />
-          <Route path="/ViewAttendance" element={<ViewAttendance />} />
-          <Route path="/PastLeaves" element={<PastLeaves />} />
-          <Route path="/LeaveManagement" element={<LeaveManagement />} />
-          <Route path="/ViewCourses" element={<ViewCourses />} />
-        </Routes>
-      </BrowserRouter>
-
+      <Routes>
+        <Route path="/" element={<Login />} />
+        <Route path="/student/*" element={<StudentRoutes />} />
+        <Route path="/faculty/*" element={<FacultyRoutes />} />
+        <Route path="/admin/*" element={<AdminRoutes />} />
+        <Route path="/leavemanage/*" element={<LeaveManageRoutes />} />
+      </Routes>
     </>
   );
 }

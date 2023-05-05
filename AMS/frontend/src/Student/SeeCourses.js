@@ -140,7 +140,7 @@ const courses = [
         },
 ]
 function SeeCourses(){
-    
+    console.log(window.token);
     return (
         <>
         <Navbar/>
