@@ -16,11 +16,8 @@ function LeaveNavbar(){
               <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                   <Link className="nav-link active" to="/leavemanage/get_leaves" style={{color: 'white'}}>See Past Leaves</Link>
               </ul>
-              <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+              
                 <Link className='nav-link active' to={`/${window.role}/`} style={{color: 'white'}}>Profile</Link>
-              </ul>
-
-              <Link className="nav-link active" to="/"  style={{ color: 'white'}}>Logout</Link>
             </div>
           </div>
         </nav>

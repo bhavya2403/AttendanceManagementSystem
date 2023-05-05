@@ -96,8 +96,8 @@ function AttendanceSheet() {
                               style={{marginLeft: '10px' }}
                             />
 
-                            <span style={{marginLeft: '10px'}}>{course[0]}</span>
-                            <span style={{marginLeft: '10px'}}>{course[1]}</span>
+                            <span style={{fontSize: '1em'}}>{course[0]}</span>
+                            <span style={{fontSize: '1em'}}>{course[1]}</span>
                           </label>
                         </li>
                       );

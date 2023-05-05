@@ -14,9 +14,11 @@
 }
 
 .attendance-label {
-  margin-right: 10px;
   display: flex;
+  align-items: center;
+  font-size: 1em;
 }
+
 
 .attendance-label-date {
   font-weight: bold;
@@ -47,9 +49,31 @@
   border-bottom: 1px solid #ccc;
 }
 
-.attendance-checkbox {
-  margin-left: 10px;
+.attendance-label input[type="checkbox"] {
+  margin-right: 10px;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 3px;
+  border: 1px solid #c5c5c5;
+  outline: none;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+.attendance-label input[type="checkbox"]:checked {
+  background-color: #3f51b5;
+  border-color: #3f51b5;
+}
 
+.attendance-label input[type="checkbox"]:checked::before {
+  content: "\2713";
+  display: block;
+  color: #fff;
+  font-size: 1.2em;
+  text-align: center;
+  line-height: 20px;
 }
 
 .attendance-date-picker {
@@ -71,4 +95,7 @@
   background-color: #ffffff;
   border: 1px solid #cccccc;
   border-radius: 5px;
+}
+.attendance-label span {
+  margin-right: 10px;
 }

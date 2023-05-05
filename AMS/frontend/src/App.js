@@ -3,7 +3,7 @@ import Login from './Login/Login';
 import StudentRoutes from './StudentRoutes';
 import FacultyRoutes from './FacultyRoutes';
 import LeaveManageRoutes from './LeaveManageRoutes';
-import AdminRoutes from './AdminRoutes';
+// import AdminRoutes from './AdminRoutes';
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 
 function App() {
@@ -15,7 +15,7 @@ function App() {
         <Route path="/" element={<Login />} />
         <Route path="/student/*" element={<StudentRoutes />} />
         <Route path="/faculty/*" element={<FacultyRoutes />} />
-        <Route path="/admin/*" element={<AdminRoutes />} />
+        {/* <Route path="/admin/*" element={<AdminRoutes />} /> */}
         <Route path="/leavemanage/*" element={<LeaveManageRoutes />} />
       </Routes>
     </>

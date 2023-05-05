@@ -62,7 +62,7 @@ function Login(){
                     <input type="radio" value="admin" name="role" style={{marginRight: '4px'}} required/> Admin
                 </div>
                 <div>{pageStatus=='loading'? "Please wait while loading..." : pageStatus=='unauthorized'? "Enter correct data": ''}</div>
-                <button type="submit" disabled={pageStatus=='loading'} style={{width: '100px'}} >Submit</button> 
+                <button type="submit" disabled={pageStatus=='loading'} style={{width: '100px', marginTop: '20px'}} >Submit</button> 
             </form>
             </div>
         </div>
