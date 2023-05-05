@@ -1,7 +1,6 @@
 import './App.css';
 import Login from './Login/Login';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Admin from './Login/Admin/Admin';
 import Profile from './Login/Student/Profile'
 import SeeCourses from './Login/Student/SeeCourses';
 import MedicalForm from './Login/Leave/MedicalForm';
@@ -10,12 +9,8 @@ import FacultyProfile from './Login/Faculty/FacultyProfile';
 import Courses from './Login/Faculty/Courses';
 import ViewAttendance from './Login/Faculty/ViewAttendance';
 import AttendanceSheet from './Login/Faculty/AttendanceSheet';
-import AdminProfile from './Login/Admin/AdminProfile';
 import Navbar from './Login/Student/Navbar';
-import LeaveManagement from './Login/Admin/LeaveManagement';
-import ViewCourses from './Login/Admin/ViewCourses'
 import FacultyNavbar from './Login/Faculty/FacultyNavbar';
-
 
 window.token="";
 window.course="";
@@ -30,8 +25,6 @@ function App() {
         <Routes>
           <Route path="/" element={<Login />} />
           <Route path="/Faculty" element={<FacultyNavbar />} />
-          {/* <Route path="/AdminProfile" element={<AdminProfile />} /> */}
-          <Route path="/Admin/*" element={<Admin />} />
           <Route path="/Student" element={<Navbar />} />
           <Route path="/Profile" element={<Profile />} />
           <Route path="/SeeCourses/" element={<SeeCourses />} />
@@ -41,8 +34,6 @@ function App() {
           <Route path="/AttendanceSheet" element={<AttendanceSheet />} />
           <Route path="/ViewAttendance" element={<ViewAttendance />} />
           <Route path="/PastLeaves" element={<PastLeaves />} />
-          <Route path="/LeaveManagement" element={<LeaveManagement />} />
-          <Route path="/ViewCourses" element={<ViewCourses />} />
         </Routes>
       </BrowserRouter>
 

@@ -1,10 +1,10 @@
+/* Default styles */
 .login-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-top: 150px;
 }
-
 
 label {
   text-align: center;
@@ -38,14 +38,12 @@ button:hover {
   background-color: #40513B;
 }
 
-
 p {
   padding: 10px;
   color: black;
   font-size: 3em;
   font-weight: bold;
   width: 1000px;
-
 }
 
 .login-card {
@@ -59,4 +57,39 @@ p {
 
 .card:hover {
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+/* Media queries for tablet and mobile devices */
+@media only screen and (max-width: 768px) {
+  .login-container {
+    margin-top: 50px;
+  }
+  
+  input,
+  button,
+  p {
+    width: 80%;
+  }
+  
+  .login-card {
+    width: 80%;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  label {
+    font-size: 1.2em;
+  }
+  
+  input,
+  button,
+  p {
+    font-size: 0.8em;
+    padding: 5px;
+  }
+  
+  .login-card {
+    padding: 10px;
+    width: 90%;
+  }
 }

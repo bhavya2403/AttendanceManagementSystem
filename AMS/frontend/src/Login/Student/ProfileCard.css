@@ -1,5 +1,5 @@
 .studentcard-container {
-	background-Color: #9DC08B;
+	background-color: #9DC08B;
 	color: white;
 	width: 500px;
 	border-radius: 14px;
@@ -33,4 +33,24 @@ img {
 	padding: 10px 20px 0px 20px;
 }
 
+@media only screen and (max-width: 768px) {
+	.studentcard-container {
+		width: 100%;
+		height: auto;
+		margin-left: 0;
+		margin-right: 0;
+		margin-top: 0;
+		border-radius: 0;
+		box-shadow: none;
+	}
 
+	img {
+		margin-top: 50px;
+		width: 50%;
+	}
+
+	.bold-text {
+		font-size: 2rem;
+		padding: 20px 40px 10px 40px;
+	}
+}

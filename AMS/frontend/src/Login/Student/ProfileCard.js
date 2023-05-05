@@ -5,7 +5,7 @@ function ProfileCard(props){
   console.log("data at profile card: " )
   console.log(props)
     return (
-        <div className="studentcard-container">
+        <div className="studentcard-container" style={{marginTop: '80px'}}>
         <header>
           <img src="https://img.icons8.com/bubbles/100/000000/user.png"/>
         </header>

@@ -1,8 +1,9 @@
 import React, {useState} from 'react';
 import "./Login.css";
+import Alert from 'react-bootstrap/Alert';
 import { json, useNavigate } from "react-router-dom";
 import Cookies from 'js-cookie';
-
+import { ToastContainer, toast } from 'react-toastify';
 const csrftoken = Cookies.get('csrftoken');
 
 function Login(){
@@ -66,7 +67,8 @@ function Login(){
             console.log(radio);
             console.log(response);
         } catch (error) {
-            console.log(error)
+            console.log(error);
+            <Alert>Incorrect ID and Password</Alert>
             // an error occured
         }
 
