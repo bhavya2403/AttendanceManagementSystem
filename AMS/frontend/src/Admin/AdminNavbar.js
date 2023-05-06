@@ -9,7 +9,7 @@ function AdminNavbar() {
       <nav className="navbar navbar-expand-lg" style={{ backgroundColor: '#40513B', }} >
         <div className="container-fluid" >
 
-          <Link className="navbar-brand" to="./AdminProfile" style={{ color: 'white' }}>Profile</Link>
+          <Link className="navbar-brand" to="/admin/" style={{ color: 'white' }}>Profile</Link>
 
           <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
@@ -17,20 +17,14 @@ function AdminNavbar() {
 
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-            <Link className="nav-link active" to="./RegisterUser" style={{ color: 'white' }}>Register User</Link>
-          </ul>
-          </div>
-          
-          <div className="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-            <Link className="nav-link active" to="./Facultylist" style={{ color: 'white' }}>Faculty</Link>
+            <Link className="nav-link active" to="/admin/RegisterUser" style={{ color: 'white' }}>Register User</Link>
           </ul>
           </div>
 
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
 
-            <Link className="nav-link active" to="./RegisterCourse" style={{ color: 'white' }}>Student</Link>
+            <Link className="nav-link active" to="/admin/RegisterCourse" style={{ color: 'white' }}>Register Course</Link>
            </ul>
           </div>
 
@@ -39,7 +33,7 @@ function AdminNavbar() {
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
 
 
-              <Link className="nav-link active" to="./ViewCourses" style={{ color: 'white' }}>View Courses</Link>
+              <Link className="nav-link active" to="/admin/RegisterStudentCourse" style={{ color: 'white' }}>Register Student-Course</Link>
 
               
 
@@ -47,7 +41,7 @@ function AdminNavbar() {
 
             <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-            <Link className="nav-link active" to="./LeaveManagement" style={{ color: 'white' }}>Leave Management</Link>
+            <Link className="nav-link active" to="/admin/LeaveManagement" style={{ color: 'white' }}>Leave Management</Link>
 
 
             </ul></div>

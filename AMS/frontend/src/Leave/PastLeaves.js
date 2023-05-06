@@ -41,7 +41,8 @@ function PastLeaves() {
             <thead>
               <tr>
                 <th className="medical-table th">Sr.No</th>
-                <th className="medical-table th">Reason</th>
+                <th className="medical-table th">Type of Leave</th>
+                <th className="medical-table th">Report</th>
                 <th className="medical-table th">Start Date</th>
                 <th className="medical-table th">End Date</th>
                 <th className="medical-table th" style={{width: '300px'}}>Approval Status</th>
@@ -51,11 +52,12 @@ function PastLeaves() {
               {data && data.data.map((item, index) => (
                 <tr key={index+1}>
                   <td className="medical-table td">{index+1}</td>
-                  <td className="medical-table td">{item[3]}</td>
-                  <td className="medical-table td">{item[5]}</td>
-                  <td className="medical-table td">{item[6]}</td>
+                  <td className="medical-table td">{item.leave_type}</td>
+                  <td className="medical-table td">{item.report}</td>
+                  <td className="medical-table td">{item.start_date}</td>
+                  <td className="medical-table td">{item.end_date}</td>
                   <td className="medical-table td" style={{width: '100px', color: item.approvalStatus === 'Approved' ? 'green' : item.approvalStatus === 'Denied' ? 'red' : 'orange' }}>
-                    {item[7]}
+                    {item.status}
                   </td>
                 </tr>
               ))}

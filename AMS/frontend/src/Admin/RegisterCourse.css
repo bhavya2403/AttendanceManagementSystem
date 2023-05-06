@@ -1,43 +1,10 @@
-form {
-    display: flex;
-    flex-direction: column;
-    max-width: 400px;
-    margin: 0 auto;
+.course-card {
+    border: 1px solid #ccc;
+    border-radius: 4px;
     padding: 20px;
-    border: 1px solid #ccc;
-    background-color: rgb(64, 81, 59);
-    border-radius: 5px;
-  }
-  .description{
-    height: 100px;
-    width: 300px;
-  }
-  
-  label {
-    display: block;
-    margin-bottom: 10px;
-  }
-  
-  input[type="text"],
-  input[type="email"],
-  select {
-    padding: 10px;
-    font-size: 16px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    margin-bottom: 20px;
-  }
-  
-  button[type="submit"] {
-    background-color: #0077cc;
-    color: #fff;
-    padding: 10px;
-    font-size: 16px;
-    border-radius: 5px;
-    border: none;
-    cursor: pointer;
-  }
-  
-  button[type="submit"]:hover {
-    background-color: #005daa;
+    width: 600px;
+    background-color: #9DC08B;
+    border-radius: 10px;
+    margin: 0 auto;
+    margin-top: 20px;
   }

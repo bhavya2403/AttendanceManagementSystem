@@ -15,7 +15,7 @@ def register_user(request):
         Takes token of admin, create_id, create_password, create_role as
         input and adds entry of new user into database
     '''
-    if not request.data.get('id') or not request.data.get('role'):
+    if not request.data.get('id') or not request.data.get('role') or not request.data.get('password'):
         return Response(status=HTTP_412_PRECONDITION_FAILED)
     user = COLL_USR.find_one({'id': request.data.get('id'),
                               'role': request.data.get('role')})
@@ -24,6 +24,7 @@ def register_user(request):
     if request.data.get('role') not in {'instructor', 'student'}:
         return Response(status=HTTP_406_NOT_ACCEPTABLE)
     COLL_USR.insert_one({'id': request.data.get('id'),
+                         'name': request.data.get('name'),
                          'password': make_password(request.data.get('password')),
                          'role': request.data.get('role'),
                          'email': request.data.get('email'),
@@ -45,7 +46,7 @@ def register_course(request):
     '''
     if not request.data.get('code') or not request.data.get('semester') or not request.data.get('id'):
         return Response(status=HTTP_412_PRECONDITION_FAILED)
-    course = COLL_USR.find_one({'code': request.data.get('code'),
+    course = COLL_CRS.find_one({'code': request.data.get('code'),
                               'semester': request.data.get('semester')})
     if course is not None:
         return Response(status=HTTP_409_CONFLICT)
@@ -54,7 +55,8 @@ def register_course(request):
         return Response(status=HTTP_406_NOT_ACCEPTABLE)
     COLL_CRS.insert_one({'code': request.data.get('code'), 'semester': request.data.get('semester'),
                          'name': request.data.get('name'), 'description': request.data.get('description'),
-                         'department': request.data.get('department'), 'instructor': instr['_id']})
+                         'department': request.data.get('department'), 'instructor': instr['_id'],
+                         'students': []})
     return Response(status=HTTP_200_OK)
 
 @api_view(['POST'])
@@ -69,11 +71,11 @@ def register_student_in_course(request):
     if not request.data.get('code') or not request.data.get('semester') or not request.data.get('id'):
         return Response(status=HTTP_412_PRECONDITION_FAILED)
     crs = COLL_CRS.find_one({"code": request.data.get('code'), "semester": request.data.get('semester')})
-    usr = COLL_USR.fidn_one({'id': request.data.get('id')})
+    usr = COLL_USR.find_one({'id': request.data.get('id')})
     if crs is None or usr is None:
         return Response(status=HTTP_406_NOT_ACCEPTABLE)
     if usr['_id'] in crs['students']:
         return Response(status=HTTP_409_CONFLICT)
     COLL_CRS.update_one({'code': request.data.get('code'), 'semester': request.data.get('semester')},
-                        {'$set': {'students': crs['students']+usr['id']}})
+                        {'$set': {'students': crs['students']+[usr['_id']]}})
     return Response(status=HTTP_200_OK)

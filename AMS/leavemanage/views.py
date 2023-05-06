@@ -54,6 +54,9 @@ def get_leaves(request):
     leave_objs = list(COLL_LVE.find({'id': usr['id'], 'role': usr['role']} if usr['role']!='admin' else None))
     data = []
     for obj in leave_objs:
-        data.append([str(obj['_id']), obj['id'], obj['role'], obj['leave_type'], obj['report'], obj['start_date'],
-                     obj['end_date'], obj['status']])
+        data.append({'id': str(obj['_id']), 'user_id': obj['id'], 'role': obj['role'],
+                     'leave_type': obj['leave_type'], 'report': obj['report'], 'start_date': obj['start_date'],
+                     'end_date': obj['end_date'], 'status': obj['status']})
+        # data.append([str(obj['_id']), obj['id'], obj['role'], obj['leave_type'], obj['report'], obj['start_date'],
+        #              obj['end_date'], obj['status']])
     return Response({'data': data}, HTTP_200_OK)

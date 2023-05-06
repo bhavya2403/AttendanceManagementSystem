@@ -1,13 +1,25 @@
 import React from "react";
-import Admin from "./Admin/Admin";
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
+import AdminProfile from "./Admin/AdminProfile";
+import BatchList from "./Admin/BatchList";
+import RegisterUser  from "./Admin/RegisterUser";
+import RegisterCourse from "./Admin/RegisterCourse";
+import FacultyList from "./Admin/facultylist";
+import LeaveManagement from "./Admin/LeaveManagement";
+import RegisterStudentCourse from "./Admin/RegisterStudentCourse";
 
 function AdminRoutes() {
+    console.log(useLocation());
     return (
         <>
             <Routes>
-                <Route index element={<Admin />} />
-                {/* <Route path="/view_courses" element={<SeeCourses />} /> */}
+                <Route index element={<AdminProfile />} />
+                <Route path="RegisterUser"  element={<RegisterUser/>} /> 
+                <Route path="RegisterCourse"  element={<RegisterCourse/>} /> 
+                <Route path="RegisterStudentCourse"  element={<RegisterStudentCourse/>} />
+                <Route path="Facultylist"  element={<FacultyList/>} /> 
+                <Route path="BatchList"  element={<BatchList/>} /> 
+                <Route path="LeaveManagement"  element={<LeaveManagement/>} />
             </Routes>
         </>
     );

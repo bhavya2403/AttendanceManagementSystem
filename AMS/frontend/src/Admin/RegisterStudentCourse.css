@@ -1,0 +1,36 @@
+.form-card {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 20px;
+    width: 600px;
+    background-color: #9DC08B;
+    border-radius: 10px;
+    margin: 0 auto;
+    margin-top: 20px;
+  }
+  
+  .form-label{
+    margin-top: 10px;
+    display: flex;
+    flex-direction: row ;
+    margin-right: 200px;
+  }
+
+  .radio-buttons {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .radio-label {
+    margin-right: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+  
+  .radio-label input {
+    margin-right: 5px;
+  }
+  

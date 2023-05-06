@@ -1,86 +1,125 @@
 import React, { useState } from "react";
 import './RegisterCourse.css'
+import AdminNavbar from './AdminNavbar'
 
-function CourseRegistrationForm() {
+
+const RegisterCourse = () => {
   const [courseName, setCourseName] = useState("");
-  const [Courseinstructor, setCoureInstructor] = useState("");
-  const [courseID, setCourseID] = useState("");
-  const [department, setDepartment] = useState("");
-  const [semester, setsemester] = useState("");
+  const [courseCode, setCourseCode] = useState("");
+  const [semester, setSemester] = useState("");
+  const [instructorId, setInstructorId] = useState("");
+  const [courseDescription, setCourseDescription] = useState("");
+  const [pageStatus, setPageStatus] = useState('noloading');
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    // formData.append('file', file);
-
-    try {
-      const requestOptions = {
-        method: 'POST',
-        headers: {
-          'token': `${window.token}`,
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setPageStatus('loading');
+    const response = await fetch('/admin/register_course/', {
+      method: 'POST',
+      headers: {
           'Content-Type': 'application/json',
-          
-        },
-        body: JSON.stringify({
-          
-          // 'file': file,
-            'code': courseID,
-            'semester': semester,
-            'name': courseName,
-            'department': department,
-            'instructor': Courseinstructor,
-            'description': "",  
-
-        }),
-      }
-      
-      const response = await fetch("admin/register_course/", requestOptions);
-      const data = await response.json();
-      if (response.ok) {
-          console.log(response);
-      }
-      console.log(response);
-    } catch (error) {
-
-    }
-
-    // console.log(`Course: ${courseName}\nCourseInstructor: ${Courseinstructor}\ncourseID: ${courseID}\nsemester: ${semester}`);
+          'token': window.token
+      },
+      body: JSON.stringify({
+          'code': courseCode,
+          'semester': semester,
+          'name': courseName,
+          'description': courseDescription,
+          'id': instructorId
+      })
+    });
+    if (!response) {}
+    else if (response.status==406) setPageStatus('unacceptable');
+    else if (response.status==409) setPageStatus('conflict');
+    else if (response.status==412) setPageStatus('notenoughdata');
+    else setPageStatus('done');
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label>
-        Course Name:
-        <input id="cname" type="text" value={courseName} onChange={(e) => setCourseName(e.target.value)} />
-      </label>
-      <br />
-      <label>
-        Course Instructor:
-        <input id="cinstruct" type="text" value={Courseinstructor} onChange={(e) => setCoureInstructor(e.target.value)} />
-      </label>
-      <br />
-      <label>
-        Course ID:
-        <input id="cid" type="courseID" value={courseID} onChange={(e) => setCourseID(e.target.value)} />
-      </label>
-      <br />
-      <label>
-        Department:
-        <input id="dep" type="department" value={department} onChange={(e) => setDepartment(e.target.value)} />
-      </label>
-      <br />
-      <label>
-        Semester:
-        <input id="dep" type="department" value={semester} onChange={(e) => setsemester(e.target.value)} />
-      </label>
-      <br />
-      {/* <label>
-        Semester:
-        <textarea id="desc" value={semester} className="description" onChange={(e) => setsemester(e.target.value)} placeholder="Semester"></textarea>
-      </label>
-      <br /> */}
-      <button type="submit">Register</button>
-    </form>
+    <>
+    <AdminNavbar/>
+    <div className="course-card">
+      <h1 style={{marginLeft: '130px', marginBottom: '20px'}}>Register Course</h1>
+      <div className="card-body">
+        <form onSubmit={handleSubmit}>
+          <div className="mb-3 d-flex align-items-center">
+            <label style={{ whiteSpace: 'nowrap', color: 'black', fontWeight: 'bold' }}>
+              Course Name 
+            </label>
+            <input
+            style={{marginLeft: '40px'}}
+              type="text"
+              id="courseName"
+              value={courseName}
+              onChange={(e) => setCourseName(e.target.value)}
+              required
+            />
+          </div>
+          <div className="mb-3 d-flex align-items-center">
+            <label style={{ whiteSpace: 'nowrap',color: 'black', fontWeight: 'bold' }}>
+              Course Code 
+            </label>
+            <input
+            style={{marginLeft: '50px'}}
+              type="text"
+              id="courseCode"
+              value={courseCode}
+              onChange={(e) => setCourseCode(e.target.value)}
+              required
+            />
+          </div>
+          <div className="mb-3 d-flex align-items-center">
+            <label style={{ whiteSpace: 'nowrap',color: 'black', fontWeight: 'bold'  }}>
+              Semester 
+            </label>
+            <input
+              type="text"
+                style={{marginLeft: '80px'}}
+              id="semester"
+              value={semester}
+              onChange={(e) => setSemester(e.target.value)}
+              required
+            />
+          </div>
+          <div className="mb-3 d-flex align-items-center">
+            <label  style={{ whiteSpace: 'nowrap',color: 'black', fontWeight: 'bold' }}>
+              Instructor ID 
+            </label>
+            <input
+              type="text"
+              style={{marginLeft: '47px'}}
+              id="instructorId"
+              value={instructorId}
+              onChange={(e) => setInstructorId(e.target.value)}
+              required
+            />
+          </div>
+          <br/>
+          <div>
+            <label style={{ whiteSpace: 'nowrap',color: 'black', fontWeight: 'bold' }}>
+              Course Description
+            </label>
+            <textarea
+                style={{width: '280px', backgroundColor: '#EDF1D6', borderRadius: '10px'}}
+              id="courseDescription"
+              rows="3"
+              value={courseDescription}
+              onChange={(e) => setCourseDescription(e.target.value)}
+            ></textarea>
+          </div>
+          <div>{pageStatus=='loading'? 'Please Wait': 
+            pageStatus=='notenoughdata'? 'Course code, semester and faculty Id are compulsory': 
+            pageStatus=='conflict'? 'Course Already exists': 
+            pageStatus=="unacceptable"? "Instructor doesn't exist": 
+            pageStatus=='done'? 'Done. Try another submit': ''}</div>
+          <button type="submit" style={{marginTop: '20px', width: '400px'}}>
+            Register
+          </button>
+        </form>
+      </div>
+    </div>
+    </>
   );
-}
+};
 
-export default CourseRegistrationForm;
+export default RegisterCourse;

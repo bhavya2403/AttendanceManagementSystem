@@ -1,0 +1,86 @@
+
+  .leave-card {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 20px;
+    width: 800px;
+    background-color: #9DC08B;
+    border-radius: 10px;
+    margin: 0 auto;
+    margin-top: 20px;
+  }
+
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+  }
+  
+  th, td {
+    white-space: nowrap;
+    font-weight: bold;
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+
+    text-align: center;
+  }
+  
+
+  
+  .button-container {
+    display: flex;
+    justify-content: center;
+  }
+  
+  button {
+    margin-right: 10px;
+   
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    padding: 8px 16px;
+  }
+  
+  button:hover {
+    background-color: #3e8e41;
+  }
+  
+  button:last-child {
+    margin-right: 0;
+  }
+  
+  button.approve {
+    background-color: #4CAF50;
+  }
+  
+  button.reject {
+    background-color: #f44336;
+  }
+  
+  button.pending {
+    background-color: #ffc107;
+  }
+  
+  button.approve:hover {
+    background-color: #3e8e41;
+  }
+  
+  button.reject:hover {
+    background-color: #b71c1c;
+  }
+  
+  button.pending:hover {
+    background-color: #ffa000;
+  }
+  
+  button.remove {
+    background-color: #f44336;
+  }
+  
+  button.remove:hover {
+    background-color: #b71c1c;
+  }
+  
