@@ -1,10 +1,11 @@
 from pymongo import MongoClient
-from django.contrib.auth.hashers import make_password, check_password
+from django.contrib.auth.hashers import check_password
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework.status import *
+from decouple import config
 
-CLIENT = MongoClient("mongodb+srv://202001067:notBhavya2003@cluster0.6u0jcmx.mongodb.net")
+CLIENT = MongoClient(F"mongodb+srv://202001067:{config('MONGO_PASSWORD')}@cluster0.6u0jcmx.mongodb.net")
 DB = CLIENT.get_database('ams')
 COLL_CRS = DB.get_collection('courses')
 COLL_USR = DB.get_collection('user')

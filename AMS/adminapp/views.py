@@ -1,4 +1,5 @@
 from authorization.views import *
+from django.core.mail import send_mail
 
 def admin_auth(func):
     def inner(request):
@@ -33,6 +34,10 @@ def register_user(request):
                          'gender': request.data.get('gender'),
                          'post': request.data.get('post'),
                          'description': request.data.get('description')})
+    send_mail('Registered successfully',
+              'Your registration in attendance management system has been completed successfully by the admin',
+              'attendancemanagement58@gmail.com',
+              [request.data.get('email')])
     return Response(status=HTTP_200_OK)
 
 @api_view(['POST'])
@@ -71,11 +76,15 @@ def register_student_in_course(request):
     if not request.data.get('code') or not request.data.get('semester') or not request.data.get('id'):
         return Response(status=HTTP_412_PRECONDITION_FAILED)
     crs = COLL_CRS.find_one({"code": request.data.get('code'), "semester": request.data.get('semester')})
-    usr = COLL_USR.find_one({'id': request.data.get('id')})
+    usr = COLL_USR.find_one({'id': request.data.get('id'), 'role': 'student'})
     if crs is None or usr is None:
         return Response(status=HTTP_406_NOT_ACCEPTABLE)
     if usr['_id'] in crs['students']:
         return Response(status=HTTP_409_CONFLICT)
     COLL_CRS.update_one({'code': request.data.get('code'), 'semester': request.data.get('semester')},
                         {'$set': {'students': crs['students']+[usr['_id']]}})
+    send_mail(f'Registration in {request.data.get("code")} course',
+              f'Your registration in {crs["name"]} ({crs["code"]}) completed successfully by the admin',
+              'attendancemanagement58@gmail.com',
+              [usr['email']])
     return Response(status=HTTP_200_OK)

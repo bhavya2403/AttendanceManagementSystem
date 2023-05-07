@@ -2,6 +2,7 @@ from authorization.views import *
 from adminapp.views import admin_auth
 from datetime import datetime
 from bson.objectid import ObjectId
+from django.core.mail import send_mail
 
 @api_view(['POST'])
 @authenticate_dec
@@ -41,6 +42,11 @@ def change_status(request):
     if request.data.get('change_to') not in {'pending', 'approved', 'rejected'}:
         return Response(status=HTTP_406_NOT_ACCEPTABLE)
     COLL_LVE.update_one({'_id': leaveobj['_id']}, {'$set':{'status': request.data.get('change_to')}})
+    send_mail(f'Leave {request.data.get("change_to")}',
+              f'Your applied leave with reason "{leaveobj["leave_type"]}" from {leaveobj["start_date"]} to '
+                f'{leaveobj["end_date"]} has been {request.data.get("change_to")} by the admin',
+              'attendancemanagement58@gmail.com',
+              [COLL_USR.find_one({'id': leaveobj['id'], 'role': leaveobj['role']})['email']])
     return Response(status=200)
 
 @api_view(['POST'])
@@ -57,6 +63,4 @@ def get_leaves(request):
         data.append({'id': str(obj['_id']), 'user_id': obj['id'], 'role': obj['role'],
                      'leave_type': obj['leave_type'], 'report': obj['report'], 'start_date': obj['start_date'],
                      'end_date': obj['end_date'], 'status': obj['status']})
-        # data.append([str(obj['_id']), obj['id'], obj['role'], obj['leave_type'], obj['report'], obj['start_date'],
-        #              obj['end_date'], obj['status']])
     return Response({'data': data}, HTTP_200_OK)
